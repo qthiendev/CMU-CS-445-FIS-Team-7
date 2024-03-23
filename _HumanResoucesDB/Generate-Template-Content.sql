@@ -3,6 +3,8 @@
 -- Create and modify by Trinh Quy Thien 
 -- Last modified [13/03/2024 01:50]
 
+USE [HumanResourceDB]
+
 DELETE FROM [dbo].[__MigrationHistory]
 DELETE FROM [dbo].[Emergency_Contacts]
 DELETE FROM [dbo].[Employment]
