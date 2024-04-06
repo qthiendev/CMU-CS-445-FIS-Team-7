@@ -1,0 +1,61 @@
+
+  *{
+    margin: 0;
+	  padding: 0;
+    box-sizing: border-box;
+  }
+  body .table-container{
+    padding:20px 15px;
+  }
+  .title{
+    font-size: 25px;
+    font-weight: bold;
+  }
+  .table-striped tbody tr:hover {
+    background-color: #f2f2f2; /* Màu xám nhạt */
+  }
+  .display-none{
+    display: none;
+  }
+  #overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999; /* Đảm bảo overlay hiển thị phía trên tất cả các phần tử khác */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#popup {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Thêm shadow cho phần popup */
+    max-width: 80%; /* Điều chỉnh kích thước tối đa của popup */
+}
+
+#popup-message {
+    margin-bottom: 20px;
+    font-size: 18px; 
+}
+
+#loginMessage {
+  display: block;
+  margin: 0 auto;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Hiệu ứng chuyển đổi màu nền */
+}
+
+#loginMessage:hover {
+    background-color: #0056b3; /* Màu nền khi di chuột vào */
+}

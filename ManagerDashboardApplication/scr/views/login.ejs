@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/css/style.css">
+  
+</head>
+<body>
+
+    <form id="loginForm" action="/login" method="post"> <!-- Changed method to "post" -->
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input name="email-login" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" >
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input name="password-login" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" >
+        </div>
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          <span class="error-message"></span>
+        </div>
+      
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      <div id="overlay" style="display: none;">
+        <div id="popup">
+            <p id="popup-message"></p>
+            <button id="loginMessage" onclick="closePopup()">Close</button>
+        </div>
+    </div>
+    
+    <script>
+     var checkAccounts = JSON.parse('<%-JSON.stringify(getAllAccounts)%>');
+      console.log("Dữ liệu CheckAccounts:", checkAccounts); 
+      $(document).ready(function(){
+          function closePopup(){
+              $('#overlay').hide(); 
+          }
+  
+          function showMessage(message) {
+              $('#popup-message').text(message); 
+              $('#overlay').show(); 
+              
+          }   
+  
+          $('#loginForm').submit(function(event){
+              event.preventDefault();
+              var email = $('#exampleInputEmail1').val();
+              var password = $('#exampleInputPassword1').val();
+              var account = checkAccounts.find(function(account) {
+                  return account.email === email && account.password === password;
+              });
+              if(account){
+                  return window.location.href = '/homePage';
+              }
+              else if(!email || !password){
+                  showMessage("Please enter information");
+              }
+              else{
+                  showMessage("Email or Password is not correct");
+              }
+          });
+  
+          $('#loginMessage').click(closePopup);
+      });
+  </script>
+  
+</html>
