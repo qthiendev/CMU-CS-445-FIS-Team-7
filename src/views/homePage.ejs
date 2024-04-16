@@ -144,16 +144,16 @@
                 </tr>
               </thead>
 
-              <!-- <tbody>
+              <tbody>
                 <% for(var i=0; i<getAllHumanPayroll.length; i++) {%>
                   <tr>
-                    <td>getAllHumanPayroll.SHAREHOLDER_STATUS</td>
-                    <td>getAllHumanPayroll.CURRENT_GENDER</td>
-                    <td>getAllHumanPayroll. ETHNICITY</td>
-                    <td></td>
-                    <td>$000</td>
+                    <td><%= getAllHumanPayroll[i].PERSONAL_ID %></td>
+                    <td><%= getAllHumanPayroll[i].CURRENT_GENDER %></td>
+                    <td><%= getAllHumanPayroll[i].ETHNICITY%></td>
+                    <td><%= getAllHumanPayroll[i].DEPARTMENT %></td>
+                    <td><%= getAllHumanPayroll[i].TYPE_OF_WORK %></td>
                   </tr>
-               <% } %> -->
+               <% } %>
                 
               </tbody>
             </table>
