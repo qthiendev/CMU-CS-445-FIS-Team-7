@@ -26,7 +26,7 @@ const configThien = {
   },
 };
 
-const connectionHR = new sql.ConnectionPool(configThien);
+const connectionHR = new sql.ConnectionPool(configNhan);
 
 connectionHR.connect().then((pool) => {
     console.log("Connected to HumanResource");
