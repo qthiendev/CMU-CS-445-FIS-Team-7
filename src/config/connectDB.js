@@ -29,7 +29,7 @@ const configThien = {
   },
 };
 
-const connectionHR = new sql.ConnectionPool(configNhan);
+const connectionHR = new sql.ConnectionPool(configThien);
 
 connectionHR
   .connect()
