@@ -145,13 +145,13 @@
               </thead>
 
               <tbody>
-                <% for(var i=0; i<getAllHumanPayroll.length; i++) {%>
+                <% for(var i=0; i<getHR.length; i++) {%>
                   <tr>
-                    <td><%= getAllHumanPayroll[i].PERSONAL_ID %></td>
-                    <td><%= getAllHumanPayroll[i].CURRENT_GENDER %></td>
-                    <td><%= getAllHumanPayroll[i].ETHNICITY%></td>
-                    <td><%= getAllHumanPayroll[i].DEPARTMENT %></td>
-                    <td><%= getAllHumanPayroll[i].TYPE_OF_WORK %></td>
+                    <td><%= getHR[i].PERSONAL_ID %></td>
+                    <td><%= getHR[i].CURRENT_GENDER %></td>
+                    <td><%= getHR[i].ETHNICITY%></td>
+                    <td><%= getHR[i].DEPARTMENT %></td>
+                    <td><%= getHR[i].TYPE_OF_WORK %></td>
                   </tr>
                <% } %>
                 
