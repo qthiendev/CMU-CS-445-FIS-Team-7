@@ -135,11 +135,14 @@
             <table class="table content-table">
               <thead>
                 <tr>
-                  <th>Shareholder</th>
-                  <th>Gender</th>
-                  <th>Ethnicity</th>
-                  <th>Department</th>
-                  <th>Time</th>
+                  <th>PERSONAL ID</th>
+                  <th>FULLNAME</th>
+                  <th>GENDER</th>
+                  <th>BIRTH DATE</th>
+                  <th>SOCIAL SECURITY NUMBER</th>
+                  <th>ADDRESS</th>
+                  <th>PHONE NUMBER</th>
+                  <th>EMAIL</th>
                 </tr>
               </thead>
 
@@ -147,10 +150,13 @@
                 <% for(var i=0; i<getHR.length; i++) {%>
                   <tr>
                     <td><%= getHR[i].PERSONAL_ID %></td>
-                    <td><%= getHR[i].CURRENT_GENDER %></td>
-                    <td><%= getHR[i].ETHNICITY%></td>
-                    <td><%= getHR[i].DEPARTMENT %></td>
-                    <td><%= getHR[i].TYPE_OF_WORK %></td>
+                    <td><%= getHR[i].CURRENT_LAST_NAME + ' ' + getHR[i].CURRENT_MIDDLE_NAME + ' ' + getHR[i].CURRENT_FIRST_NAME %></td>
+                    <td><%= getHR[i].CURRENT_GENDER%></td>
+                    <td><%= getHR[i].BIRTH_DATE.toLocaleDateString() %></td>
+                    <td><%= getHR[i].SOCIAL_SECURITY_NUMBER %></td>
+                    <td><%= getHR[i].CURRENT_ADDRESS_1 + ', ' + getHR[i].CURRENT_CITY + ', ' + getHR[i].CURRENT_COUNTRY %></td>
+                    <td><%= getHR[i].CURRENT_PHONE_NUMBER %></td>
+                    <td><%= getHR[i].CURRENT_PERSONAL_EMAIL %></td>
                   </tr>
                <% } %>
                 

@@ -396,6 +396,3 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
-src/config/connectDB.js
-package-lock.json
-package.json

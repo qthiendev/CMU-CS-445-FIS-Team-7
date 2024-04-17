@@ -1,19 +1,21 @@
 const mysql2 = require("mysql2");
 
-const connectionPR = mysql2.createConnection({
+config = {
     host: 'localhost',
     user: 'root',
     password: '123456',
     database: 'mydb',
     port: 3306
-});
+}
+
+const connectionPR = mysql2.createConnection(config);
 
 connectionPR.connect((err) => {
     if (err) {
-        console.error('Error connecting to MySQL:', err);
+        console.error('[SYSTEM] Cannot connect to MySQL Server | mydb Database.\n', err);
         return;
     }
-    console.log('Connected to Payroll');
+    console.log('[SYSTEM] Connected to MySQL Server | mydb Database.N');
 });
 
 module.exports = {connectionPR};

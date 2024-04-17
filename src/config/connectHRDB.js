@@ -1,10 +1,10 @@
 const sql = require("mssql");
 
-const configNhan = {
+const config = {
   driver: "msnodesqlv8",
   user: "sa",
   password:'123456',
-  server: "DESKTOP-CSR23GF\\THANHNHAN",
+  server: "localhost",
   database: "HumanResourceDB",
   options: {
     port: 1433,
@@ -13,26 +13,13 @@ const configNhan = {
   },
 };
 
-const configThien = {
-  driver: "msnodesqlv8",
-  user: "sa",
-  password:'123456789',
-  server: "DESKTOP-53ZIE",
-  database: "HumanResourceDB",
-  options: {
-    port: 1433,
-    encrypt: true,
-    trustServerCertificate: true,
-  },
-};
-
-const connectionHR = new sql.ConnectionPool(configNhan);
+const connectionHR = new sql.ConnectionPool(config);
 
 connectionHR.connect().then((pool) => {
-    console.log("Connected to HumanResource");
+    console.log("[SYSTEM] Connected to SQL Server | Human Resource Database");
   })
   .catch((err) => {
-    console.error("Error connecting to SQL Server:", err);
+    console.error("[SYSTEM] Cannot connect to SQL Server | Human Resource Database.\n", err);
   });
 
   module.exports = {connectionHR};

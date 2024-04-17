@@ -14,7 +14,7 @@ const recordsetFilter = async (req, res) => {
     let department = req.body.department;
     let workType = req.body.workType;
 
-    console.log(">>>>>>>>>>>>>",shareholder);
+    console.log(">>>>>>>>>>>>>", shareholder);
   } catch (error) {
     console.error(error);
   }
