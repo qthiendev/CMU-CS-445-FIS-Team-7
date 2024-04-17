@@ -8,7 +8,7 @@
   },
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "Team project",
   "dependencies": {
     "ejs": "^3.1.10",
     "express": "^4.19.2",

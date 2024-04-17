@@ -1,7 +1,8 @@
 const sql = require("mssql");
 const mysql = require("mysql");
 //connectHR
-const config = {
+
+const configNhan = {
   driver: "msnodesqlv8",
   user: "sa",
   password:'123456',
@@ -15,7 +16,20 @@ const config = {
   },
 };
 
-const connectionHR = new sql.ConnectionPool(config);
+const configThien = {
+  driver: "msnodesqlv8",
+  user: "sa",
+  password:'123456789',
+  server: "DESKTOP-53ZIE",
+  database: "HumanResourceDB",
+  options: {
+    port: 1433,
+    encrypt: true, // Kích hoạt mã hóa SSL
+    trustServerCertificate: true,
+  },
+};
+
+const connectionHR = new sql.ConnectionPool(configNhan);
 
 connectionHR
   .connect()

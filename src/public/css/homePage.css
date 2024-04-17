@@ -38,7 +38,7 @@ a {
   display: flex;
   align-items: center;
   padding: 19px 20px;
-  border-radius: 10px;
+  border-radius: 8px;
 }
 
 .sidebar .btn i {
@@ -101,7 +101,7 @@ a {
   width: 347px;
   margin-left: auto;
   padding: 13px 20px;
-  border-radius: 10px;
+  border-radius: 8px;
   background: #fff;
   box-shadow: 0px 20px 70px 0px rgba(86, 89, 146, 0.1);
 }
