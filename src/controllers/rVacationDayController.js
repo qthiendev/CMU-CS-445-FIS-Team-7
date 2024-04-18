@@ -3,7 +3,7 @@ const { querryHRDB } = require('../service/querryHRDB');
 const getReportVD = async (req, res) => {
     try {
         let shareholder = req.body.shareholder;
-        let Gender = req.body.Gender;
+        let gender = req.query.gender;
         let user = req.body.user;
         let department = req.body.department;
         let workType = req.body.workType;
@@ -16,12 +16,11 @@ const getReportVD = async (req, res) => {
         //     (department == null || record.department === department) &&
         //     (workType == null || record.workType === workType)
         //   );
-        if (Gender) {
-            data = data.filter(record => (record.CURRENT_GENDER === Gender));
-        }
-        console.log('crite:', req.body);
+      
         console.log('data:', data);
         res.render("rVacationDayPage.ejs", { data } );
+        console.log('Gender>>>>>>>>>:', gender);
+        console.log("Req.BODY>>>>",req.query);
     }
     catch (err) {
         console.log(err);
