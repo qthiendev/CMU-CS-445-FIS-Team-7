@@ -5,8 +5,12 @@ const router = express.Router();
 // router.get('/', getHomepage);
 // router.post('/filter', homeController.recordsetFilter);
 
-const {getReportVD} = require('../controllers/rVacationDayController');
-const rvcController = require('../controllers/rVacationDayController');
+const {getReportVD} = require('../controllers/VacationDayReportController');
+const {getReportAB} = require('../controllers/AverageBenefitsReportController');
+const {getReportTE} = require('../controllers/TotalEarningsReportController');
+
 router.get('/VacationDayReport', getReportVD);
+router.get('/AverageBenefitsReport', getReportAB);
+router.get('/TotalEarningsReport', getReportTE);
 
 module.exports = router;

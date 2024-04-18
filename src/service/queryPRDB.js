@@ -5,7 +5,7 @@ const querryPRDB = async () => {
 
       const [request, fields] = await connectionPR.promise().query(sqlQueryPR);
 
-      console.log("PAYROLL DB QUERRY DATA>>>>>", request);
+      console.log("PAYROLL DB QUERY DATA>>>>>", request);
       return results.recordset;
     } catch (error) {
       console.error("Error getting payroll list:", error);
