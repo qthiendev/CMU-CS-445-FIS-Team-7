@@ -6,17 +6,8 @@ const querryHRDB = async () => {
       const sqlQueryHR = 'select * from PERSONAL';
       const request = connectionHR.request(); // Tạo yêu cầu truy vấn từ kết nối connectionHR
       const results = await request.query(sqlQueryHR); // Thực hiện truy vấn
+      
 
-      // const birthDates = results.recordset.map(record => ({
-      //   PERSONAL_ID: record.PERSONAL_ID,
-      //   BIRTH_DATE: record.BIRTH_DATE
-      // })); // Lấy ID và ngày sinh
-
-      const genderFilter = 'M'
-
-      const specificResult = results.recordset.filter(record => record.CURRENT_GENDER === genderFilter)
-  
-      //console.log("HUMAN RESOURCE DB QUERRY DATA>>>>>", results.recordset);
       return results.recordset;
     } catch (error) {
       console.error("[SYSTEM] Failed querry HUMAN RESOURCE DB.\n", error);
