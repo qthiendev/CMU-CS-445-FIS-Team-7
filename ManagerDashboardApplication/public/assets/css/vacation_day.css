@@ -1,0 +1,160 @@
+.sidebar .sub-nav {
+  height: 165px;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+/* add class */
+.sidebar .sub-nav.active {
+  height: 0;
+}
+
+/* ======== Header ========= */
+.header .account {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  width: 347px;
+  margin-left: auto;
+  padding: 13px 20px;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0px 20px 70px 0px rgba(86, 89, 146, 0.1);
+}
+
+.header .avatar {
+  width: 49px;
+  height: 49px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.header .title {
+  color: #2c3e50;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.header .desc {
+  margin-top: 7px;
+  color: #babec6;
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+/* ======== main ========== */
+.main {
+  margin-top: 25px;
+}
+
+.main-top .title {
+  color: #000;
+  font-size: 2.4rem;
+  font-weight: 500;
+}
+
+.main-bottom {
+  margin-top: 24px;
+}
+
+.main-bottom form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px 0;
+}
+
+.main-bottom .wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-bottom .form-group {
+  width: 15%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px 0;
+}
+
+.main-bottom label {
+  color: #000;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.main-bottom input {
+  width: 140px;
+  height: 35px;
+  color: #000;
+  padding: 0 10px;
+  border-radius: 4px;
+  border: 1px solid #333;
+}
+
+.main-bottom input:focus {
+  outline-color: #0d6efd;
+}
+
+.main-bottom option {
+  color: #000;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.main-bottom .submit {
+  width: 100px;
+  height: 30px;
+  margin: 0 auto;
+  outline: none;
+  border: none;
+  background: #0f123f;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.main-bottom .wrapper-table {
+  margin-top: 50px;
+  height: 575px;
+  overflow-y: scroll;
+}
+
+.main-bottom .content-table {
+  width: 100%;
+  background: #fffffe;
+  overflow-y: scroll;
+}
+
+.main-bottom thead {
+  background: #0f123f;
+  position: sticky;
+  top: 0;
+}
+
+.main-bottom th,
+td {
+  padding: 24px 0 24px 72px;
+  text-align: left;
+}
+
+.main-bottom tr {
+  border-bottom: 1px solid #33333340;
+}
+
+.main-bottom tbody tr:last-child {
+  border-bottom: 0px;
+}
+
+.main-bottom tbody tr:nth-child(even) {
+  background-color: #e7e9eb;
+}
+
+.main-bottom th {
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.main-bottom td {
+  color: #000;
+  font-size: 1.6rem;
+  font-weight: 400;
+}

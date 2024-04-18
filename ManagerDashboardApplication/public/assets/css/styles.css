@@ -1,0 +1,100 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #0f123f;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+  display: flex;
+}
+
+/* ======= Common ====== */
+a {
+  text-decoration: none;
+}
+
+/* ======= Sidebar ======*/
+.sidebar {
+  width: 18%;
+  padding: 53px 14px;
+  background: #0f123f;
+}
+
+.sidebar img {
+  position: relative;
+  left: 20px;
+}
+
+.sidebar .nav {
+  margin-top: 79px;
+}
+
+.sidebar .nav .btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 19px 20px;
+  border-radius: 10px;
+  transition: 0.2s all;
+}
+
+.sidebar .btn i {
+  font-size: 20px;
+  color: white;
+}
+
+.sidebar .btn .bx-chevron-down {
+  position: absolute;
+  right: 10px;
+  transition: all 0.3s;
+}
+
+/* add class */
+.sidebar .btn .bx-chevron-down.rotate {
+  transform: rotate(180deg);
+}
+
+.sidebar .btn span {
+  margin-left: 15px;
+  color: #fff;
+  font-size: 1.7rem;
+  font-weight: 600;
+}
+
+.sidebar .btn:hover {
+  background-color: #fff;
+}
+
+.sidebar .btn:hover i {
+  color: black;
+}
+
+.sidebar .btn:hover span {
+  color: black;
+}
+.sidebar .sub-nav {
+  height: 0;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+/* add class */
+.sidebar .sub-nav.active {
+  height: 165px;
+}
+
+/* ======= content ====== */
+.content {
+  width: 82%;
+  padding: 15px 41px;
+  background: #f8f8f8;
+}
