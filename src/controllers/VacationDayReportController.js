@@ -9,8 +9,9 @@ const getReportVD = async (req, res) => {
         let shareholder = req.query.shareholder;
         let workType  = req.query.workType;
         let vacationDays =  req.query.vacationDays;
+        let year = req.query.year;
 
-        let data = await getVDR(id, fullname, gender, ethnicity, shareholder, workType, vacationDays, '2024');
+        let data = await getVDR(id, fullname, gender, ethnicity, shareholder, workType, vacationDays, year);
         
         res.render(
             "VacationDayReportPage.ejs", 
@@ -22,7 +23,8 @@ const getReportVD = async (req, res) => {
                 ethnicity,
                 shareholder,
                 workType,
-                vacationDays
+                vacationDays,
+                year
             }
         );
     }

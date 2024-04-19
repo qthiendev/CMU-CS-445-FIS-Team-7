@@ -20,7 +20,7 @@ const getVDR = async (id, fullname, gender, ethnicity, shareholder, workType, va
             '[dbo].[EMPLOYMENT] [e]',
         ];
 
-        let cYear = (year !== 'all') ? ' and YEAR(ewt.YEAR_WORKING) = YEAR(\'' + year + '\')' : '';
+        let cYear = (year !== 'all') && year !== undefined ? ' and YEAR(ewt.YEAR_WORKING) = YEAR(\'' + year + '\')' : '';
 
         var criteria = [
             'e.PERSONAL_ID = p.PERSONAL_ID',
@@ -48,8 +48,6 @@ const getVDR = async (id, fullname, gender, ethnicity, shareholder, workType, va
             + ' group by '
             + group.join(',')
         );
-
-        console.log(sqlQueryHR)
 
         var data = await queryHRDB(sqlQueryHR);
 
@@ -82,7 +80,7 @@ const getVDR = async (id, fullname, gender, ethnicity, shareholder, workType, va
             data = data.filter(record =>
                 record.TOTAL_VACATION_DAYS == vacationDays)
         }
-        console.log(data);
+        //console.log(data);
         return data;
     } catch (err) {
         console.log(err);
