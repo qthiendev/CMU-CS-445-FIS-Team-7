@@ -1,4 +1,5 @@
-const { queryHRDB } = require('../service/queryHRDB');
+const {queryHRDB} = require('../service/queryHRDB');
+const {queryPRDB} = require('../service/queryPRDB');
 
 const getReportAB = async (req, res) => {
     try {
