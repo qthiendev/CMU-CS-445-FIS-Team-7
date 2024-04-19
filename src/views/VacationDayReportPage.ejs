@@ -72,13 +72,14 @@
 <div class="content">
   <!-- header -->
   <header class="header">
+    <div id="clock"></div>
   </header>
-  <div id="clock"></div>
+
   <!-- main -->
   <main>
     <!-- main-top -->
     <div class="main-top">
-      <h2 class="title">Human || Payroll Report</h2>
+      <h2 class="title">Taken vacation days</h2>
       <div class="selection"></div>
     </div>
         <!-- main bottom -->
@@ -112,8 +113,18 @@
               <div class="form-group">
                 <label for="">VACATION DAYS</label>
                 <input type="text" name="vacationDays" value="<%= vacationDays %>"/>
+              </div> 
+              <div class="form-group">
+                <label for="">YEAR</label>
+                <!-- <input type="text" name="vacationDays" value="<%= vacationDays %>"/> --> 
+                <select name="year" >
+                  <option value="2023">2023</option>
+                  <option value="2024">2024</option>
+                  <option value="all">All</option>
+                </select>
               </div>
-            </div>
+            </div> 
+           
             <button type="submit" class="submit">Submit</button>
           </form>
 
@@ -130,6 +141,7 @@
                   <th>Shareholder</th>
                   <th>Work type</th>
                   <th>Vacation Days</th>
+                  <th>Year</th>
                 </tr>
               </thead>
 
