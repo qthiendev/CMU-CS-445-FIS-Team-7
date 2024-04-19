@@ -59,13 +59,13 @@ a {
 
 .sidebar .btn span {
   margin-left: 15px;
-  color: #fff;
+  color: #8bd3dd;
   font-size: 1.7rem;
   font-weight: 600;
 }
 
 .sidebar .btn:hover {
-  background-color: #fff;
+  background-color: #ffc6c7;
 }
 
 .sidebar .btn:hover i {
@@ -75,21 +75,22 @@ a {
 .sidebar .btn:hover span {
   color: black;
 }
+
 .sidebar .sub-nav {
-  height: 0;
+  height: 165px;
   overflow: hidden;
   transition: all 0.3s;
 }
 
 /* add class */
 .sidebar .sub-nav.active {
-  height: 165px;
+  height: 0;
 }
 
 /* ======= content ====== */
 .content {
   width: 82%;
-  padding: 34px 41px;
+  padding: 30px 41px 0;
   background: #f8f8f8;
 }
 
@@ -134,7 +135,7 @@ a {
 }
 
 .main-bottom {
-  margin-top: 24px;
+  margin-top: 50px;
 }
 
 .main-bottom form {
@@ -145,7 +146,7 @@ a {
 
 .main-bottom .wrapper {
   display: flex;
-  gap: 40px 173px;
+  gap: 25px 173px;
   flex-wrap: wrap;
 }
 
@@ -157,9 +158,9 @@ a {
 }
 
 .main-bottom label {
-  color: #000;
+  color: #90b4ce;
   font-size: 1.6rem;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .main-bottom input,
@@ -197,20 +198,27 @@ select {
   border-radius: 5px;
 }
 
+.main-bottom .wrapper-table {
+  margin-top: 25px;
+  max-height: 575px;
+  overflow-y: scroll;
+}
+
 .main-bottom .content-table {
   width: 100%;
-  margin-top: 64px;
   background: #fffffe;
   overflow-y: scroll;
 }
 
 .main-bottom thead {
   background: #0f123f;
+  position: sticky;
+  top: 0;
 }
 
 .main-bottom th,
 td {
-  padding: 24px 0 24px 15px;
+  padding: 24px 0 24px 35px;
   text-align: center;
 }
 
@@ -240,6 +248,6 @@ td {
 #clock {
   font-size: 24px;
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 30px;
+  right: 48px;
 }

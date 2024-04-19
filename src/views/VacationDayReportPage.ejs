@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dashboard</title>
 <link rel="stylesheet" href="/css/reset.css">
-<link rel="stylesheet" href="/css/homePage.css">
+<link rel="stylesheet" href="/css/report.css">
 
 <!-- Embed font -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -117,9 +117,9 @@
               <div class="form-group">
                 <label for="">YEAR</label>
                 <select name="year">
+                  <option value="all" <%= year === 'all' ? 'selected' : '' %>>All</option>
+                  <option value="2024" <%= year === '2024' ? 'selected' : '' %>>2024</option>
                     <option value="2023" <%= year === '2023' ? 'selected' : '' %>>2023</option>
-                    <option value="2024" <%= year === '2024' ? 'selected' : '' %>>2024</option>
-                    <option value="all" <%= year === 'all' ? 'selected' : '' %>>All</option>
                 </select>
               </div>
             </div> 

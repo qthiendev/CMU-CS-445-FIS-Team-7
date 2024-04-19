@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
-    <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/totalEarningReportPage.css">
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/report.css" />
 
     <!-- Embed font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -14,7 +14,6 @@
       href="https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,600;1,600&family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-
 
     <!-- Embed icon -->
     <script
@@ -53,17 +52,17 @@
         <!-- subnav -->
         <ul class="sub-nav">
           <li>
-            <a href="" class="btn">
+            <a href="/VacationDayReport" class="btn">
               <span> Taken vacation days</span>
             </a>
           </li>
           <li>
-            <a href="#!" class="btn">
+            <a href="/TotalEarningsReport" class="btn">
               <span>Total Earnings</span>
             </a>
           </li>
           <li>
-            <a href="#!" class="btn">
+            <a href="/AverageBenefitsReport" class="btn">
               <span>Average Benefits</span>
             </a>
           </li>
@@ -82,13 +81,7 @@
     <div class="content">
       <!-- header -->
       <header class="header">
-        <div class="account">
-          <img src="/img/avatar-img.jpg" alt="avatar" class="avatar" />
-          <div class="info">
-            <p class="title">Pisunn</p>
-            <p class="desc">UX/UI Designer</p>
-          </div>
-        </div>
+        <div id="clock"></div>
       </header>
 
       <!-- main -->
@@ -243,6 +236,6 @@
         </div>
       </main>
     </div>
-    <script src="/js/scripts.js"></script>
+    <script src="/js/reportScripts.js"></script>
   </body>
 </html>
