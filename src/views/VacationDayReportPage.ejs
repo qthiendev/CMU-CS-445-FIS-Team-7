@@ -110,6 +110,33 @@
         </div>
         <button type="submit" class="submit"  >Submit</button>
       </form>
+        <!-- main bottom -->
+        <div class="main-bottom">
+          <form action="/VacationDayReport" method="get">
+            <div class="wrapper">
+              <div class="form-group">
+                <label for="">SHAREHOLDER STATUS</label>
+                <input type="text" name="shareholder" value="<%= shareholder %>"/>
+              </div>
+              <div class="form-group">
+                <label for="">GENDER</label>
+                <input type="text" name="gender" value="<%= gender %>"/>
+              </div>
+              <div class="form-group">
+                <label for="">ETHNICITY</label>
+                <input type="text" name="ethnicity" value="<%= ethnicity %>"/>
+              </div>
+              <div class="form-group">
+                <label for="">DEPARTMENT</label>
+                <input type="text" name="department" value="<%= department %>"/>
+              </div>
+              <div class="form-group">
+                <label for="">WORK TYPE</label>
+                <input type="text" name="workType" value="<%= workType %>"/>
+              </div>
+            </div>
+            <button type="submit" class="submit">Submit</button>
+          </form>
 
       <!-- table -->
 
