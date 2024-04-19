@@ -1,6 +1,6 @@
-const { getABR } = require('../service/getABR');
+const { getAverageBenefitsReport } = require('../../services/reports/getAverageBenefitsReport');
 
-const getReportAB = async (req, res) => {
+const renderAverageBenefitsReportView = async (req, res) => {
     try {
         let id = req.query.id;
         let fullname = req.query.fullname;
@@ -9,10 +9,10 @@ const getReportAB = async (req, res) => {
         let plan = req.query.plan;
         let paid = req.query.paid;
 
-        let data = await getABR(id, fullname, gender, ethnicity, plan, paid);
+        let data = await getAverageBenefitsReport(id, fullname, gender, ethnicity, plan, paid);
         
         res.render(
-            "AverageBenefitsReportPage.ejs", 
+            "averageBenefitsReportPage.ejs", 
             {
                 data,
                 id, 
@@ -29,4 +29,4 @@ const getReportAB = async (req, res) => {
     }
 }
 
-module.exports = {getReportAB};
+module.exports = {renderAverageBenefitsReportView};

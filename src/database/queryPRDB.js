@@ -1,4 +1,4 @@
-const {connectionPR} = require("../config/connectPRDB.js");
+const {connectionPR} = require("../configs/connectPRDB.js");
 
 const queryPRDB = async (mysqlQueryPR) => {
     try {

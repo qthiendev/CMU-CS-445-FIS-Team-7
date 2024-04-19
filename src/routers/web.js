@@ -1,12 +1,12 @@
 const express = require("express");
 const router = express.Router();
 
-const {getReportVD} = require('../controllers/VacationDayReportController');
-const {getReportAB} = require('../controllers/AverageBenefitsReportController');
-const {getReportTE} = require('../controllers/TotalEarningsReportController');
+const {renderVacationDaysReportView} = require('../controllers/reports/vacationDayReportController');
+const {renderAverageBenefitsReportView} = require('../controllers/reports/averageBenefitsReportController');
+const {renderTotalEarningsReportView} = require('../controllers/reports/totalEarningsReportController');
 
-router.get('/VacationDayReport', getReportVD);
-router.get('/AverageBenefitsReport', getReportAB);
-router.get('/TotalEarningsReport', getReportTE);
+router.get('/VacationDaysReport', renderVacationDaysReportView);
+router.get('/AverageBenefitsReport', renderAverageBenefitsReportView);
+router.get('/TotalEarningsReport', renderTotalEarningsReportView);
 
 module.exports = router;

@@ -1,6 +1,6 @@
-const { getTER } = require('../service/getTER');
+const {getTotalEarningsReport} = require('../../services/reports/getTotalEarningsReport');
 
-const getReportTE = async (req, res) => {
+const renderTotalEarningsReportView = async (req, res) => {
     try {
         let id = req.query.id;
         let fullname = req.query.fullname;
@@ -9,10 +9,10 @@ const getReportTE = async (req, res) => {
         let totalDayWork = req.query.totalDayWork;
         let totalPaid = req.query.totalPaid;
 
-        let data = await getTER(id, fullname, gender, ethnicity, totalDayWork, totalPaid);
+        let data = await getTotalEarningsReport(id, fullname, gender, ethnicity, totalDayWork, totalPaid);
         
         res.render(
-            "TotalEarningsReportPage.ejs", 
+            "totalEarningsReportPage.ejs", 
             {
                 data,
                 id,
@@ -29,4 +29,4 @@ const getReportTE = async (req, res) => {
     }
 }
 
-module.exports = {getReportTE};
+module.exports = {renderTotalEarningsReportView};

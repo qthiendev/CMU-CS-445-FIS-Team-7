@@ -1,7 +1,7 @@
-const { queryHRDB } = require('../service/queryHRDB');
-const { queryPRDB } = require('../service/queryPRDB')
+const { queryHRDB } = require('../../database/queryHRDB');
+const { queryPRDB } = require('../../database/queryPRDB')
 
-const getTER = async (id, fullname, gender, ethnicity, totalDayWork, totalPaid) => {
+const getTotalEarningsReport = async (id, fullname, gender, ethnicity, totalDayWork, totalPaid) => {
 
     let fieldHR = [
         'p.[PERSONAL_ID]',
@@ -109,5 +109,5 @@ const getTER = async (id, fullname, gender, ethnicity, totalDayWork, totalPaid) 
 
 }
 
-module.exports = { getTER };
+module.exports = { getTotalEarningsReport };
 

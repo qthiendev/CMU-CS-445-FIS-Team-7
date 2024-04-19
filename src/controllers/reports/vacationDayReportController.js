@@ -1,6 +1,6 @@
-const { getVDR } = require('../service/getVDR');
+const {getVacationDaysReport} = require('../../services/reports/getVacationDaysReport');
 
-const getReportVD = async (req, res) => {
+const renderVacationDaysReportView = async (req, res) => {
     try {
         let id = req.query.id;
         let fullname = req.query.fullname;
@@ -11,10 +11,10 @@ const getReportVD = async (req, res) => {
         let vacationDays =  req.query.vacationDays;
         let year = req.query.year;
 
-        let data = await getVDR(id, fullname, gender, ethnicity, shareholder, workType, vacationDays, year);
+        let data = await getVacationDaysReport(id, fullname, gender, ethnicity, shareholder, workType, vacationDays, year);
         
         res.render(
-            "VacationDayReportPage.ejs", 
+            "vacationDaysReportPage.ejs", 
             {
                 data,
                 id,
@@ -33,4 +33,4 @@ const getReportVD = async (req, res) => {
     }
 }
 
-module.exports = {getReportVD};
+module.exports = {renderVacationDaysReportView};

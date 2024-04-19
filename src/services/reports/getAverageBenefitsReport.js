@@ -1,6 +1,6 @@
-const {queryHRDB} = require('../service/queryHRDB');
+const {queryHRDB} = require('../../database/queryHRDB');
 
-const getABR = async (id, fullname, gender, ethnicity, plan, paid) => {
+const getAverageBenefitsReport = async (id, fullname, gender, ethnicity, plan, paid) => {
     try {
 
 
@@ -76,4 +76,4 @@ const getABR = async (id, fullname, gender, ethnicity, plan, paid) => {
     }
 }
 
-module.exports = { getABR };
+module.exports = { getAverageBenefitsReport };
