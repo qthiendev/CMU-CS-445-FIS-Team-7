@@ -113,13 +113,13 @@
 
 .main-bottom .wrapper-table {
   margin-top: 50px;
-  max-height: 575px;
-  overflow-y: hidden;
+  height: 575px;
+  overflow-y: scroll;
 }
 
 .main-bottom .content-table {
   width: 100%;
-  background: red;
+  background: #fffffe;
   overflow-y: scroll;
 }
 
@@ -129,25 +129,13 @@
   top: 0;
 }
 
-.main-bottom thead tr {
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.main-bottom tbody {
-  display: block;
-  max-height: 575px;
-  overflow-y: auto;
-}
-
 .main-bottom th,
 td {
-  padding: 24px 0 24px 50px;
+  padding: 24px 0 24px 72px;
   text-align: left;
 }
 
 .main-bottom tr {
-  display: block;
   border-bottom: 1px solid #33333340;
 }
 
