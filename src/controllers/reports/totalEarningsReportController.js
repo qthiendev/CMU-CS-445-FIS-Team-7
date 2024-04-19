@@ -12,7 +12,7 @@ const renderTotalEarningsReportView = async (req, res) => {
         let data = await getTotalEarningsReport(id, fullname, gender, ethnicity, totalDayWork, totalPaid);
         
         res.render(
-            "totalEarningsReportPage.ejs", 
+            "reportTotalEarningsPage.ejs", 
             {
                 data,
                 id,
