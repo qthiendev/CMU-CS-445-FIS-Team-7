@@ -14,7 +14,7 @@ const renderVacationDaysReportView = async (req, res) => {
         let data = await getVacationDaysReport(id, fullname, gender, ethnicity, shareholder, workType, vacationDays, year);
         
         res.render(
-            "vacationDaysReportPage.ejs", 
+            "reportVacationDaysPage.ejs", 
             {
                 data,
                 id,

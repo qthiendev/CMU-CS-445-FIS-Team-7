@@ -12,7 +12,7 @@ const renderAverageBenefitsReportView = async (req, res) => {
         let data = await getAverageBenefitsReport(id, fullname, gender, ethnicity, plan, paid);
         
         res.render(
-            "averageBenefitsReportPage.ejs", 
+            "reportAverageBenefitsPage.ejs", 
             {
                 data,
                 id, 
