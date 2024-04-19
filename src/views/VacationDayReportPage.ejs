@@ -105,8 +105,12 @@
           <form action="/VacationDayReport" method="get">
             <div class="wrapper">
               <div class="form-group">
-                <label for="">SHAREHOLDER STATUS</label>
-                <input type="text" name="shareholder" value="<%= shareholder %>"/>
+                <label for="">ID</label>
+                <input type="text" name="id" value="<%= id %>"/>
+              </div>
+              <div class="form-group">
+                <label for="">FULLNAME</label>
+                <input type="text" name="fullname" value="<%= fullname %>"/>
               </div>
               <div class="form-group">
                 <label for="">GENDER</label>
@@ -117,12 +121,16 @@
                 <input type="text" name="ethnicity" value="<%= ethnicity %>"/>
               </div>
               <div class="form-group">
-                <label for="">DEPARTMENT</label>
-                <input type="text" name="department" value="<%= department %>"/>
+                <label for="">SHAREHOLDER STATUS</label>
+                <input type="text" name="shareholder" value="<%= shareholder %>"/>
               </div>
               <div class="form-group">
                 <label for="">WORK TYPE</label>
                 <input type="text" name="workType" value="<%= workType %>"/>
+              </div>
+              <div class="form-group">
+                <label for="">VACATION DAYS</label>
+                <input type="text" name="vacationDays" value="<%= vacationDays %>"/>
               </div>
             </div>
             <button type="submit" class="submit">Submit</button>
@@ -134,13 +142,13 @@
             <table class="table content-table">
               <thead>
                 <tr>
-                  <th>PERSONAL ID</th>
-                  <th>FULLNAME</th>
-                  <th>GENDER</th>
-                  <th>ETHNICITY</th>
-                  <th>SHAREHOLDER STATUS</th>
-                  <th>EMPLOYMENT STATUS</th>
-                  <th>TOTAL VACATION DAYS</th>
+                  <th>ID</th>
+                  <th>Fullname</th>
+                  <th>Gender</th>
+                  <th>Ethnicity</th>
+                  <th>Shareholder</th>
+                  <th>Work type</th>
+                  <th>Vacation Days</th>
                 </tr>
               </thead>
 
@@ -148,10 +156,10 @@
                 <% for(var i=0; i<data.length; i++) {%>
                   <tr>
                     <td><%= data[i].PERSONAL_ID %></td>
-                    <td><%= data[i].CURRENT_LAST_NAME + ' ' + data[i].CURRENT_MIDDLE_NAME + ' ' + data[i].CURRENT_FIRST_NAME %></td>
+                    <td><%= data[i].FULLNAME%></td>
                     <td><%= data[i].CURRENT_GENDER%></td>
                     <td><%= data[i].ETHNICITY%></td>
-                    <td><%= data[i].SHAREHOLDER_STATUS%></td>
+                    <td><%= data[i].SHAREHOLDER%></td>
                     <td><%= data[i].EMPLOYMENT_STATUS%></td>
                     <td><%= data[i].TOTAL_VACATION_DAYS%></td>
                   </tr>

@@ -1,20 +1,35 @@
 -- Inserting Pay Rates
+SET SQL_SAFE_UPDATES = 0;
+DELETE FROM `mydb`.`Employee`;
+DELETE FROM `mydb`.`Pay Rates`;
+
 INSERT INTO `mydb`.`Pay Rates` (`idPay Rates`, `Pay Rate Name`, `Value`, `Tax Percentage`, `Pay Type`, `Pay Amount`, `PT - Level C`)
 VALUES
-(1, 'Hourly Rate', 15.00, 10, 1, 0, 0),
-(2, 'Monthly Salary', 3000.00, 5, 2, 0, 0);
+(1,'Intern Basic Salary',4000000,5,1,3800000,1),
+(2,'Junior Basic Salary',9000000,5,1,8550000,2),
+(3,'Middle Basic Salary',15000000,10,1,13500000,3),
+(4,'Sennior Basic Salary',21000000,10,1,18900000,4);
 
 -- Inserting Employees
 INSERT INTO `mydb`.`Employee` (`idEmployee`, `Employee Number`, `Last Name`, `First Name`, `SSN`, `Pay Rate`, `Pay Rates_idPay Rates`, `Vacation Days`, `Paid To Date`, `Paid Last Year`)
 VALUES
-(1, 1001, 'Nguyen', 'Thanh Nhan', 1234567890, 'Hourly Rate', 1, 10, 0, 0),
-(2, 1002, 'Nguyen', 'Thi Thanh', 2345678901, 'Monthly Salary', 2, 15, 0, 0),
-(3, 1003, 'Tran', 'Van Nam', 3456789012, 'Hourly Rate', 1, 12, 0, 0),
-(4, 1004, 'Le', 'Thi Hoa', 4567890123, 'Monthly Salary', 2, 20, 0, 0),
-(5, 1005, 'Pham', 'Van Hieu', 5678901234, 'Hourly Rate', 1, 8, 0, 0),
-(6, 1006, 'Hoang', 'Thi Mai', 6789012345, 'Hourly Rate', 1, 14, 0, 0),
-(7, 1007, 'Vu', 'Van Dung', 7890123456, 'Monthly Salary', 2, 18, 0, 0),
-(8, 1008, 'Do', 'Thi Thu', 8901234567, 'Hourly Rate', 1, 10, 0, 0),
-(9, 1009, 'Nguyen', 'Van Hoa', 9012345678, 'Hourly Rate', 1, 16, 0, 0),
-(10, 1010, 'Tran', 'Thi An', 1239876543, 'Monthly Salary', 2, 22, 0, 0),
-(11, 1011, 'Le', 'Van Thang', 2348765432, 'Hourly Rate', 1, 10, 0, 0);
+(1,1,'Tran','Bach',7211224589,'10',4,11,8,1),
+(2,2,'Tran','Ai',7203727354,'10',4,11,8,1),
+(3,3,'Nguyen','Chi',7203727374,'10',4,0,20,1),
+(4,4,'Dang','Hai',7211226501,'10',4,11,20,1),
+(5,5,'Nguyen','Thao',7211239932,'10',4,5,20,1),
+(6,6,'Le','Thao',7214753567,'10',4,5,20,1),
+(7,7,'Trinh','Thien',7211235459,'10',4,4,5,1),
+(8,8,'Le','Danh',7211122274,'10',4,4,5,1),
+(9,9,'Nguyen','Nhan',7211200260,'10',4,4,5,1),
+(10,10,'Ngo','Nhi',7205126897,'10',3,4,5,1),
+(11,11,'Dinh','Tu',7204801106,'10',3,19,5,1),
+(12,12,'Tran','Quynh',7204729844,'10',3,22,5,1),
+(13,13,'Truong','Thi',7201202169,'10',3,1,1,1),
+(14,14,'Tran','Duyen',7201235390,'10',3,3,1,1),
+(15,15,'Vo','Yen',7201201584,'5',2,3,1,1),
+(16,16,'Le','Hue',7202143711,'5',2,3,1,1),
+(17,17,'Le','Thinh',7211242274,'5',2,3,1,1),
+(18,18,'Dang','Nho',7211201219,'5',1,0,1,1),
+(19,19,'Luu','Truong',7211240491,'5',1,0,1,1),
+(20,20,'Tran','Thinh',7211245057,'5',1,0,1,1);
