@@ -53,10 +53,13 @@ a {
 }
 
 /* add class */
-.sidebar .btn .bx-chevron-down.rotate {
+.sidebar .btn .bx-chevron-down-1.rotate {
   transform: rotate(180deg);
 }
 
+.sidebar .btn .bx-chevron-down-2.rotate {
+  transform: rotate(180deg);
+}
 .sidebar .btn span {
   margin-left: 15px;
   color: #8bd3dd;
@@ -76,14 +79,25 @@ a {
   color: black;
 }
 
-.sidebar .sub-nav {
+.sidebar .sub-nav-1 {
   height: 165px;
   overflow: hidden;
   transition: all 0.3s;
 }
 
 /* add class */
-.sidebar .sub-nav.active {
+.sidebar .sub-nav-1.active {
+  height: 0;
+}
+
+.sidebar .sub-nav-2 {
+  overflow: hidden;
+  height: 255px;
+  transition: all 0.3s;
+}
+
+/* add class */
+.sidebar .sub-nav-2.active {
   height: 0;
 }
 
