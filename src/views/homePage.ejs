@@ -108,59 +108,13 @@
   <main>
     <!-- main-top -->
     <div class="main-top">
-      <h2 class="title">Taken vacation days</h2>
+      <h2 class="title">Home page</h2>
       <div class="selection"></div>
     </div>
         <!-- main bottom -->
-        <div class="main-bottom">
-          <form action="/VacationDaysAlert" method="get">
-            <div class="wrapper">
-              <div class="form-group">
-                <label for="">DAY</label>
-                <input type="text" name="day" value="<%= day %>"/>
-              </div>
-
-              <div class="form-group">
-                <label for="">MONTH</label>
-                <input type="text" name="month" value="<%= month %>"/>
-              </div>
-
-              <div class="form-group">
-                <label for="">YEAR</label>
-                <input type="text" name="year" value="<%= year %>"/>
-              </div>
-            </div>
-            
-            <button type="submit" class="submit">Submit</button>
-          </form>
+        THIS IS HOME PAGE
 
       <!-- table -->
-
-          <div class="wrapper-table">
-            <table class="table content-table">
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Fullname</th>
-                  <th>Duration</th>
-                  <th>Vacation days</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                <% for(var i=0; i<data.length; i++) {%>
-                  <tr>
-                    <td><%= data[i].PERSONAL_ID %></td>
-                    <td><%= data[i].FULLNAME%></td>
-                    <td><%= data[i].DURATION%></td>
-                    <td><%= data[i].VACATION_DAYS%></td>
-                  </tr>
-               <% } %>
-                
-              </tbody>
-            </table>
-          </div>
-        </div>
       </main>
     </div>
   </main>

@@ -56,7 +56,7 @@ const getVacationDaysReport = async (id, fullname, gender, ethnicity, shareholde
 
         if (fullname !== '' && fullname !== undefined) {
             data = data.filter(record =>
-                record.FULLNAME == fullname)
+                record.FULLNAME.toUpperCase() == fullname.toUpperCase())
         }
         if (gender !== '' && gender !== undefined) {
             data = data.filter(record =>
