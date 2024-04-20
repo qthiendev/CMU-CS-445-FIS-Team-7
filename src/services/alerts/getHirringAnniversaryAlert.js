@@ -1,4 +1,3 @@
-
 const {queryHRDB} = require('../../database/queryHRDB');
 
 const getHirringAnniversaryAlert = async (day) => {
@@ -9,7 +8,6 @@ const getHirringAnniversaryAlert = async (day) => {
             data = data.filter(record =>
                 record.UPCOMING <= day)
         }
-        console.log(data);
         return data;
     } catch (err) {
         console.log(err);

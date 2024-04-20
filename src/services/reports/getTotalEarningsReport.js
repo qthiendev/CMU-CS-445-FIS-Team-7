@@ -33,32 +33,7 @@ const getTotalEarningsReport = async (id, fullname, gender, ethnicity, totalDayW
         + ' where '
         + criteriaHR.join(' and ')
     );
-
-    let fieldPR = [
-        'e.idEmployee',
-        'pr.`Pay Amount`',
-    ];
-
-    let tablePR = [
-        'employee e',
-        '`pay rates` pr',
-    ];
-
-    let criteriaPR = [
-        'e.`Pay Rates_idPay Rates` = pr.`idPay Rates`'
-    ];
-
-    var groupHR = [
-    ];
-
-    let mysqlQueryPR = ('use `mydb`; select '
-        + fieldPR.join(',')
-        + ' from '
-        + tablePR.join(',')
-        + ' where '
-        + criteriaPR.join(' and ')
-        + ' order by e.idEmployee'
-    );
+    
     let querypr = 'select e.idEmployee, pr.`Pay Amount` from employee e, `pay rates` pr where e.`Pay Rates_idPay Rates` = pr.`idPay Rates` order by e.idEmployee'
 
     let dataHRDB = await queryHRDB(sqlQueryHR);
@@ -67,7 +42,6 @@ const getTotalEarningsReport = async (id, fullname, gender, ethnicity, totalDayW
     let mergedData = dataHRDB.map(hrItem => {
         let prItem = dataPRDB.find(prItem => prItem.idEmployee === hrItem.PERSONAL_ID);
 
-        // If a matching payroll record is found, calculate TOTAL_PAID
         if (prItem) {
             let tempTotalPaid = (parseFloat(prItem['Pay Amount']) / 22) * hrItem.TOTAL_DAYS_WORKED;
             return {

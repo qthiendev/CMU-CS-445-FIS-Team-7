@@ -7,6 +7,7 @@ const {renderTotalEarningsReportView} = require('../controllers/reports/totalEar
 
 const {renderBirthdayAlertView} = require('../controllers/alerts/birthdayAlertController')
 const {renderHirringAnniversaryAlertView} = require('../controllers/alerts/hirringAnniversaryAlertController')
+const {renderVacationDaysAlertView} = require('../controllers/alerts/vacationDaysAlertController')
 
 router.get('/VacationDaysReport', renderVacationDaysReportView);
 router.get('/AverageBenefitsReport', renderAverageBenefitsReportView);
@@ -14,5 +15,6 @@ router.get('/TotalEarningsReport', renderTotalEarningsReportView);
 
 router.get('/BirthdayAlert', renderBirthdayAlertView);
 router.get('/HiringAnniversaryAlert', renderHirringAnniversaryAlertView);
+router.get('/VacationDaysAlert', renderVacationDaysAlertView);
 
 module.exports = router;
