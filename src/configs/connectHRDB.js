@@ -16,10 +16,10 @@ const config = {
 const connectionHR = new sql.ConnectionPool(config);
 
 connectionHR.connect().then((pool) => {
-    console.log("[SYSTEM] Connected to SQL Server | Human Resource Database");
+    console.log("[SYSTEM] Connected to SQL Server | HumanResourceDB.");
   })
   .catch((err) => {
-    console.error("[SYSTEM] Cannot connect to SQL Server | Human Resource Database.\n", err);
+    console.error("[SYSTEM] Cannot connect to SQL Server | HumanResourceDB: ", err);
   });
 
   module.exports = {connectionHR};

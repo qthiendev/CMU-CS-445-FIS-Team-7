@@ -13,9 +13,10 @@ const renderHirringAnniversaryAlertView = async (req, res) => {
                 day
             }
         );
+        console.log('[System] hirringAnniversaryAlertController.js | Rendered alertHirringAnniversaryPage.');
     }
     catch (err) {
-        console.log(err);
+        console.log('[System] Error at hirringAnniversaryAlertController.js: ', err);
     }
 }
 

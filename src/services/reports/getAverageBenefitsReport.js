@@ -70,9 +70,11 @@ const getAverageBenefitsReport = async (id, fullname, gender, ethnicity, plan, p
                 record.PAID== Number(paid))
         }
 
+        console.log('[System] getAverageBenefitsReport.js | Got AverageBenefitsReport.');
+
         return data;
     } catch (err) {
-        console.log(err);
+        console.log('[System] getAverageBenefitsReport.js | Cannot get AverageBenefitsReport: ', err);
     }
 }
 

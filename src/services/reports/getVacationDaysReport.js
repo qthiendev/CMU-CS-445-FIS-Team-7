@@ -78,10 +78,12 @@ const getVacationDaysReport = async (id, fullname, gender, ethnicity, shareholde
             data = data.filter(record =>
                 record.TOTAL_VACATION_DAYS == vacationDays)
         }
-        //console.log(data);
+
+        console.log('[System] getVacationDaysReport.js | Got VacationDaysReport.');
+
         return data;
     } catch (err) {
-        console.log(err);
+        console.log('[System] getVacationDaysReport.js | Cannot get VacationDaysReport: ', err);
     }
 }
 

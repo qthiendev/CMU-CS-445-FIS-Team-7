@@ -23,9 +23,10 @@ const renderAverageBenefitsReportView = async (req, res) => {
                 paid
             }
         );
+        console.log('[System] averageBenefitsReportController.js | Rendered reportAverageBenefitsPage.');
     }
     catch (err) {
-        console.log(err);
+        console.log('[System] Error at averageBenefitsReportController.js: ', err);
     }
 }
 

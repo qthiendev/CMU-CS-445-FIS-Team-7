@@ -5,9 +5,11 @@ const queryHRDB = async (sqlQueryHR) => {
     const request = connectionHR.request();
     const results = await request.query(sqlQueryHR);
 
+    console.log('[System] queryHRDB.js | Queried HRDB.');
+
     return results.recordset;
   } catch (error) {
-    console.error("[SYSTEM] Failed query HUMAN RESOURCE DB.\n", error);
+    console.error("[SYSTEM] queryHRDB.js | Cannot queried HRDB: ", error);
     throw error;
   }
 };

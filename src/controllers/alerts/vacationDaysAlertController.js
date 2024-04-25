@@ -5,8 +5,6 @@ const renderVacationDaysAlertView = async (req, res) => {
         let day = req.query.day;
         let month = req.query.month;
         let year = req.query.year;
-
-        console.log(req.query);
         
         let data = await getVacationDaysAlert(day, month, year);
         
@@ -19,9 +17,10 @@ const renderVacationDaysAlertView = async (req, res) => {
                 year
             }
         );
+        console.log('[System] vacationDaysAlertController.js | Rendered alertVacationDaysPage.');
     }
     catch (err) {
-        console.log(err);
+        console.log('[System] Error at vacationDaysAlertController.js: ', err);
     }
 }
 

@@ -23,9 +23,10 @@ const renderTotalEarningsReportView = async (req, res) => {
                 totalPaid,
             }
         );
+        console.log('[System] totalEarningsReportController.js | Rendered reportTotalEarningsPage.');
     }
     catch (err) {
-        console.log(err);
+        console.log('[System] Error at totalEarningsReportController.js: ', err);
     }
 }
 

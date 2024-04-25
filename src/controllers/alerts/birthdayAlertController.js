@@ -13,9 +13,10 @@ const renderBirthdayAlertView = async (req, res) => {
                 day
             }
         );
+        console.log('[System] birthdayAlertController.js | Rendered alertBirthdayPage.');
     }
     catch (err) {
-        console.log(err);
+        console.log('[System] Error at birthdayAlertController.js:', err);
     }
 }
 

@@ -27,9 +27,10 @@ const renderVacationDaysReportView = async (req, res) => {
                 year
             }
         );
+        console.log('[System] vacationDayReportController.js | Rendered reportVacationDaysPage.');
     }
     catch (err) {
-        console.log(err);
+        console.log('[System] Error at vacationDayReportController.js: ', err);
     }
 }
 
