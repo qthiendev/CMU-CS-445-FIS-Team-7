@@ -1,5 +1,5 @@
 const renderHomeView = async (req, res) => {
-    try {   
+    try {
         await res.render("homePage.ejs");
         console.log('[System] homeController.js | Rendered homePage.');
     }
@@ -8,4 +8,4 @@ const renderHomeView = async (req, res) => {
     }
 }
 
-module.exports = {renderHomeView};
+module.exports = { renderHomeView };

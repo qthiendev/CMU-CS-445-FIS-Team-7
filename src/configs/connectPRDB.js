@@ -18,4 +18,4 @@ connectionPR.connect((err) => {
     console.log('[SYSTEM] Connected to MySQL Server | mydb.');
 });
 
-module.exports = {connectionPR};
+module.exports = { connectionPR };

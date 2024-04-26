@@ -1,13 +1,13 @@
-const {getHirringAnniversaryAlert} = require('../../services/alerts/getHirringAnniversaryAlert');
+const { getHirringAnniversaryAlert } = require('../../services/alerts/getHirringAnniversaryAlert');
 
 const renderHirringAnniversaryAlertView = async (req, res) => {
     try {
         let day = req.query.day;
 
         let data = await getHirringAnniversaryAlert(day);
-        
+
         res.render(
-            "alertHirringAnniversaryPage.ejs", 
+            "alertHirringAnniversaryPage.ejs",
             {
                 data,
                 day
@@ -20,4 +20,4 @@ const renderHirringAnniversaryAlertView = async (req, res) => {
     }
 }
 
-module.exports = {renderHirringAnniversaryAlertView};
+module.exports = { renderHirringAnniversaryAlertView };

@@ -1,4 +1,4 @@
-const {connectionHR} = require("../configs/connectHRDB.js");
+const { connectionHR } = require("../configs/connectHRDB.js");
 
 const queryHRDB = async (sqlQueryHR) => {
   try {
@@ -9,7 +9,7 @@ const queryHRDB = async (sqlQueryHR) => {
 
     return results.recordset;
   } catch (error) {
-    console.error("[SYSTEM] queryHRDB.js | Cannot queried HRDB: ", error);
+    console.error("[SYSTEM] queryHRDB.js | Cannot query HRDB: ", error);
     throw error;
   }
 };

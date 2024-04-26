@@ -1,17 +1,19 @@
 const express = require("express");
 const router = express.Router();
 
-const {renderHomeView} = require('../controllers/homeController');
+const { renderLoginView } = require('../controllers/utilities/loginController');
+const { renderHomeView } = require('../controllers/utilities/homeController');
 
-const {renderVacationDaysReportView} = require('../controllers/reports/vacationDayReportController');
-const {renderAverageBenefitsReportView} = require('../controllers/reports/averageBenefitsReportController');
-const {renderTotalEarningsReportView} = require('../controllers/reports/totalEarningsReportController');
+const { renderVacationDaysReportView } = require('../controllers/reports/vacationDayReportController');
+const { renderAverageBenefitsReportView } = require('../controllers/reports/averageBenefitsReportController');
+const { renderTotalEarningsReportView } = require('../controllers/reports/totalEarningsReportController');
 
-const {renderBirthdayAlertView} = require('../controllers/alerts/birthdayAlertController')
-const {renderHirringAnniversaryAlertView} = require('../controllers/alerts/hirringAnniversaryAlertController')
-const {renderVacationDaysAlertView} = require('../controllers/alerts/vacationDaysAlertController')
+const { renderBirthdayAlertView } = require('../controllers/alerts/birthdayAlertController')
+const { renderHirringAnniversaryAlertView } = require('../controllers/alerts/hirringAnniversaryAlertController')
+const { renderVacationDaysAlertView } = require('../controllers/alerts/vacationDaysAlertController')
 
 router.get("/", renderHomeView);
+router.get("/Login", renderLoginView);
 
 router.get('/VacationDaysReport', renderVacationDaysReportView);
 router.get('/AverageBenefitsReport', renderAverageBenefitsReportView);

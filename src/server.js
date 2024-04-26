@@ -4,7 +4,7 @@ const port = 3000;
 const configViewEngine = require("./configs/viewEngine");
 const webRoutes = require("./routers/web.js");
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 configViewEngine(app);
 app.use("/", webRoutes);
 

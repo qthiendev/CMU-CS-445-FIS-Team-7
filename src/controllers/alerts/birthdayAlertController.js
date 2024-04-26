@@ -1,13 +1,13 @@
-const {getBirthdayAlert} = require('../../services/alerts/getBirthdayAlert');
+const { getBirthdayAlert } = require('../../services/alerts/getBirthdayAlert');
 
 const renderBirthdayAlertView = async (req, res) => {
     try {
         let day = req.query.day;
 
         let data = await getBirthdayAlert(day);
-        
+
         res.render(
-            "alertBirthdayPage.ejs", 
+            "alertBirthdayPage.ejs",
             {
                 data,
                 day
@@ -20,4 +20,4 @@ const renderBirthdayAlertView = async (req, res) => {
     }
 }
 
-module.exports = {renderBirthdayAlertView};
+module.exports = { renderBirthdayAlertView };

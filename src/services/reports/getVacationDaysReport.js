@@ -1,4 +1,4 @@
-const {queryHRDB} = require('../../database/queryHRDB');
+const { queryHRDB } = require('../../database/queryHRDB');
 
 const getVacationDaysReport = async (id, fullname, gender, ethnicity, shareholder, workType, vacationDays, year) => {
     try {

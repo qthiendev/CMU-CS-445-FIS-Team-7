@@ -10,16 +10,16 @@ const renderAverageBenefitsReportView = async (req, res) => {
         let paid = req.query.paid;
 
         let data = await getAverageBenefitsReport(id, fullname, gender, ethnicity, plan, paid);
-        
+
         res.render(
-            "reportAverageBenefitsPage.ejs", 
+            "reportAverageBenefitsPage.ejs",
             {
                 data,
-                id, 
-                fullname, 
+                id,
+                fullname,
                 gender,
-                ethnicity, 
-                plan, 
+                ethnicity,
+                plan,
                 paid
             }
         );
@@ -30,4 +30,4 @@ const renderAverageBenefitsReportView = async (req, res) => {
     }
 }
 
-module.exports = {renderAverageBenefitsReportView};
+module.exports = { renderAverageBenefitsReportView };
