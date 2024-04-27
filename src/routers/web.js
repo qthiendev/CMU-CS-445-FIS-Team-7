@@ -23,4 +23,6 @@ router.get('/BirthdayAlert', renderBirthdayAlertView);
 router.get('/HiringAnniversaryAlert', renderHirringAnniversaryAlertView);
 router.get('/VacationDaysAlert', renderVacationDaysAlertView);
 
+router.get('/EmployeesManagement', renderManageAllEmployeesView);
+
 module.exports = router;
