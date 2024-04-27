@@ -10,7 +10,7 @@ const renderLoginView = async (req, res) => {
         let isValid = await getLogin(id, password);
 
         if (isValid)
-            await res.render("homePage.ejs");
+            await res.redirect("/");
         else
             await res.render("loginPage.ejs", { error: 'Invalid login credentials. Please try again.' });
         

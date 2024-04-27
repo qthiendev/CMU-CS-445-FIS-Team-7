@@ -1,5 +1,5 @@
 const { queryHRDB } = require('../../database/queryHRDB');
-const { queryPRDB } = require('../../database/queryPRDB')
+const { queryPRDB } = require('../../database/queryPRDB');
 
 const getTotalEarningsReport = async (id, fullname, gender, ethnicity, totalDayWork, totalPaid) => {
     try {
