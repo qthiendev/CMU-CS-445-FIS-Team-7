@@ -1,4 +1,4 @@
-const {queryHRDB} = require('../../database/queryHRDB');
+const { queryHRDB } = require('../../database/queryHRDB');
 
 const getAverageBenefitsReport = async (id, fullname, gender, ethnicity, plan, paid) => {
     try {
@@ -14,7 +14,7 @@ const getAverageBenefitsReport = async (id, fullname, gender, ethnicity, plan, p
         ];
 
         var table = [
-            '[dbo].[BENEFIT_PLANS] bp', 
+            '[dbo].[BENEFIT_PLANS] bp',
             '[dbo].[PERSONAL] p'
         ];
 
@@ -67,12 +67,14 @@ const getAverageBenefitsReport = async (id, fullname, gender, ethnicity, plan, p
         }
         if (paid !== '' && paid !== undefined) {
             data = data.filter(record =>
-                record.PAID== Number(paid))
+                record.PAID == Number(paid))
         }
+
+        console.log('[System] getAverageBenefitsReport.js | Got AverageBenefitsReport.');
 
         return data;
     } catch (err) {
-        console.log(err);
+        console.log('[System] getAverageBenefitsReport.js | Cannot get AverageBenefitsReport: ', err);
     }
 }
 

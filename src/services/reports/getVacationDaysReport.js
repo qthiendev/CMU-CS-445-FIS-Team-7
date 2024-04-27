@@ -1,4 +1,4 @@
-const {queryHRDB} = require('../../database/queryHRDB');
+const { queryHRDB } = require('../../database/queryHRDB');
 
 const getVacationDaysReport = async (id, fullname, gender, ethnicity, shareholder, workType, vacationDays, year) => {
     try {
@@ -56,7 +56,7 @@ const getVacationDaysReport = async (id, fullname, gender, ethnicity, shareholde
 
         if (fullname !== '' && fullname !== undefined) {
             data = data.filter(record =>
-                record.FULLNAME == fullname)
+                record.FULLNAME.toUpperCase() == fullname.toUpperCase())
         }
         if (gender !== '' && gender !== undefined) {
             data = data.filter(record =>
@@ -78,10 +78,12 @@ const getVacationDaysReport = async (id, fullname, gender, ethnicity, shareholde
             data = data.filter(record =>
                 record.TOTAL_VACATION_DAYS == vacationDays)
         }
-        //console.log(data);
+
+        console.log('[System] getVacationDaysReport.js | Got VacationDaysReport.');
+
         return data;
     } catch (err) {
-        console.log(err);
+        console.log('[System] getVacationDaysReport.js | Cannot get VacationDaysReport: ', err);
     }
 }
 

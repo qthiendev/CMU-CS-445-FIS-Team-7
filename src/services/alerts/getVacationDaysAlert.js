@@ -1,4 +1,4 @@
-const {queryHRDB} = require('../../database/queryHRDB');
+const { queryHRDB } = require('../../database/queryHRDB');
 
 const getVacationDaysAlert = async (day, month, year) => {
     try {
@@ -17,7 +17,7 @@ const getVacationDaysAlert = async (day, month, year) => {
 
         let cYear = (year !== '') && year !== undefined ? ('year(ewt.YEAR_WORKING) = year(\'' + year + '\')') : 'year(ewt.YEAR_WORKING) = year(getdate())';
         let cMonth = (month !== '') && month !== undefined ? ('CONVERT(VARCHAR, ewt.MONTH_WORKING) = ' + month) : 'ewt.MONTH_WORKING = month(GETDATE())';
-        let cDay = (day !== '') && day !== undefined ?  (' and CONVERT(VARCHAR, ewt.[TOTAL_NUMBER_VACATION_WORKING_DAYS_PER_MONTH]) = ' + day) : '';
+        let cDay = (day !== '') && day !== undefined ? (' and CONVERT(VARCHAR, ewt.[TOTAL_NUMBER_VACATION_WORKING_DAYS_PER_MONTH]) = ' + day) : '';
 
         var criteria = [
             'e.EMPLOYMENT_ID = ewt.EMPLOYMENT_ID',
@@ -34,13 +34,15 @@ const getVacationDaysAlert = async (day, month, year) => {
             + criteria.join(' and ')
             + ' order by ewt.[TOTAL_NUMBER_VACATION_WORKING_DAYS_PER_MONTH] desc '
         );
-        console.log(sqlQueryHR);
+
         var data = await queryHRDB(sqlQueryHR);
-        console.log(data);
+
+        console.log('[System] getVacationDaysAlert.js | Got VacationDaysAlert.');
+
         return data;
     } catch (err) {
-        console.log(err);
+        console.log('[System] getVacationDaysAlert.js | Cannot get VacationDaysAlert: ', err);
     }
 }
 
-module.exports = {getVacationDaysAlert};
+module.exports = { getVacationDaysAlert };

@@ -1,4 +1,4 @@
-const {getVacationDaysAlert} = require('../../services/alerts/getVacationDaysAlert');
+const { getVacationDaysAlert } = require('../../services/alerts/getVacationDaysAlert');
 
 const renderVacationDaysAlertView = async (req, res) => {
     try {
@@ -6,12 +6,10 @@ const renderVacationDaysAlertView = async (req, res) => {
         let month = req.query.month;
         let year = req.query.year;
 
-        console.log(req.query);
-        
         let data = await getVacationDaysAlert(day, month, year);
-        
+
         res.render(
-            "alertVacationDaysPage.ejs", 
+            "alertVacationDaysPage.ejs",
             {
                 data,
                 day,
@@ -19,10 +17,11 @@ const renderVacationDaysAlertView = async (req, res) => {
                 year
             }
         );
+        console.log('[System] vacationDaysAlertController.js | Rendered alertVacationDaysPage.');
     }
     catch (err) {
-        console.log(err);
+        console.log('[System] Error at vacationDaysAlertController.js: ', err);
     }
 }
 
-module.exports = {renderVacationDaysAlertView};
+module.exports = { renderVacationDaysAlertView };

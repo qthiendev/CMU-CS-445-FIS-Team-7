@@ -1,183 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard</title>
-<link rel="stylesheet" href="/css/reset.css">
-<link rel="stylesheet" href="/css/report.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/report.css">
 
-<!-- Embed font -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,600;1,600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Embed font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,600;1,600&family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
 
-<!-- Embed icon -->
-<script defer src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <!-- Embed icon -->
+  <script defer src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
 </head>
 
 <body>
-<!-- sidebar -->
-<aside class="sidebar">
-  <!-- Logo -->
-  <img src="/img/logo.svg" alt="logo" />
-
-  <!-- navigation -->
-  <ul class="nav">
-    <li>
-      <a href="#!" class="btn">
-        <i class="bx bxs-grid-alt"></i>
-        <span>Dashboard</span>
-      </a>
-    </li>
-
-    <li>
-      <div class="btn btn-list" style="cursor: pointer">
-        <i class="bx bxs-report"></i>
-        <span>Reports</span>
-        <i class="bx bx-chevron-down"></i>
-      </div>
-    </li>
-
-    <!-- subnav -->
-    <ul class="sub-nav">
-      <li>
-        <a href="/VacationDaysReport" class="btn">
-          <span> Taken vacation days</span>
-        </a>
-      </li>
-      <li>
-        <a href="/TotalEarningsReport" class="btn">
-          <span>Total Earnings</span>
-        </a>
-      </li>
-      <li>
-        <a href="/AverageBenefitsReport" class="btn">
-          <span>Average Benefits</span>
-        </a>
-      </li>
-    </ul>
-
-    <li>
-      <div class="btn btn-list-2" style="cursor: pointer">
-        <i class="bx bxs-report "></i>
-        <span>Alert</span>
-        <i class="bx bx-chevron-down bx-chevron-down-2"></i>
-      </div>
-    </li>
+  <!-- sidebar --> 
+  <div class="background">
+  </div> 
+  <aside class="sidebar">
+    <!-- Logo -->
+    <img src="/img/logo.svg" alt="logo" />
  
-    <ul class="sub-nav-2">
+    <!-- btn close -->
+    <div class="btn-close" style="cursor: pointer;"><i class='bx bx-x'></i></div>
+
+    <!-- navigation -->
+    <ul class="nav">
       <li>
-        <a href="/HiringAnniversaryAlert" class="btn">
-          <span>Alert Hiring Anniversary</span>
+        <a href="/" class="btn">
+          <i class="bx bxs-grid-alt"></i>
+          <span>Dashboard</span>
         </a>
       </li>
-  
+
       <li>
-        <a href="/VacationDaysAlert" class="btn">    
-          <span>Alert Vacation Days</span>
-        </a>
-      </li>
-  
-      <li>
-        <a href="/BenefitsPlanAlert" class="btn">   
-          <span>Alert Benefits Plan</span>
-        </a>
-      </li>
-  
-      <li>
-        <a href="/BirthdayAlert" class="btn">
-          <span>Alert Birthday</span>
-        </a>
-      </li>
-    </ul>
-
-  </ul>
-</aside>
-
-<!-- content -->
-<div class="content">
-  <!-- header -->
-  <header class="header">
-    <div id="clock"></div>
-  </header>
-
-  <!-- main -->
-  <main>
-    <!-- main-top -->
-    <div class="main-top">
-      <h2 class="title">Taken vacation days</h2>
-      <div class="selection"></div>
-    </div>
-        <!-- main bottom -->
-        <div class="main-bottom">
-          <form action="/TotalEarningsReport" method="get">
-            <div class="wrapper">
-              <div class="form-group">
-                <label for="">ID</label>
-                <input type="text" name="id" value="<%= id %>"/>
-              </div>
-              <div class="form-group">
-                <label for="">FULLNAME</label>
-                <input type="text" name="fullname" value="<%= fullname %>"/>
-              </div>
-              <div class="form-group">
-                <label for="">GENDER</label>
-                <input type="text" name="gender" value="<%= gender %>"/>
-              </div>
-              <div class="form-group">
-                <label for="">ETHNICITY</label>
-                <input type="text" name="ethnicity" value="<%= ethnicity %>"/>
-              </div>
-              <div class="form-group">
-                <label for="">WORKED DAYS</label>
-                <input type="text" name="totalDayWork" value="<%= totalDayWork %>"/>
-              </div>
-              <div class="form-group">
-                <label for="">TOTAL PAYMENT</label>
-                <input type="text" name="totalPaid" value="<%= totalPaid %>"/>
-              </div>
-            </div> 
-           
-            <button type="submit" class="submit">Submit</button>
-          </form>
-
-      <!-- table -->
-
-          <div class="wrapper-table">
-            <table class="table content-table">
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Fullname</th>
-                  <th>Gender</th>
-                  <th>Ethnicity</th>
-                  <th>Worked days</th>
-                  <th>Total payment</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                <% for(var i=0; i<data.length; i++) {%>
-                  <tr>
-                    <td><%= data[i].PERSONAL_ID %></td>
-                    <td><%= data[i].FULLNAME%></td>
-                    <td><%= data[i].CURRENT_GENDER%></td>
-                    <td><%= data[i].ETHNICITY%></td>
-                    <td><%= data[i].TOTAL_DAYS_WORKED%></td>
-                    <td><%= data[i].TOTAL_PAID%></td>
-                  </tr>
-               <% } %>
-                
-              </tbody>
-            </table>
-          </div>
+        <div class="btn btn-list" style="cursor: pointer">
+          <i class="bx bxs-report"></i>
+          <span>Reports</span>
+          <i class="bx bx-chevron-down"></i>
         </div>
-      </main>
-    </div>
+      </li>
+
+      <!-- subnav -->
+      <ul class="sub-nav-1">
+        <li>
+          <a href="/VacationDaysReport" class="btn">
+            <span> Taken vacation days</span>
+          </a>
+        </li>
+        <li>
+          <a href="/TotalEarningsReport" class="btn">
+            <span>Total Earnings</span>
+          </a>
+        </li>
+        <li>
+          <a href="/AverageBenefitsReport" class="btn">
+            <span>Average Benefits</span>
+          </a>
+        </li>
+      </ul>
+
+      <li>
+        <div class="btn btn-list-2" style="cursor: pointer">
+          <i class="bx bxs-report "></i>
+          <span>Alert</span>
+          <i class="bx bx-chevron-down bx-chevron-down-2"></i>
+        </div>
+      </li>
+
+      <ul class="sub-nav-2">
+        <li>
+          <a href="/HiringAnniversaryAlert" class="btn">
+            <span>Alert Hiring Anniversary</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="/VacationDaysAlert" class="btn">
+            <span>Alert Vacation Days</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="/BenefitsPlanAlert" class="btn">
+            <span>Alert Benefits Plan</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="/BirthdayAlert" class="btn">
+            <span>Alert Birthday</span>
+          </a>
+        </li>
+      </ul>
+
+    </ul>
+  </aside>
+
+  <!-- content -->
+  <div class="content"> 
+    <!-- btn click --> 
+    <div class="btn-action"></div>
+
+    <!-- header -->
+    <header class="header">
+      <div id="clock"></div>
+    </header>
+
+    <!-- main -->
+    <main>
+      <!-- main-top -->
+      <div class="main-top">
+        <h2 class="title">Total Earnings</h2>
+        <div class="selection"></div>
+      </div>
+      <!-- main bottom -->
+      <div class="main-bottom">
+        <form action="/TotalEarningsReport" method="get"> 
+          <button type="submit" class="submit">Submit</button>
+          <div class="wrapper" style="gap: 0 150px; padding-left: 38px;">
+            <div class="form-group">
+              <label for="">ID</label>
+              <input type="text" name="id" value="<%= id %>" />
+            </div>
+            <div class="form-group" style="transform: translateX(-25px);">
+              <label for="">FULLNAME</label>
+              <input type="text" name="fullname" value="<%= fullname %>" />
+            </div>
+            <div class="form-group">
+              <label for="">GENDER</label>
+              <input type="text" name="gender" value="<%= gender %>" />
+            </div>
+            <div class="form-group" style="transform: translateX(24px);">
+              <label for="">ETHNICITY</label>
+              <input type="text" name="ethnicity" value="<%= ethnicity %>" />
+            </div>
+            <div class="form-group" style="transform: translateX(45px);">
+              <label for="">WORKED DAYS</label>
+              <input type="text" name="totalDayWork" value="<%= totalDayWork %>" />
+            </div>
+            <div class="form-group" style="transform: translateX(75px);">
+              <label for="">TOTAL PAYMENT</label>
+              <input type="text" name="totalPaid" value="<%= totalPaid %>" />
+            </div>
+          </div>
+
+        </form>
+
+        <!-- table -->
+
+        <div class="wrapper-table">
+          <table class="table content-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Fullname</th>
+                <th>Gender</th>
+                <th>Ethnicity</th>
+                <th>Worked days</th>
+                <th>Total payment</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% for(var i=0; i<data.length; i++) {%>
+                <tr>
+                  <td>
+                    <%= data[i].PERSONAL_ID %>
+                  </td>
+                  <td>
+                    <%= data[i].FULLNAME%>
+                  </td>
+                  <td>
+                    <%= data[i].CURRENT_GENDER%>
+                  </td>
+                  <td>
+                    <%= data[i].ETHNICITY%>
+                  </td>
+                  <td>
+                    <%= data[i].TOTAL_DAYS_WORKED%>
+                  </td>
+                  <td>
+                    <%= data[i].TOTAL_PAID%>
+                  </td>
+                </tr>
+                <% } %>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
   </main>
-</div>
-<script src="/js/reportScripts.js"></script>
+  </div>
+  <script src="/js/reportScripts.js"></script>
 </body>
+
 </html>

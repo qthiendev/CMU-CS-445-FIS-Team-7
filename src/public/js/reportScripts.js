@@ -48,3 +48,26 @@ createClock();
 updateClock();
 // Update clock every second
 setInterval(updateClock, 1000);
+
+const btnAction = document.querySelector(".btn-action");
+const sideBar = document.querySelector(".sidebar");
+const btnClose = document.querySelector(".btn-close");
+const background = document.querySelector(".background");
+
+btnAction.addEventListener("click", () => {
+  btnAction.classList.toggle("active");
+  sideBar.classList.toggle("active");
+  background.classList.toggle("active");
+});
+
+btnClose.addEventListener("click", () => {
+  sideBar.classList.toggle("active");
+  btnAction.classList.toggle("active");
+  background.classList.toggle("active");
+});
+
+background.addEventListener("click", () => {
+  btnAction.classList.toggle("active");
+  sideBar.classList.toggle("active");
+  background.classList.toggle("active");
+});

@@ -12,13 +12,10 @@ const connectionPR = mysql2.createConnection(config);
 
 connectionPR.connect((err) => {
   if (err) {
-    console.error(
-      "[SYSTEM] Cannot connect to MySQL Server | mydb Database.\n",
-      err
-    );
+    console.error("[SYSTEM] Cannot connect to MySQL Server | mydb: ", err);
     return;
   }
-  console.log("[SYSTEM] Connected to MySQL Server | mydb Database.N");
+  console.log("[SYSTEM] Connected to MySQL Server | mydb.");
 });
 
 module.exports = { connectionPR };

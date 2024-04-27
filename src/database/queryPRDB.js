@@ -1,16 +1,18 @@
-const {connectionPR} = require("../configs/connectPRDB.js");
+const { connectionPR } = require("../configs/connectPRDB.js");
 
 const queryPRDB = async (mysqlQueryPR) => {
-    try {
+  try {
+    const [request, fields] = await connectionPR.promise().query(mysqlQueryPR);
 
-      const [request, fields] = await connectionPR.promise().query(mysqlQueryPR);
-      return request;
-    } catch (error) {
-      console.error("Error getting payroll list:", error);
-      throw error;
-    }
-  };
-  
-  module.exports = {
-    queryPRDB,
-  };
+    console.log('[System] queryPRDB.js | Queried PRDB.');
+
+    return request;
+  } catch (error) {
+    console.error("[SYSTEM] queryPRDB.js | Cannot query PRDB: ", error);
+    throw error;
+  }
+};
+
+module.exports = {
+  queryPRDB,
+};
