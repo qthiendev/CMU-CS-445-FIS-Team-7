@@ -7,15 +7,15 @@ const { renderHomeView } = require('../controllers/utilities/homeController');
 const { renderVacationDaysReportView } = require('../controllers/reports/vacationDayReportController');
 const { renderAverageBenefitsReportView } = require('../controllers/reports/averageBenefitsReportController');
 const { renderTotalEarningsReportView } = require('../controllers/reports/totalEarningsReportController');
+const { renderBirthdayAlertView } = require('../controllers/alerts/birthdayAlertController');
+const { renderHirringAnniversaryAlertView } = require('../controllers/alerts/hirringAnniversaryAlertController');
+const { renderVacationDaysAlertView } = require('../controllers/alerts/vacationDaysAlertController');
+const isLoggedInMiddleware = require('../middleware/checkLogin.js');
 
-const { renderBirthdayAlertView } = require('../controllers/alerts/birthdayAlertController')
-const { renderHirringAnniversaryAlertView } = require('../controllers/alerts/hirringAnniversaryAlertController')
-const { renderVacationDaysAlertView } = require('../controllers/alerts/vacationDaysAlertController')
+router.get("/",isLoggedInMiddleware ,renderHomeView);
+router.get("/Login",renderLoginView);
 
-router.get("/", renderHomeView);
-router.get("/Login", renderLoginView);
-
-router.get('/VacationDaysReport', renderVacationDaysReportView);
+router.get('/VacationDaysReport',isLoggedInMiddleware, renderVacationDaysReportView);
 router.get('/AverageBenefitsReport', renderAverageBenefitsReportView);
 router.get('/TotalEarningsReport', renderTotalEarningsReportView);
 
