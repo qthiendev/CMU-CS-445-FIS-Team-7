@@ -12,6 +12,8 @@ const { renderBirthdayAlertView } = require('../controllers/alerts/birthdayAlert
 const { renderHirringAnniversaryAlertView } = require('../controllers/alerts/hirringAnniversaryAlertController')
 const { renderVacationDaysAlertView } = require('../controllers/alerts/vacationDaysAlertController')
 
+const { renderManageAllEmployeesView } = require('../controllers/managements/employeeController');
+
 router.get("/", renderHomeView);
 router.get("/Login", renderLoginView);
 
@@ -22,5 +24,7 @@ router.get('/TotalEarningsReport', renderTotalEarningsReportView);
 router.get('/BirthdayAlert', renderBirthdayAlertView);
 router.get('/HiringAnniversaryAlert', renderHirringAnniversaryAlertView);
 router.get('/VacationDaysAlert', renderVacationDaysAlertView);
+
+router.get('/EmployeesManagement', renderManageAllEmployeesView);
 
 module.exports = router;

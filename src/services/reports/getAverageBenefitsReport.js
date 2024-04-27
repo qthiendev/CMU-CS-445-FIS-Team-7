@@ -2,8 +2,6 @@ const { queryHRDB } = require('../../database/queryHRDB');
 
 const getAverageBenefitsReport = async (id, fullname, gender, ethnicity, plan, paid) => {
     try {
-
-
         var field = [
             'p.[PERSONAL_ID]',
             '(p.[CURRENT_LAST_NAME] + \' \' + p.[CURRENT_MIDDLE_NAME] + \' \' + p.[CURRENT_FIRST_NAME]) as [FULLNAME]',
