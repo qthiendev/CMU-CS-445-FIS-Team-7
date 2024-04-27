@@ -27,8 +27,6 @@ const getAllInformation = async () => {
             + ' LEFT JOIN [EMPLOYMENT] e ON p.PERSONAL_ID = e.PERSONAL_ID;'
         );
 
-        console.log(sqlQueryHR)
-
         var data = await queryHRDB(sqlQueryHR);
 
         console.log('[System] processEmployee.js | Got AllInformation.');
@@ -40,6 +38,7 @@ const getAllInformation = async () => {
 }
 
 const getInformation = async (id) => {
+    const data = getAllInformation();
     
 }
 
