@@ -4,20 +4,14 @@ const port = 3000;
 const configViewEngine = require("./configs/viewEngine");
 const webRoutes = require("./routers/web.js");
 const session = require('express-session');
-// const connectRedis = require('connect-redis').default; // Import connect-redis with default syntax
-
-// const redis = require('redis');
-// const redisClient = redis.createClient();
-
-// const RedisStore = connectRedis(session); // Call connectRedis with session
 
 app.use(session({
     secret: 'secret', 
     resave: false,
     saveUninitialized: false,
-    // store: new RedisStore({ client: redisClient }),
     cookie: {
-        maxAge: 10 * 60 * 1000 
+        expires: true,
+        maxAge: 10 * 60 * 1000, 
     }
 }));
 

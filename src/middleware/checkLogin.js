@@ -1,6 +1,6 @@
 const isLoggedInMiddleware = (req, res, next) => {
-    if (!req.session.hasOwnProperty('isLoggedIn')) {
-        return res.redirect('/login');
+    if (!req.session || !req.session.isLoggedIn) {
+        return res.redirect('/login'); 
     }
     next();
 };

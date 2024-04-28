@@ -1,9 +1,7 @@
 const express = require("express");
 const router = express.Router();
-
 const { renderLoginView } = require('../controllers/utilities/loginController');
 const { renderHomeView } = require('../controllers/utilities/homeController');
-
 const { renderVacationDaysReportView } = require('../controllers/reports/vacationDayReportController');
 const { renderAverageBenefitsReportView } = require('../controllers/reports/averageBenefitsReportController');
 const { renderTotalEarningsReportView } = require('../controllers/reports/totalEarningsReportController');
@@ -12,17 +10,15 @@ const { renderHirringAnniversaryAlertView } = require('../controllers/alerts/hir
 const { renderVacationDaysAlertView } = require('../controllers/alerts/vacationDaysAlertController');
 const isLoggedInMiddleware = require('../middleware/checkLogin.js');
 
-router.get("/",isLoggedInMiddleware ,renderHomeView);
-router.get("/Login",renderLoginView);
+router.get("/", isLoggedInMiddleware, renderHomeView);
+router.get("/login", renderLoginView); 
 
-router.get('/VacationDaysReport',isLoggedInMiddleware, renderVacationDaysReportView);
-router.get('/AverageBenefitsReport', renderAverageBenefitsReportView);
-router.get('/TotalEarningsReport', renderTotalEarningsReportView);
+router.get('/VacationDaysReport', isLoggedInMiddleware, renderVacationDaysReportView);
+router.get('/AverageBenefitsReport', isLoggedInMiddleware, renderAverageBenefitsReportView);
+router.get('/TotalEarningsReport', isLoggedInMiddleware, renderTotalEarningsReportView);
 
-router.get('/BirthdayAlert', renderBirthdayAlertView);
-router.get('/HiringAnniversaryAlert', renderHirringAnniversaryAlertView);
-router.get('/VacationDaysAlert', renderVacationDaysAlertView);
-
-router.get('/EmployeesManagement', renderManageAllEmployeesView);
+router.get('/BirthdayAlert', isLoggedInMiddleware, renderBirthdayAlertView);
+router.get('/HiringAnniversaryAlert', isLoggedInMiddleware, renderHirringAnniversaryAlertView);
+router.get('/VacationDaysAlert', isLoggedInMiddleware, renderVacationDaysAlertView);
 
 module.exports = router;
