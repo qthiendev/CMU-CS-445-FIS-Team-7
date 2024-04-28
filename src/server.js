@@ -10,7 +10,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     expires: true,
-        maxAge: 10 * 60 * 1000, 
+    maxAge: 10 * 60 * 1000, 
 }));
 
 app.use(express.json());
