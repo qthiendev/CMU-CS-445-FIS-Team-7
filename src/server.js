@@ -9,10 +9,8 @@ app.use(session({
     secret: 'secret', 
     resave: false,
     saveUninitialized: false,
-    cookie: {
-        expires: true,
+    expires: true,
         maxAge: 10 * 60 * 1000, 
-    }
 }));
 
 app.use(express.json());
