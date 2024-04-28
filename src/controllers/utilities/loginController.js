@@ -4,17 +4,15 @@ const renderLoginView = async (req, res) => {
     try {
         let id = req.query.id;
         let password = req.query.password;
-
-        console.log(req.query)
-
         let isValid = await getLogin(id, password);
-
-        if (isValid)
-            await res.render("homePage.ejs");
-        else
-            await res.render("loginPage.ejs", { error: 'Invalid login credentials. Please try again.' });
-        
-        console.log('[System] loginController.js | Rendered loginPage.');
+        if (isValid){
+            req.session.isLoggedIn = true;
+            console.log(">>>>>>>>>>>>>>", req.session);
+            res.redirect("/");
+        }
+        else{
+             res.render("loginPage.ejs", { error: 'Invalid login credentials. Please try again.' });
+        }
     }
     catch (err) {
         console.log('[System] Error at loginController.js: ', err);
