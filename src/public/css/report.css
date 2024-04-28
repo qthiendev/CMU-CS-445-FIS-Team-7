@@ -13,7 +13,7 @@ html {
 body {
   font-size: 1.6rem;
   font-family: "Poppins", sans-serif;
-  min-height: 100vh;
+  height: 100vh;
 }
 
 /* ======= Common ====== */
@@ -132,6 +132,7 @@ a {
 
 /* ======= content ====== */
 .content {
+  height: 100%;
   padding: 30px 41px 0;
   background: #f8f8f8;
   position: relative;
