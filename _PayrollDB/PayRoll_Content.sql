@@ -1,4 +1,6 @@
--- Inserting Pay Rates
+drop table if exists `mydb`.`Employee`;
+drop table if exists `mydb`.`Pay Rates`;
+
 SET SQL_SAFE_UPDATES = 0;
 DELETE FROM `mydb`.`Employee`;
 DELETE FROM `mydb`.`Pay Rates`;
