@@ -6,7 +6,7 @@
             <input type="text" id="id" name="id" value="<%= data.PERSONAL_ID %>" />
         </div>
 
-        <button onclick="findEmployee()">Find</button>
+        <button onclick="findEmployee(event)">Find</button>
 
         <div class="form-group">
             <label for="">First Name</label>
@@ -25,7 +25,8 @@
 
         <div class="form-group">
             <label for="">Birth Date</label>
-            <input type="text" name="BIRTH_DATE" value="<%= data.BIRTH_DATE %>" />
+            <input type="text" name="BIRTH_DATE"
+                value="<%= data.BIRTH_DATE ? data.BIRTH_DATE.toLocaleDateString() : ''%>" />
         </div>
 
         <div class="form-group">
@@ -125,7 +126,8 @@
 
         <div class="form-group">
             <label for="">Hire Date For Working</label>
-            <input type="text" name="HIRE_DATE_FOR_WORKING" value="<%= data.HIRE_DATE_FOR_WORKING %>" />
+            <input type="text" name="HIRE_DATE_FOR_WORKING"
+                value="<%= data.HIRE_DATE_FOR_WORKING ? data.HIRE_DATE_FOR_WORKING.toLocaleDateString() : '' %>" />
         </div>
 
         <div class="form-group">
@@ -135,17 +137,20 @@
 
         <div class="form-group">
             <label for="">Termination Date</label>
-            <input type="text" name="TERMINATION_DATE" value="<%= data.TERMINATION_DATE %>" />
+            <input type="text" name="TERMINATION_DATE"
+                value="<%= data.TERMINATION_DATE ? data.TERMINATION_DATE.toLocaleDateString() : '' %>" />
         </div>
 
         <div class="form-group">
             <label for="">Rehire Date For Working</label>
-            <input type="text" name="REHIRE_DATE_FOR_WORKING" value="<%= data.REHIRE_DATE_FOR_WORKING %>" />
+            <input type="text" name="REHIRE_DATE_FOR_WORKING"
+                value="<%= data.REHIRE_DATE_FOR_WORKING ? data.REHIRE_DATE_FOR_WORKING.toLocaleDateString() : '' %>" />
         </div>
 
         <div class="form-group">
             <label for="">Last Review Date</label>
-            <input type="text" name="LAST_REVIEW_DATE" value="<%= data.LAST_REVIEW_DATE %>" />
+            <input type="text" name="LAST_REVIEW_DATE"
+                value="<%= data.LAST_REVIEW_DATE ? data.LAST_REVIEW_DATE.toLocaleDateString() : '' %>" />
         </div>
 
         <div class="form-group">
@@ -159,8 +164,9 @@
 </form>
 
 <script>
-    function findEmployee() {
+    function findEmployee(event) {
+        event.preventDefault();
         var personalId = document.getElementById('id').value;
-        window.location.href = '/EmployeeManagement?id=' + personalId;
+        window.location.href = '/EmployeeManagement?id=' + encodeURIComponent(personalId);
     }
 </script>

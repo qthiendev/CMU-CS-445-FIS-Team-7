@@ -110,8 +110,7 @@ const getInformation = async (id) => {
             mergeData = mergeData.filter(record =>
                 record.PERSONAL_ID == id)
         }
-
-        console.log(mergeData[0])
+        
         return mergeData[0];
     }
     catch (err) {
