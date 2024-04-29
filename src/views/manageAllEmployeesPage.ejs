@@ -21,10 +21,15 @@
 </head>
 
 <body>
-  <!-- sidebar -->
+  <!-- sidebar --> 
+  <div class="background">
+  </div> 
   <aside class="sidebar">
     <!-- Logo -->
     <img src="/img/logo.svg" alt="logo" />
+
+     <!-- btn close -->
+     <div class="btn-close" style="cursor: pointer;"><i class='bx bx-x'></i></div>
 
     <!-- navigation -->
     <ul class="nav">
@@ -101,7 +106,10 @@
   </aside>
 
   <!-- content -->
-  <div class="content">
+  <div class="content"> 
+    <!-- btn click --> 
+    <div class="btn-action"></div>
+
     <!-- header -->
     <header class="header">
       <div id="clock"></div>
@@ -111,7 +119,7 @@
     <main>
       <!-- main-top -->
       <div class="main-top">
-        <h2 class="title">Employees Information Management</h2>
+        <h2 class="title">All Employees</h2>
         <div class="selection"></div>
       </div>
       <!-- main bottom -->
@@ -129,8 +137,8 @@
                 <th>Address</th>
                 <th>Email</th>
                 <th>Phone</th>
-                <th>Shareholder</th>
-                <th>Status</th>
+                <th></th>
+                <th></th>
               </tr>
             </thead>
 
@@ -159,15 +167,19 @@
                     <%= data[i].Phone%>
                   </td>
                   <td>
-                    <%= data[i].Shareholder%>
+                    <% if(data[i].Status=='X' ) { %>
+                      <button><a href="/EmployeeManagement?id=<%= data[i].ID %>" class="btn">MODIFY</a></button>
+                      <% } else { %>
+                        <button>ADD</button>
+                        <% } %>
                   </td>
                   <td>
-                    <%= data[i].Status%>
+                    <button>DELETE</button>
                   </td>
                 </tr>
                 <% } %>
-
             </tbody>
+
           </table>
         </div>
       </div>

@@ -2,7 +2,31 @@ const { queryHRDB } = require('../../database/queryHRDB');
 
 const getHirringAnniversaryAlert = async (day) => {
     try {
-        let sqlQueryHR = 'SELECT [p].[PERSONAL_ID], ([p].[CURRENT_LAST_NAME] + \' \' + [p].[CURRENT_MIDDLE_NAME] + \' \' + [p].[CURRENT_FIRST_NAME]) as [FULLNAME], [e].[HIRE_DATE_FOR_WORKING], DATEDIFF(day, GETDATE(), DATEFROMPARTS(year(GETDATE()) + CASE WHEN month([e].[HIRE_DATE_FOR_WORKING]) > month(GETDATE()) OR (month([e].[HIRE_DATE_FOR_WORKING]) = month(GETDATE()) AND day([e].[HIRE_DATE_FOR_WORKING]) > day(GETDATE())) THEN 0 ELSE 1 END, month([e].[HIRE_DATE_FOR_WORKING]), day([e].[HIRE_DATE_FOR_WORKING]))) as [UPCOMING] FROM [PERSONAL] [p], [EMPLOYMENT] [e] WHERE DATEFROMPARTS(year(GETDATE()) + CASE WHEN month([e].[HIRE_DATE_FOR_WORKING]) > month(GETDATE()) OR (month([e].[HIRE_DATE_FOR_WORKING]) = month(GETDATE()) AND day([e].[HIRE_DATE_FOR_WORKING]) > day(GETDATE())) THEN 0 ELSE 1 END, month([e].[HIRE_DATE_FOR_WORKING]), day([e].[HIRE_DATE_FOR_WORKING])) BETWEEN GETDATE() AND DATEADD(day, 365, GETDATE()) AND [p].[PERSONAL_ID] = [e].[PERSONAL_ID] ORDER BY [UPCOMING], [FULLNAME]';
+        sqlQueryHR = ('USE [HumanResourceDB]\n' +
+            'SELECT [P].[PERSONAL_ID] AS [ID],\n' +
+            '([P].[CURRENT_LAST_NAME] + \' \' + [P].[CURRENT_MIDDLE_NAME] + \' \' + [P].[CURRENT_FIRST_NAME]) AS [FULLNAME],\n' +
+            '[E].[HIRE_DATE_FOR_WORKING] AS [HIRE_DATE],\n' +
+            'DATEDIFF(DAY, GETDATE(), DATEFROMPARTS(YEAR(GETDATE())\n' +
+            '+ CASE WHEN MONTH([E].[HIRE_DATE_FOR_WORKING]) > MONTH(GETDATE())\n' +
+            'OR (MONTH([E].[HIRE_DATE_FOR_WORKING]) = MONTH(GETDATE())\n' +
+            'AND DAY([E].[HIRE_DATE_FOR_WORKING]) > DAY(GETDATE()))\n' +
+            'THEN 0 ELSE 1 END,\n' +
+            'MONTH([E].[HIRE_DATE_FOR_WORKING]),\n' +
+            'DAY([E].[HIRE_DATE_FOR_WORKING]))) AS [UPCOMING]\n' +
+            'FROM [DBO].[PERSONAL] [P], [DBO].[EMPLOYMENT] [E]\n' +
+            'WHERE DATEFROMPARTS(YEAR(GETDATE())\n' +
+            '+ CASE WHEN MONTH([E].[HIRE_DATE_FOR_WORKING]) > MONTH(GETDATE())\n' +
+            'OR (MONTH([E].[HIRE_DATE_FOR_WORKING]) = MONTH(GETDATE())\n' +
+            'AND DAY([E].[HIRE_DATE_FOR_WORKING]) > DAY(GETDATE()))\n' +
+            'THEN 0 ELSE 1 END,\n' +
+            'MONTH([E].[HIRE_DATE_FOR_WORKING]),\n' +
+            'DAY([E].[HIRE_DATE_FOR_WORKING]))\n' +
+            'BETWEEN GETDATE()\n' +
+            'AND DATEADD(DAY, 365, GETDATE())\n' +
+            'AND [P].[PERSONAL_ID] = [E].[PERSONAL_ID]\n' +
+            'GROUP BY [P].[PERSONAL_ID], [P].[CURRENT_LAST_NAME], [P].[CURRENT_MIDDLE_NAME], [P].[CURRENT_FIRST_NAME], [E].[HIRE_DATE_FOR_WORKING]\n' +
+            'ORDER BY [UPCOMING];'
+        );
 
         var data = await queryHRDB(sqlQueryHR);
 

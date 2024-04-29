@@ -188,7 +188,7 @@
                     <%= data[i].TOTAL_DAYS_WORKED%>
                   </td>
                   <td>
-                    <%= data[i].TOTAL_PAID%>
+                    <%= data[i].TOTAL_PAID.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})%>
                   </td>
                 </tr>
                 <% } %>

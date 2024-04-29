@@ -131,24 +131,20 @@
               <input type="text" name="id" value="<%= id %>" />
             </div>
             <div class="form-group" style="transform: translateX(-20px);">
-              <label for="">FULLNAME</label>
+              <label for="">Fullname</label>
               <input type="text" name="fullname" value="<%= fullname %>" />
             </div>
             <div class="form-group" style="transform: translateX(10px);">
-              <label for="">GENDER</label>
-              <input type="text" name="gender" value="<%= gender %>" />
+              <label for="">Plan</label>
+              <input type="text" name="planName" value="<%= planName %>" />
             </div>
             <div class="form-group" style="transform: translateX(30px);">
-              <label for="">ETHNICITY</label>
-              <input type="text" name="ethnicity" value="<%= ethnicity %>" />
+              <label for="">Total month</label>
+              <input type="text" name="totalMonth" value="<%= totalMonth %>" />
             </div>
             <div class="form-group" style="transform: translateX(45px);">
-              <label for="">PLAN</label>
-              <input type="text" name="plan" value="<%= plan %>" />
-            </div>
-            <div class="form-group" style="transform: translateX(18px);">
-              <label for="">PAID</label>
-              <input type="text" name="paid" value="<%= paid %>" />
+              <label for="">Total paid</label>
+              <input type="text" name="totalBenefit" value="<%= totalBenefit %>" />
             </div>
           </div>
         </form>
@@ -161,10 +157,9 @@
               <tr>
                 <th>ID</th>
                 <th>Fullname</th>
-                <th>Gender</th>
-                <th>Ethnicity</th>
                 <th>Plan</th>
-                <th>Paid</th>
+                <th>Total month</th>
+                <th>Total paid</th>
               </tr>
             </thead>
 
@@ -172,22 +167,19 @@
               <% for(var i=0; i<data.length; i++) {%>
                 <tr>
                   <td>
-                    <%= data[i].PERSONAL_ID %>
+                    <%= data[i].ID %>
                   </td>
                   <td>
                     <%= data[i].FULLNAME%>
                   </td>
                   <td>
-                    <%= data[i].CURRENT_GENDER%>
+                    <%= data[i].PLAN_NAME%>
                   </td>
                   <td>
-                    <%= data[i].ETHNICITY%>
+                    <%= data[i].TOTAL_MONTH%>
                   </td>
                   <td>
-                    <%= data[i].PLAN%>
-                  </td>
-                  <td>
-                    <%= data[i].PAID%>
+                    <%= data[i].TOTAL_BENEFIT.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})%>
                   </td>
                 </tr>
                 <% } %>

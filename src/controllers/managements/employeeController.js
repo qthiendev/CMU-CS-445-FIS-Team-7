@@ -1,4 +1,5 @@
 const { getAllInformation } = require('../../services/managements/processEmployee');
+const { getInformation } = require('../../services/managements/processEmployee');
 
 const renderManageAllEmployeesView = async (req, res) => {
     try {
@@ -10,11 +11,33 @@ const renderManageAllEmployeesView = async (req, res) => {
                 data
             }
         );
-        console.log('[System] averageBenefitsReportController.js | Rendered reportAverageBenefitsPage.');
+        console.log('[System] employeeController.js | Rendered manageAllEmployeesPage.');
     }
     catch (err) {
-        console.log('[System] Error at averageBenefitsReportController.js: ', err);
+        console.log('[System] Error at employeeController.js | renderManageAllEmployeesView: ', err);
     }
 }
 
-module.exports = { renderManageAllEmployeesView };
+const renderManageEmployeeView = async (req, res) => {
+    try {
+        let id = req.query.id;
+        let data = await getInformation(id);
+
+        res.render(
+            "manageEmployeePage.ejs",
+            {
+                data,
+                id
+            }
+        );
+        console.log('[System] employeeController.js | Rendered manageEmployeePage.');
+    }
+    catch (err) {
+        console.log('[System] Error at employeeController.js | renderManageEmployeeView: ', err);
+    }
+}
+
+module.exports = {
+    renderManageAllEmployeesView,
+    renderManageEmployeeView
+};

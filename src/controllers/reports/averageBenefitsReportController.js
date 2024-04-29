@@ -4,23 +4,21 @@ const renderAverageBenefitsReportView = async (req, res) => {
     try {
         let id = req.query.id;
         let fullname = req.query.fullname;
-        let gender = req.query.gender;
-        let ethnicity = req.query.ethnicity;
-        let plan = req.query.plan;
-        let paid = req.query.paid;
+        let planName = req.query.planName;
+        let totalMonth = req.query.totalMonth;
+        let totalBenefit = req.query.totalBenefit;
 
-        let data = await getAverageBenefitsReport(id, fullname, gender, ethnicity, plan, paid);
+        let data = await getAverageBenefitsReport(id, fullname, planName, totalMonth, totalBenefit);
 
         res.render(
             "reportAverageBenefitsPage.ejs",
             {
                 data,
-                id,
-                fullname,
-                gender,
-                ethnicity,
-                plan,
-                paid
+                id, 
+                fullname, 
+                planName, 
+                totalMonth, 
+                totalBenefit
             }
         );
         console.log('[System] averageBenefitsReportController.js | Rendered reportAverageBenefitsPage.');

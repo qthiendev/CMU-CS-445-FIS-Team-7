@@ -1,0 +1,166 @@
+<form action="/EmployeeManagement?id=<%= id %>" method="get">
+    <div class="wrapper">
+
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input type="text" id="id" name="id" value="<%= data.PERSONAL_ID %>" />
+        </div>
+
+        <button onclick="findEmployee()">Find</button>
+
+        <div class="form-group">
+            <label for="">First Name</label>
+            <input type="text" name="CURRENT_FIRST_NAME" value="<%= data.CURRENT_FIRST_NAME %>" />
+        </div>
+
+        <div class="form-group">
+            <label for="">Last Name</label>
+            <input type="text" name="CURRENT_LAST_NAME" value="<%= data.CURRENT_LAST_NAME %>" />
+        </div>
+
+        <div class="form-group">
+            <label for="">Middle Name</label>
+            <input type="text" name="CURRENT_MIDDLE_NAME" value="<%= data.CURRENT_MIDDLE_NAME %>" />
+        </div>
+
+        <div class="form-group">
+            <label for="">Birth Date</label>
+            <input type="text" name="BIRTH_DATE" value="<%= data.BIRTH_DATE %>" />
+        </div>
+
+        <div class="form-group">
+            <label for="">Social Security Number</label>
+            <input type="text" name="SOCIAL_SECURITY_NUMBER" value="<%= data.SOCIAL_SECURITY_NUMBER %>" />
+        </div>
+
+        <div class="form-group">
+            <label for="">Driver's License</label>
+            <input type="text" name="DRIVERS_LICENSE" value="<%= data.DRIVERS_LICENSE %>" />
+        </div>
+
+        <div class="form-group">
+            <label for="">Current Address 1</label>
+            <input type="text" name="CURRENT_ADDRESS_1" value="<%= data.CURRENT_ADDRESS_1 %>" />
+        </div>
+
+        <div class="form-group">
+            <label for="">Current Address 2</label>
+            <input type="text" name="CURRENT_ADDRESS_2" value="<%= data.CURRENT_ADDRESS_2 %>" />
+        </div>
+
+        <div class="form-group">
+            <label for="">Current City</label>
+            <input type="text" name="CURRENT_CITY" value="<%= data.CURRENT_CITY %>" />
+        </div>
+
+        <div class="form-group">
+            <label for="">Current Country</label>
+            <input type="text" name="CURRENT_COUNTRY" value="<%= data.CURRENT_COUNTRY %>" />
+        </div>
+
+        <div class="form-group">
+            <label for="">Current Zip</label>
+            <input type="text" name="CURRENT_ZIP" value="<%= data.CURRENT_ZIP %>" />
+        </div>
+
+        <div class="form-group">
+            <label for="">Current Gender</label>
+            <input type="text" name="CURRENT_GENDER" value="<%= data.CURRENT_GENDER %>" />
+        </div>
+
+        <div class="form-group">
+            <label for="">Current Phone Number</label>
+            <input type="text" name="CURRENT_PHONE_NUMBER" value="<%= data.CURRENT_PHONE_NUMBER %>" />
+        </div>
+
+        <div class="form-group">
+            <label for="">Current Personal Email</label>
+            <input type="text" name="CURRENT_PERSONAL_EMAIL" value="<%= data.CURRENT_PERSONAL_EMAIL %>" />
+        </div>
+
+        <div class="form-group">
+            <label for="">Current Marital Status</label>
+            <input type="text" name="CURRENT_MARITAL_STATUS" value="<%= data.CURRENT_MARITAL_STATUS %>" />
+        </div>
+
+        <div class="form-group">
+            <label for="">Ethnicity</label>
+            <input type="text" name="ETHNICITY" value="<%= data.ETHNICITY %>" />
+        </div>
+
+        <div class="form-group">
+            <label for="">Shareholder Status</label>
+            <input type="text" name="SHAREHOLDER_STATUS" value="<%= data.SHAREHOLDER_STATUS %>" />
+        </div>
+
+        <div class="form-group">
+            <label for="">Benefit Plans ID</label>
+            <input type="text" name="BENEFIT_PLANS_ID" value="<%= data.BENEFIT_PLANS_ID %>" />
+        </div>
+
+        <div class="form-group">
+            <label for="">Plan Name</label>
+            <input type="text" name="PLAN_NAME" value="<%= data.PLAN_NAME %>" />
+        </div>
+
+        <div class="form-group">
+            <label for="">Deductable</label>
+            <input type="text" name="DEDUCTABLE" value="<%= data.DEDUCTABLE %>" />
+        </div>
+
+        <div class="form-group">
+            <label for="">Percentage Copay</label>
+            <input type="text" name="PERCENTAGE_COPAY" value="<%= data.PERCENTAGE_COPAY %>" />
+        </div>
+
+        <div class="form-group">
+            <label for="">Employment Code</label>
+            <input type="text" name="EMPLOYMENT_CODE" value="<%= data.EMPLOYMENT_CODE %>" />
+        </div>
+
+        <div class="form-group">
+            <label for="">Employment Status</label>
+            <input type="text" name="EMPLOYMENT_STATUS" value="<%= data.EMPLOYMENT_STATUS %>" />
+        </div>
+
+        <div class="form-group">
+            <label for="">Hire Date For Working</label>
+            <input type="text" name="HIRE_DATE_FOR_WORKING" value="<%= data.HIRE_DATE_FOR_WORKING %>" />
+        </div>
+
+        <div class="form-group">
+            <label for="">Workers Comp Code</label>
+            <input type="text" name="WORKERS_COMP_CODE" value="<%= data.WORKERS_COMP_CODE %>" />
+        </div>
+
+        <div class="form-group">
+            <label for="">Termination Date</label>
+            <input type="text" name="TERMINATION_DATE" value="<%= data.TERMINATION_DATE %>" />
+        </div>
+
+        <div class="form-group">
+            <label for="">Rehire Date For Working</label>
+            <input type="text" name="REHIRE_DATE_FOR_WORKING" value="<%= data.REHIRE_DATE_FOR_WORKING %>" />
+        </div>
+
+        <div class="form-group">
+            <label for="">Last Review Date</label>
+            <input type="text" name="LAST_REVIEW_DATE" value="<%= data.LAST_REVIEW_DATE %>" />
+        </div>
+
+        <div class="form-group">
+            <label for="">Number Days Requirement Of Working Per Month</label>
+            <input type="text" name="NUMBER_DAYS_REQUIREMENT_OF_WORKING_PER_MONTH"
+                value="<%= data.NUMBER_DAYS_REQUIREMENT_OF_WORKING_PER_MONTH %>" />
+        </div>
+
+    </div>
+    <button type="submit" class="submit">Submit</button>
+</form>
+
+<script>
+    function findEmployee() {
+        var personalId = document.getElementById('id').value;
+        window.location.href = '/EmployeeManagement?id=' + personalId;
+    }
+</script>

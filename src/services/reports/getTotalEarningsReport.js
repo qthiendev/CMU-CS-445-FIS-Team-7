@@ -47,7 +47,7 @@ const getTotalEarningsReport = async (id, fullname, gender, ethnicity, totalDayW
                 let tempTotalPaid = (parseFloat(prItem['Pay Amount']) / 22) * hrItem.TOTAL_DAYS_WORKED;
                 return {
                     ...hrItem,
-                    TOTAL_PAID: tempTotalPaid.toFixed(2)
+                    TOTAL_PAID: parseFloat(tempTotalPaid) 
                 };
             } else {
                 return hrItem;

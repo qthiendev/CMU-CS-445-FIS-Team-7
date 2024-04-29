@@ -21,10 +21,15 @@
 </head>
 
 <body>
-  <!-- sidebar -->
+  <!-- sidebar --> 
+  <div class="background">
+  </div> 
   <aside class="sidebar">
     <!-- Logo -->
     <img src="/img/logo.svg" alt="logo" />
+
+     <!-- btn close -->
+     <div class="btn-close" style="cursor: pointer;"><i class='bx bx-x'></i></div>
 
     <!-- navigation -->
     <ul class="nav">
@@ -39,12 +44,12 @@
         <div class="btn btn-list" style="cursor: pointer">
           <i class="bx bxs-report"></i>
           <span>Reports</span>
-          <i class="bx bx-chevron-down"></i>
+          <i class="bx bx-chevron-down bx-chevron-down-1"></i>
         </div>
       </li>
 
       <!-- subnav -->
-      <ul class="sub-nav">
+      <ul class="sub-nav-1">
         <li>
           <a href="/VacationDaysReport" class="btn">
             <span> Taken vacation days</span>
@@ -63,45 +68,48 @@
       </ul>
 
       <li>
-        <a href="#!" class="btn">
-          <i class="bx bxs-bell"></i>
-          <span>Alerts</span>
-        </a>
+        <div class="btn btn-list-2" style="cursor: pointer">
+          <i class="bx bxs-report "></i>
+          <span>Alert</span>
+          <i class="bx bx-chevron-down bx-chevron-down-2"></i>
+        </div>
       </li>
 
-      <li>
-        <a href="/HiringAnniversaryAlert" class="btn">
-          <i class="bx bxs-grid-alt"></i>
-          <span>Alert Hiring Anniversary</span>
-        </a>
-      </li>
+      <ul class="sub-nav-2">
+        <li>
+          <a href="/HiringAnniversaryAlert" class="btn">
+            <span>Alert Hiring Anniversary</span>
+          </a>
+        </li>
 
-      <li>
-        <a href="/VacationDaysAlert" class="btn">
-          <i class="bx bxs-grid-alt"></i>
-          <span>Alert Vacation Days</span>
-        </a>
-      </li>
+        <li>
+          <a href="/VacationDaysAlert" class="btn">
+            <span>Alert Vacation Days</span>
+          </a>
+        </li>
 
-      <li>
-        <a href="/BenefitsPlanAlert" class="btn">
-          <i class="bx bxs-grid-alt"></i>
-          <span>Alert Benefits Plan</span>
-        </a>
-      </li>
+        <li>
+          <a href="/BenefitsPlanAlert" class="btn">
+            <span>Alert Benefits Plan</span>
+          </a>
+        </li>
 
-      <li>
-        <a href="/BirthdayAlert" class="btn">
-          <i class="bx bxs-grid-alt"></i>
-          <span>Alert Birthday</span>
-        </a>
-      </li>
+        <li>
+          <a href="/BirthdayAlert" class="btn">
+            <span>Alert Birthday</span>
+          </a>
+        </li>
+
+      </ul>
 
     </ul>
   </aside>
 
   <!-- content -->
-  <div class="content">
+  <div class="content"> 
+    <!-- btn click --> 
+    <div class="btn-action"></div>
+
     <!-- header -->
     <header class="header">
       <div id="clock"></div>
@@ -111,7 +119,7 @@
     <main>
       <!-- main-top -->
       <div class="main-top">
-        <h2 class="title">Home page</h2>
+        <h2 class="title">Homepage</h2>
         <div class="selection"></div>
       </div>
       <!-- main bottom -->
