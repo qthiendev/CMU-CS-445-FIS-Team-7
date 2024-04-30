@@ -1,5 +1,6 @@
 const { getAllInformation } = require('../../services/managements/processEmployee');
 const { getInformation } = require('../../services/managements/processEmployee');
+const { setInformation } = require('../../services/managements/processEmployee');
 
 const renderManageAllEmployeesView = async (req, res) => {
     try {
@@ -37,7 +38,63 @@ const renderManageEmployeeView = async (req, res) => {
     }
 }
 
+const setEmployeeInformation = async (req, res) => {
+    try {
+        console.log(req.query)
+        const {
+            id,
+            CURRENT_FIRST_NAME,
+            CURRENT_LAST_NAME,
+            CURRENT_MIDDLE_NAME,
+            BIRTH_DATE,
+            SOCIAL_SECURITY_NUMBER,
+            DRIVERS_LICENSE,
+            CURRENT_ADDRESS_1,
+            CURRENT_ADDRESS_2,
+            CURRENT_CITY,
+            CURRENT_COUNTRY,
+            CURRENT_ZIP,
+            CURRENT_GENDER,
+            CURRENT_PHONE_NUMBER,
+            CURRENT_PERSONAL_EMAIL,
+            CURRENT_MARITAL_STATUS,
+            ETHNICITY,
+            SHAREHOLDER_STATUS,
+            BENEFIT_PLANS_ID
+        } = req.query;
+
+        // Update the employee information
+        await setInformation(
+            id,
+            CURRENT_FIRST_NAME,
+            CURRENT_LAST_NAME,
+            CURRENT_MIDDLE_NAME,
+            BIRTH_DATE,
+            SOCIAL_SECURITY_NUMBER,
+            DRIVERS_LICENSE,
+            CURRENT_ADDRESS_1,
+            CURRENT_ADDRESS_2,
+            CURRENT_CITY,
+            CURRENT_COUNTRY,
+            CURRENT_ZIP,
+            CURRENT_GENDER,
+            CURRENT_PHONE_NUMBER,
+            CURRENT_PERSONAL_EMAIL,
+            CURRENT_MARITAL_STATUS,
+            ETHNICITY,
+            SHAREHOLDER_STATUS,
+            BENEFIT_PLANS_ID
+        );
+
+        // Redirect back to the manageEmployeePage.ejs view
+        res.redirect('/EmployeeManagement?id=' + id);
+    } catch (err) {
+        console.log('[System] Error at employeeController.js | setEmployeeInformation: ', err);
+    }
+}
+
 module.exports = {
     renderManageAllEmployeesView,
-    renderManageEmployeeView
+    renderManageEmployeeView,
+    setEmployeeInformation
 };

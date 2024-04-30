@@ -1,16 +1,15 @@
-<form action="/EmployeeManagement?id=<%= id %>" method="get">
+<form action="/EditEmployee" method="get">
     <div class="wrapper">
 
         <div class="form-group">
             <label for="id">ID</label>
             <input type="text" id="id" name="id" value="<%= data.PERSONAL_ID %>" />
+            <button onclick="findEmployee(event)">Find</button>
         </div>
-
-        <button onclick="findEmployee(event)">Find</button>
 
         <div class="form-group">
             <label for="">First Name</label>
-            <input type="text" name="CURRENT_FIRST_NAME" value="<%= data.CURRENT_FIRST_NAME %>" />
+            <input type="text" name="CURRENT_FIRST_NAME" value="<%= data.CURRENT_FIRST_NAME %>" />    
         </div>
 
         <div class="form-group">
@@ -25,8 +24,7 @@
 
         <div class="form-group">
             <label for="">Birth Date</label>
-            <input type="text" name="BIRTH_DATE"
-                value="<%= data.BIRTH_DATE ? data.BIRTH_DATE.toLocaleDateString() : ''%>" />
+            <input type="text" name="BIRTH_DATE" value="<%= data.BIRTH_DATE ? data.BIRTH_DATE.toLocaleDateString() : ''%>" />
         </div>
 
         <div class="form-group">
@@ -101,22 +99,22 @@
 
         <div class="form-group">
             <label for="">Plan Name</label>
-            <input type="text" name="PLAN_NAME" value="<%= data.PLAN_NAME %>" />
+            <input type="text" name="PLAN_NAME" readonly value="<%= data.PLAN_NAME %>" />
         </div>
 
         <div class="form-group">
             <label for="">Deductable</label>
-            <input type="text" name="DEDUCTABLE" value="<%= data.DEDUCTABLE %>" />
+            <input type="text" name="DEDUCTABLE" readonly value="<%= data.DEDUCTABLE %>" />
         </div>
 
         <div class="form-group">
             <label for="">Percentage Copay</label>
-            <input type="text" name="PERCENTAGE_COPAY" value="<%= data.PERCENTAGE_COPAY %>" />
+            <input type="text" name="PERCENTAGE_COPAY" readonly value="<%= data.PERCENTAGE_COPAY %>" />
         </div>
 
         <div class="form-group">
             <label for="">Employment Code</label>
-            <input type="text" name="EMPLOYMENT_CODE" value="<%= data.EMPLOYMENT_CODE %>" />
+            <input type="text" name="EMPLOYMENT_CODE" readonly value="<%= data.EMPLOYMENT_CODE %>" />
         </div>
 
         <div class="form-group">
@@ -157,6 +155,60 @@
             <label for="">Number Days Requirement Of Working Per Month</label>
             <input type="text" name="NUMBER_DAYS_REQUIREMENT_OF_WORKING_PER_MONTH"
                 value="<%= data.NUMBER_DAYS_REQUIREMENT_OF_WORKING_PER_MONTH %>" />
+        </div>
+
+        <div class="form-group">
+            <label for="">Payrate ID</label>
+            <input type="text" name="idPay_Rates"
+                value="<%= data['idPay Rates'] %>" />
+        </div>
+
+        <div class="form-group">
+            <label for="">Payrate Name</label>
+            <input type="text" name="Pay_Rate_Name"
+                value="<%= data['Pay Rate Name'] %>" />
+        </div>
+
+        <div class="form-group">
+            <label for="">Value</label>
+            <input type="text" name="Value"
+                value="<%= data['Value'] %>" />
+        </div>
+
+        <div class="form-group">
+            <label for="">Payrate</label>
+            <input type="text" name="Pay_Rate"
+                value="<%= data['Pay Rate'] %>" />
+        </div>
+
+        <div class="form-group">
+            <label for="">Paid to date</label>
+            <input type="text" name="Paid_To_Date"
+                value="<%= data['Paid To Date'] %>" />
+        </div>
+
+        <div class="form-group">
+            <label for="">Pay Type</label>
+            <input type="text" name="Pay_Type"
+                value="<%= data['Pay Type'] %>" />
+        </div>
+
+        <div class="form-group">
+            <label for="">Tax Percentage</label>
+            <input type="text" name="Tax_Percentage"
+                value="<%= data['Tax Percentage'] %>" />
+        </div>
+
+        <div class="form-group">
+            <label for="">Pay Amount</label>
+            <input type="text" name="Pay_Amount"
+                value="<%= data['Pay Amount'] %>" />
+        </div>
+
+        <div class="form-group">
+            <label for="">PT - Level C</label>
+            <input type="text" name="PT_Level C"
+                value="<%= data['PT - Level C'] %>" />
         </div>
 
     </div>

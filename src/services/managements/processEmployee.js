@@ -1,4 +1,4 @@
-const { queryHRDB } = require('../../database/queryHRDB');
+const { queryHRDB, queryHRDBSetOnly } = require('../../database/queryHRDB');
 const { queryPRDB } = require('../../database/queryPRDB');
 const { merge } = require('../../routers/web');
 
@@ -101,16 +101,35 @@ const getInformation = async (id) => {
 
         var dataPR = await queryPRDB(sqlQueryPR);
 
-        mergeData = dataHR.map(hrRow => {
-            const prRow = dataPR.find(prRow => prRow['Employee Number'] === hrRow['[E].[EMPLOYMENT_CODE]']);
-            return prRow ? {...hrRow, ...prRow} : hrRow;
+        var mergeData = dataHR.map(hrRow => {
+            const prRow = dataPR.find(prRow => String(prRow['Employee Number']) === String(hrRow['EMPLOYMENT_CODE']));
+            const defaultPrRow = {
+                'idPay Rates': null,
+                'Pay Rate Name': null,
+                'Value': null,
+                'Pay Rate': null,
+                'Paid To Date': null,
+                'Pay Type': null,
+                'Tax Percentage': null,
+                'Pay Amount': null,
+                'PT - Level C': null
+            };
+            if (prRow) {
+                const { ['Employee Number']: _, ...restOfPrRow } = prRow;
+                return { ...hrRow, ...defaultPrRow, ...restOfPrRow };
+            }
+            return { ...hrRow, ...defaultPrRow };
         });
+
+        console.log(mergeData)
+        if (Number(id) >= mergeData.length)
+            return mergeData[mergeData.length - 1];
 
         if (id !== '' && id !== undefined) {
             mergeData = mergeData.filter(record =>
                 record.PERSONAL_ID == id)
         }
-        
+
         return mergeData[0];
     }
     catch (err) {
@@ -118,8 +137,55 @@ const getInformation = async (id) => {
     }
 }
 
-const setInformation = async (id) => {
-
+const setInformation = async (
+    PERSONAL_ID,
+    CURRENT_FIRST_NAME,
+    CURRENT_LAST_NAME,
+    CURRENT_MIDDLE_NAME,
+    BIRTH_DATE,
+    SOCIAL_SECURITY_NUMBER,
+    DRIVERS_LICENSE,
+    CURRENT_ADDRESS_1,
+    CURRENT_ADDRESS_2,
+    CURRENT_CITY,
+    CURRENT_COUNTRY,
+    CURRENT_ZIP,
+    CURRENT_GENDER,
+    CURRENT_PHONE_NUMBER,
+    CURRENT_PERSONAL_EMAIL,
+    CURRENT_MARITAL_STATUS,
+    ETHNICITY,
+    SHAREHOLDER_STATUS,
+    BENEFIT_PLAN_ID
+) => {
+    try{
+    var queryHRDB = `use [HumanResourceDB]
+        UPDATE [DBO].[PERSONAL]
+        SET [CURRENT_FIRST_NAME] = N'${CURRENT_FIRST_NAME}',
+        [CURRENT_LAST_NAME] = N'${CURRENT_LAST_NAME}',
+        [CURRENT_MIDDLE_NAME] = N'${CURRENT_MIDDLE_NAME}',
+        [BIRTH_DATE] = CONVERT(DATETIME, '${BIRTH_DATE}', 103),
+        [SOCIAL_SECURITY_NUMBER] = N'${SOCIAL_SECURITY_NUMBER}',
+        [DRIVERS_LICENSE] = N'${DRIVERS_LICENSE}',
+        [CURRENT_ADDRESS_1] = N'${CURRENT_ADDRESS_1}',
+        [CURRENT_ADDRESS_2] = N'${CURRENT_ADDRESS_2}',
+        [CURRENT_CITY] = N'${CURRENT_CITY}',
+        [CURRENT_COUNTRY] = N'${CURRENT_COUNTRY}',
+        [CURRENT_ZIP] = ${Number(CURRENT_ZIP)},
+        [CURRENT_GENDER] = N'${CURRENT_GENDER}',
+        [CURRENT_PHONE_NUMBER] = N'${CURRENT_PHONE_NUMBER}',
+        [CURRENT_PERSONAL_EMAIL] = N'${CURRENT_PERSONAL_EMAIL}',
+        [CURRENT_MARITAL_STATUS] = N'${CURRENT_MARITAL_STATUS}',
+        [ETHNICITY] = N'${ETHNICITY}',
+        [SHAREHOLDER_STATUS] = ${Number(SHAREHOLDER_STATUS)},
+        [BENEFIT_PLAN_ID] = ${Number(BENEFIT_PLAN_ID)}
+        WHERE [PERSONAL_ID] = ${PERSONAL_ID};`
+    // Execute the query here
+    console.log(queryHRDB)
+    console.log(queryHRDBSetOnly(queryHRDB));
+}  catch (err) {
+    console.log('[System] processEmployee.js | Cannot set Information [' + id + ']: ', err);
+}
 }
 
 module.exports = {

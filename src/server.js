@@ -6,11 +6,11 @@ const webRoutes = require("./routers/web.js");
 const session = require('express-session');
 
 app.use(session({
-    secret: 'secret', 
+    secret: 'secret',
     resave: false,
     saveUninitialized: false,
     expires: true,
-    maxAge: 10 * 60 * 1000, 
+    maxAge: 10 * 60 * 1000,
 }));
 
 app.use(express.json());
@@ -18,6 +18,16 @@ app.use(express.urlencoded({ extended: true }));
 configViewEngine(app);
 app.use("/", webRoutes);
 
+// Local host: for own computer only
 app.listen(port, () => {
     console.log(`[SYSTEM] Listening on port ${port}.`);
+    console.log(`[SYSTEM] ACCESS LINK: http://localhost:${port}.`);
 });
+
+// LAN host: for computer that same internet, note that may ip different
+// const ip = '172.21.2.151';
+// app.listen(port, ip, () => {
+//     console.log(`[SYSTEM] Listening on port ${port}.`);
+//     console.log(`[SYSTEM] ACCESS LINK: http://${ip}:${port}.`);
+// });
+

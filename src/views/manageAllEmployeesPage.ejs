@@ -11,6 +11,7 @@
   <!-- Embed font -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link
     href="https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,600;1,600&family=Poppins:wght@400;500;600;700&display=swap"
     rel="stylesheet" />
@@ -21,15 +22,15 @@
 </head>
 
 <body>
-  <!-- sidebar --> 
+  <!-- sidebar -->
   <div class="background">
-  </div> 
+  </div>
   <aside class="sidebar">
     <!-- Logo -->
     <img src="/img/logo.svg" alt="logo" />
 
-     <!-- btn close -->
-     <div class="btn-close" style="cursor: pointer;"><i class='bx bx-x'></i></div>
+    <!-- btn close -->
+    <div class="btn-close" style="cursor: pointer;"><i class='bx bx-x'></i></div>
 
     <!-- navigation -->
     <ul class="nav">
@@ -106,8 +107,8 @@
   </aside>
 
   <!-- content -->
-  <div class="content"> 
-    <!-- btn click --> 
+  <div class="content">
+    <!-- btn click -->
     <div class="btn-action"></div>
 
     <!-- header -->
@@ -137,6 +138,7 @@
                 <th>Address</th>
                 <th>Email</th>
                 <th>Phone</th>
+                <th>Status</th>
                 <th></th>
                 <th></th>
               </tr>
@@ -167,14 +169,15 @@
                     <%= data[i].Phone%>
                   </td>
                   <td>
-                    <% if(data[i].Status=='X' ) { %>
-                      <button><a href="/EmployeeManagement?id=<%= data[i].ID %>" class="btn">MODIFY</a></button>
-                      <% } else { %>
-                        <button>ADD</button>
-                        <% } %>
+                    <%= data[i].Status%>
                   </td>
                   <td>
-                    <button>DELETE</button>
+                    <button><a href="/EmployeeManagement?id=<%= data[i].ID %>" class="btn"><i class="fa fa-edit"
+                          style="font-size:18px;"></i></a></button>
+                  </td>
+                  <td>
+                    <button><a href="/DeleteEmployee?id=<%= data[i].ID %>" class="btn"><i class="fa fa-trash"
+                          style="font-size:18px;"></i></a></button>
                   </td>
                 </tr>
                 <% } %>

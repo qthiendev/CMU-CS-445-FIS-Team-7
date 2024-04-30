@@ -15,6 +15,7 @@ const { renderVacationDaysAlertView } = require('../controllers/alerts/vacationD
 
 const { renderManageAllEmployeesView } = require('../controllers/managements/employeeController.js');
 const { renderManageEmployeeView } = require('../controllers/managements/employeeController.js');
+const { setEmployeeInformation } = require('../controllers/managements/employeeController.js');
 
 router.get("/", isLoggedInMiddleware, renderHomeView);
 router.get("/login", renderLoginView); 
@@ -29,5 +30,7 @@ router.get('/VacationDaysAlert', isLoggedInMiddleware, renderVacationDaysAlertVi
 
 router.get('/AllEmployeesManagement', isLoggedInMiddleware, renderManageAllEmployeesView);
 router.get('/EmployeeManagement', isLoggedInMiddleware, renderManageEmployeeView);
+
+router.get('/EditEmployee', setEmployeeInformation)
 
 module.exports = router;
