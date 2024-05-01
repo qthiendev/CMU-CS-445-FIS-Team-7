@@ -13,12 +13,13 @@ const { renderBirthdayAlertView } = require('../controllers/alerts/birthdayAlert
 const { renderHirringAnniversaryAlertView } = require('../controllers/alerts/hirringAnniversaryAlertController');
 const { renderVacationDaysAlertView } = require('../controllers/alerts/vacationDaysAlertController');
 
-const { renderManageAllEmployeesView } = require('../controllers/managements/employeeController.js');
-const { renderManageEmployeeView } = require('../controllers/managements/employeeController.js');
-const { setEmployeeInformation } = require('../controllers/managements/employeeController.js');
+const { renderManageAllEmployeesView } = require('../controllers/managements/employeesManagementController.js');
+const { renderManageEmployeeView } = require('../controllers/managements/employeesManagementController.js');
+const { setEmployeeInformation } = require('../controllers/managements/employeesManagementController.js');
+const { renderSpecificEmployeeInformationView } = require('../controllers/managements/employeesManagementController.js');
 
 router.get("/", isLoggedInMiddleware, renderHomeView);
-router.get("/login", renderLoginView); 
+router.get("/login", renderLoginView);
 
 router.get('/VacationDaysReport', isLoggedInMiddleware, renderVacationDaysReportView);
 router.get('/AverageBenefitsReport', isLoggedInMiddleware, renderAverageBenefitsReportView);
@@ -30,6 +31,7 @@ router.get('/VacationDaysAlert', isLoggedInMiddleware, renderVacationDaysAlertVi
 
 router.get('/AllEmployeesManagement', isLoggedInMiddleware, renderManageAllEmployeesView);
 router.get('/EmployeeManagement', isLoggedInMiddleware, renderManageEmployeeView);
+router.get('/EmployeeInformation', isLoggedInMiddleware, renderSpecificEmployeeInformationView);
 
 router.get('/EditEmployee', setEmployeeInformation)
 

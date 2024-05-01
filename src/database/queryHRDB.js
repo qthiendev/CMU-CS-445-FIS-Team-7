@@ -17,12 +17,11 @@ const queryHRDB = async (sqlQueryHR) => {
 const queryHRDBSetOnly = async (sqlQueryHR) => {
   try {
     const request = connectionHR.request();
-    const results = await request.query(sqlQueryHR);
+    await request.query(sqlQueryHR);
 
     console.log('[System] queryHRDB.js | Queried HRDB Set Only.');
-    return results;
   } catch (error) {
-    console.error("[SYSTEM] queryHRDB.js | Cannot query HRDB: ", error);
+    console.error("[SYSTEM] queryHRDB.js | Cannot query HRDB Set Only: ", error);
     throw error;
   }
 };

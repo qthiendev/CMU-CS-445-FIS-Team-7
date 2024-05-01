@@ -11,7 +11,7 @@
   <!-- Embed font -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <link
     href="https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,600;1,600&family=Poppins:wght@400;500;600;700&display=swap"
     rel="stylesheet" />
@@ -138,6 +138,7 @@
                 <th>Address</th>
                 <th>Email</th>
                 <th>Phone</th>
+                <th>Shareholder</th>
                 <th>Status</th>
                 <th></th>
                 <th></th>
@@ -169,10 +170,13 @@
                     <%= data[i].Phone%>
                   </td>
                   <td>
+                    <%= data[i].Shareholder%>
+                  </td>
+                  <td>
                     <%= data[i].Status%>
                   </td>
                   <td>
-                    <button><a href="/EmployeeManagement?id=<%= data[i].ID %>" class="btn"><i class="fa fa-edit"
+                    <button><a href="/EmployeeInformation?id=<%= data[i].ID %>" class="btn"><i class="fa fa-bars"
                           style="font-size:18px;"></i></a></button>
                   </td>
                   <td>

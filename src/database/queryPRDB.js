@@ -13,6 +13,19 @@ const queryPRDB = async (mysqlQueryPR) => {
   }
 };
 
+const queryPRDBSetOnly = async (mysqlQueryPR) => {
+  try {
+    await connectionPR.promise().query(mysqlQueryPR);
+
+    console.log('[System] queryPRDB.js | Queried HRDB Set Only.');
+    
+  } catch (error) {
+    console.error("[SYSTEM] queryPRDB.js | Cannot query HRDB Set Only: ", error);
+    throw error;
+  }
+};
+
 module.exports = {
   queryPRDB,
+  queryPRDBSetOnly
 };

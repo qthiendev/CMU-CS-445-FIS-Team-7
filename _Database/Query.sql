@@ -145,3 +145,20 @@ use [HumanResourceDB]
         [SHAREHOLDER_STATUS] = 0,
         [BENEFIT_PLAN_ID] = undefined
         WHERE [PERSONAL_ID] = 1;
+
+SELECT idEmployee,
+`Employee Number`,
+`idPay Rates`,
+`Pay Rate Name`,
+`Value`,
+`Pay Rate`,
+`Paid To Date`,
+`Pay Rate`,
+`Pay Type`,
+`Tax Percentage`,
+`Pay Amount`,
+`PT - Level C`
+FROM mydb.`employee`
+JOIN mydb.`pay rates`
+ON mydb.`employee`.`Pay Rates_idPay Rates` = mydb.`pay rates`.`idPay Rates`
+order by idEmployee;
