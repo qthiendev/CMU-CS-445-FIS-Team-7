@@ -11,7 +11,7 @@ const renderLoginView = async (req, res) => {
             res.redirect("/");
         }
         else{
-             res.render("loginPage.ejs", { error: 'Invalid login credentials. Please try again.' });
+             res.render("loginPage.ejs", { error: "Sorry, we are having trouble signing you in right now. Please try again later. " });
         }
     }
     catch (err) {
