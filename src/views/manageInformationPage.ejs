@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard</title>
+  <title>Information</title>
   <link rel="stylesheet" href="/css/reset.css">
   <link rel="stylesheet" href="/css/report.css">
 
@@ -120,7 +120,7 @@
     <main>
       <!-- main-top -->
       <div class="main-top">
-        <h2 class="title">All Employees</h2>
+        <h2 class="title">Personal Information</h2>
         <div class="selection"></div>
       </div>
       <!-- main bottom -->
@@ -149,34 +149,34 @@
               <% for(var i=0; i<data.length; i++) {%>
                 <tr>
                   <td>
-                    <%= data[i].ID %>
+                    <%= data[i].PERSONAL_ID %>
                   </td>
                   <td>
-                    <%= data[i].Fullname%>
+                    <%= data[i].FULLNAME%>
                   </td>
                   <td>
-                    <%= data[i].Gender%>
+                    <%= data[i].CURRENT_GENDER%>
                   </td>
                   <td>
-                    <%= data[i].Birthdate.toLocaleDateString()%>
+                    <%= data[i].BIRTH_DATE.toLocaleDateString()%>
                   </td>
                   <td>
-                    <%= data[i].Address%>
+                    <%= data[i].ADDRESS%>
                   </td>
                   <td>
-                    <%= data[i].Email%>
+                    <%= data[i].CURRENT_PERSONAL_EMAIL%>
                   </td>
                   <td>
-                    <%= data[i].Phone%>
+                    <%= data[i].CURRENT_PHONE_NUMBER%>
                   </td>
                   <td>
-                    <%= data[i].Shareholder%>
+                    <%= data[i].SHAREHOLDER_STATUS%>
                   </td>
                   <td>
-                    <%= data[i].Status%>
+                    <%= data[i].EMPLOYMENT_STATUS%>
                   </td>
                   <td>
-                    <button><a href="/EmployeeInformation?id=<%= data[i].ID %>" class="btn"><i class="fa fa-bars"
+                    <button><a href="/Information/Specific?id=<%= data[i].PERSONAL_ID %>" class="btn"><i class="fa fa-bars"
                           style="font-size:18px;"></i></a></button>
                   </td>
                   <td>

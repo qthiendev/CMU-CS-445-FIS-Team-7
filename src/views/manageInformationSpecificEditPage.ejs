@@ -1,4 +1,4 @@
-<form action="/EditEmployee" method="get">
+<form action="/EditInformation" method="get">
     <div class="wrapper">
 
         <div class="form-group">
@@ -194,6 +194,6 @@
     function findEmployee(event) {
         event.preventDefault();
         var personalId = document.getElementById('id').value;
-        window.location.href = '/EmployeeManagement?id=' + encodeURIComponent(personalId);
+        window.location.href = '/Information/Specific/Edit?id=' + encodeURIComponent(personalId);
     }
 </script>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,12 +8,14 @@
     <link rel="stylesheet" href="/css/login.css" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.11.0/toastify.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.11.0/toastify.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.11.0/toastify.min.css">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
+
 <body>
     <div class="box">
-        <form action="/Login" id="form-login">
+        <form action="/TryLogin" id="form-login">
             <h1>Login</h1>
             <div class="form-group">
                 <input type="text" name="id" id="username" required />
@@ -37,24 +40,26 @@
     <script src="/js/login.js"></script>
 
     <script>
-      $(document).ready(function() {
-          var error = "<%= error %>";
-          console.log =error;
-  
-          if (error !== '') {
-              Toastify({
-                  text: error,
-                  duration: 3000,
-                  backgroundColor: 'linear-gradient(to right, #ff416c, #ff4b2b)',
-                  style: {
-                    fontSize: '18px', 
-                    'border-radius': '10px',
-                    fontWeight: 'bold'
-        }
-              }).showToast();
-          } 
-      });
-  </script>
-  
+        $(document).ready(function () {
+            var error = "<%= error ? error : '' %>";
+            console.log(error);
+
+            if (error && error !== '') {
+                Toastify({
+                    text: error,
+                    duration: 3000,
+                    backgroundColor: 'linear-gradient(to right, #ff416c, #ff4b2b)',
+                    style: {
+                        fontSize: '18px',
+                        'border-radius': '10px',
+                        fontWeight: 'bold'
+                    }
+                }).showToast();
+            }
+        });
+    </script>
+
+
 </body>
+
 </html>
