@@ -6,7 +6,7 @@
   }
   body {
     min-height: 100vh;
-    background-image: linear-gradient(to right, #3498db, #8e44ad);
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.863), rgba(0, 0, 0, 0.699));
     display: flex;
     justify-content: center;
     align-items: center;
@@ -71,10 +71,11 @@
     height: 50px;
     outline: none;
     border: none;
-    background-image: linear-gradient(to right, #3498db, #8e44ad);
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.863), rgba(0, 0, 0, 0.699));
     color: white;
     font-size: 16px;
     cursor: pointer;
+    border-radius: 10px;
   }
   #notification {
     position: absolute;

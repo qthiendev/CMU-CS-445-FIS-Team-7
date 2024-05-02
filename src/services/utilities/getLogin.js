@@ -14,11 +14,11 @@ const getLogin = async (id, password) => {
 
         if (data.length > 0)
             return true;
-
-        return false;
+        
+        return false; // Trả về false khi không tìm thấy thông tin đăng nhập hợp lệ
     } catch (err) {
         console.log('[System] getLogin.js | Cannot get Login: ', err);
+        return false;
     }
 }
-
 module.exports = { getLogin };
