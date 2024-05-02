@@ -1,7 +1,7 @@
 const btnList = document.querySelector(".btn.btn-list");
 const btnList_2 = document.querySelector(".btn-list-2");
 const subnav = document.querySelector(".sub-nav-1");
-console.log(subnav);
+
 const subnav_2 = document.querySelector(".sub-nav-2");
 const arrow = document.querySelector(".bx-chevron-down-1");
 const arrow_2 = document.querySelector(".bx-chevron-down-2");
