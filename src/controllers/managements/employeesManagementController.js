@@ -130,9 +130,19 @@ const setEmployeeInformation = async (req, res) => {
     }
 }
 
+const addPersonalInformation = async (req, res) => {
+
+}
+
+const addEmployeeInformation = async (req, res) =>{
+    
+} 
+
 module.exports = {
     renderManageAllEmployeesView,
     renderSpecificEmployeeInformationView,
     renderManageEmployeeView,
-    setEmployeeInformation
+    setEmployeeInformation,
+    addPersonalInformation,
+    addEmployeeInformation
 };
