@@ -19,15 +19,15 @@ configViewEngine(app);
 app.use("/", webRoutes);
 
 // Local host: for own computer only
-app.listen(port, () => {
-    console.log(`[SYSTEM] Listening on port ${port}.`);
-    console.log(`[SYSTEM] ACCESS LINK: http://localhost:${port}.`);
-});
+// app.listen(port, () => {
+//     console.log(`[SYSTEM] Listening on port ${port}.`);
+//     console.log(`[SYSTEM] ACCESS LINK: http://localhost:${port}.`);
+// });
 
 // LAN host: for computer that same internet, note that may ip different
-// const ip = '172.21.2.151';
-// app.listen(port, ip, () => {
-//     console.log(`[SYSTEM] Listening on port ${port}.`);
-//     console.log(`[SYSTEM] ACCESS LINK: http://${ip}:${port}.`);
-// });
+const ip = '172.25.133.66';
+app.listen(port, ip, () => {
+    console.log(`[SYSTEM] Listening on port ${port}.`);
+    console.log(`[SYSTEM] ACCESS LINK: http://${ip}:${port}.`);
+});
 

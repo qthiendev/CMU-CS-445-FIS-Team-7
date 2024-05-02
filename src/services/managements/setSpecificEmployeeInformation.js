@@ -57,6 +57,7 @@ const setSpecificEmployeeInformation = async (
     idPay_Rates
 ) => {
     try {
+        // If you want multiline string , use ``, kinda smart 
         var queryHRDB_PersonalUpdate = `use [HumanResourceDB]
         UPDATE [DBO].[PERSONAL]
         SET [CURRENT_FIRST_NAME] = ${nullCheck(CURRENT_FIRST_NAME)},
@@ -78,6 +79,7 @@ const setSpecificEmployeeInformation = async (
         [SHAREHOLDER_STATUS] = ${nullCheck(SHAREHOLDER_STATUS, 'number')},
         [BENEFIT_PLAN_ID] = ${nullCheck(BENEFIT_PLAN_ID, 'number')}
         WHERE [PERSONAL_ID] = ${PERSONAL_ID};`
+
         queryHRDBSetOnly(queryHRDB_PersonalUpdate);
 
         if (EMPLOYMENT_CODE) {
