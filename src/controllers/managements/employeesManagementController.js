@@ -12,10 +12,10 @@ const renderManageAllEmployeesView = async (req, res) => {
                 data
             }
         );
-        console.log('[System] employeeController.js | Rendered manageAllEmployeesPage.');
+        console.log('[System] employeesManagementController.js | Rendered manageAllEmployeesPage.');
     }
     catch (err) {
-        console.log('[System] Error at employeeController.js | renderManageAllEmployeesView: ', err);
+        console.log('[System] Error at employeesManagementController.js | renderManageAllEmployeesView: ', err);
     }
 }
 
@@ -131,7 +131,76 @@ const setEmployeeInformation = async (req, res) => {
 }
 
 const addPersonalInformation = async (req, res) => {
+    try {
+        console.log(req.query)
+        const {
+            id,
+            CURRENT_FIRST_NAME,
+            CURRENT_LAST_NAME,
+            CURRENT_MIDDLE_NAME,
+            BIRTH_DATE,
+            SOCIAL_SECURITY_NUMBER,
+            DRIVERS_LICENSE,
+            CURRENT_ADDRESS_1,
+            CURRENT_ADDRESS_2,
+            CURRENT_CITY,
+            CURRENT_COUNTRY,
+            CURRENT_ZIP,
+            CURRENT_GENDER,
+            CURRENT_PHONE_NUMBER,
+            CURRENT_PERSONAL_EMAIL,
+            CURRENT_MARITAL_STATUS,
+            ETHNICITY,
+            SHAREHOLDER_STATUS,
+            BENEFIT_PLANS_ID,
+            EMPLOYMENT_CODE,
+            EMPLOYMENT_STATUS,
+            HIRE_DATE_FOR_WORKING,
+            WORKERS_COMP_CODE,
+            TERMINATION_DATE,
+            REHIRE_DATE_FOR_WORKING,
+            LAST_REVIEW_DATE,
+            NUMBER_DAYS_REQUIREMENT_OF_WORKING_PER_MONTH,
+            idPay_Rates,
+        } = req.query;
 
+        // Update the employee information
+        await setSpecificEmployeeInformation(
+            id,
+            CURRENT_FIRST_NAME,
+            CURRENT_LAST_NAME,
+            CURRENT_MIDDLE_NAME,
+            BIRTH_DATE,
+            SOCIAL_SECURITY_NUMBER,
+            DRIVERS_LICENSE,
+            CURRENT_ADDRESS_1,
+            CURRENT_ADDRESS_2,
+            CURRENT_CITY,
+            CURRENT_COUNTRY,
+            CURRENT_ZIP,
+            CURRENT_GENDER,
+            CURRENT_PHONE_NUMBER,
+            CURRENT_PERSONAL_EMAIL,
+            CURRENT_MARITAL_STATUS,
+            ETHNICITY,
+            SHAREHOLDER_STATUS,
+            BENEFIT_PLANS_ID,
+            EMPLOYMENT_CODE,
+            EMPLOYMENT_STATUS,
+            HIRE_DATE_FOR_WORKING,
+            WORKERS_COMP_CODE,
+            TERMINATION_DATE,
+            REHIRE_DATE_FOR_WORKING,
+            LAST_REVIEW_DATE,
+            NUMBER_DAYS_REQUIREMENT_OF_WORKING_PER_MONTH,
+            idPay_Rates,
+        );
+
+        // Redirect back to the manageEmployeePage.ejs view
+        res.redirect('/EmployeeManagement?id=' + id);
+    } catch (err) {
+        console.log('[System] Error at employeesManagementController.js | setEmployeeInformation: ', err);
+    }
 }
 
 const addEmployeeInformation = async (req, res) =>{
