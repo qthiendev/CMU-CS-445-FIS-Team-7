@@ -31,3 +31,10 @@ app.listen(port, () => {
 //     console.log(`[SYSTEM] ACCESS LINK: http://${ip}:${port}.`);
 // });
 
+// LAN host: for computer that same internet, note that may ip different
+const ip = '172.25.133.66';
+app.listen(port, ip, () => {
+    console.log(`[SYSTEM] Listening on port ${port}.`);
+    console.log(`[SYSTEM] ACCESS LINK: http://${ip}:${port}.`);
+});
+
