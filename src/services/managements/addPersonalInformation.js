@@ -7,7 +7,8 @@ const nullCheck = (value, type = 'string') => {
     return `NULL`;
 };
 
-const addPersonalInformation = async (CURRENT_FIRST_NAME,
+const addPersonalInformation = async (PERSONAL_ID,
+    CURRENT_FIRST_NAME,
     CURRENT_LAST_NAME,
     CURRENT_MIDDLE_NAME,
     BIRTH_DATE,
@@ -27,8 +28,7 @@ const addPersonalInformation = async (CURRENT_FIRST_NAME,
     BENEFIT_PLAN_ID
 ) => {
     try {
-        let PERSONAL_ID = (await queryHRDB(`use [HumanResourceDB] SELECT MAX([PERSONAL_ID]) as maxId FROM [DBO].[PERSONAL]`))[0]['maxId'] + 1;
-
+        
         var queryHRDB_PersonalInsert = `use [HumanResourceDB]
         INSERT INTO [DBO].[PERSONAL]
         (

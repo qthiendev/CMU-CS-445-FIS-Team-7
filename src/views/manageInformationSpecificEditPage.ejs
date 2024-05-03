@@ -134,7 +134,7 @@
             <div class="form-group">
                 <label for="">Termination Date</label>
                 <input type="text" name="TERMINATION_DATE"
-                    value="<%= data.TERMINATION_DATE ? data.TERMINATION_DATE.toLocaleDateString() : '' %>" />
+                    value="<%= data.TERMINATION_DATE ? data.TERMINATION_DATE : '' %>" />
             </div>
 
             <div class="form-group">
@@ -194,6 +194,6 @@
     function findEmployee(event) {
         event.preventDefault();
         var personalId = document.getElementById('id').value;
-        window.location.href = '/Information/Specific/Edit?id=' + encodeURIComponent(personalId);
+        window.location.href = '/EditInformation?id=' + encodeURIComponent(personalId);
     }
 </script>

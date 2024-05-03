@@ -121,7 +121,6 @@
       <!-- main-top -->
       <div class="main-top">
         <h2 class="title">Personal Information</h2>
-        <div class="selection"></div>
       </div>
       <!-- main bottom -->
       <div class="main-bottom">
@@ -140,7 +139,7 @@
                 <th>Phone</th>
                 <th>Shareholder</th>
                 <th>Status</th>
-                <th></th>
+                <th><button><a href="/Information/Add" class="btn">ADD <i class="fa fa-add"style="font-size:18px;"></i></a></button></button></th>
                 <th></th>
               </tr>
             </thead>
@@ -177,7 +176,7 @@
                   </td>
                   <td>
                     <button><a href="/Information/Specific?id=<%= data[i].PERSONAL_ID %>" class="btn"><i class="fa fa-bars"
-                          style="font-size:18px;"></i></a></button>
+                      style="font-size:18px;"></i></a></button>
                   </td>
                   <td>
                     <button><a href="/DeleteEmployee?id=<%= data[i].ID %>" class="btn"><i class="fa fa-trash"

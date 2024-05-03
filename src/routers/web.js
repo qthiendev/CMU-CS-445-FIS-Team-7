@@ -17,6 +17,8 @@ const { renderInformationView } = require('../controllers/managements/getInforma
 const { renderSpecificInformationView } = require('../controllers/managements/getSpecificInformationController.js');
 const { editInformation, renderInformationSpecificEdit } = require('../controllers/managements/editSpecificInformationController.js');
 
+const { addNewPersonalInformation, renderAddPersonalPage } = require('../controllers/managements/addPersonalController.js');
+
 router.get("/", isLoggedInMiddleware, renderHomeView);
 router.get("/Login", renderLoginView);
 router.get("/TryLogin", tryLogin);
@@ -32,8 +34,9 @@ router.get('/VacationDaysAlert', isLoggedInMiddleware, renderVacationDaysAlertVi
 router.get('/Information', isLoggedInMiddleware, renderInformationView);
 router.get('/Information/Specific', isLoggedInMiddleware, renderSpecificInformationView);
 router.get('/Information/Specific/Edit', isLoggedInMiddleware, renderInformationSpecificEdit);
-router.get('/EditInformation', editInformation);
+router.get('/EditInformation', isLoggedInMiddleware, editInformation);
 
-
+router.get('/Information/Add', isLoggedInMiddleware, renderAddPersonalPage);
+router.get('/AddNewPersonal', isLoggedInMiddleware, addNewPersonalInformation);
 
 module.exports = router;
