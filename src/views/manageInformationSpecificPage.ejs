@@ -1,128 +1,147 @@
-<form action="/Information/Specific/Edit?id=<%= data.PERSONAL_ID %>" method="get">
-    <div class="wrapper">
+<!DOCTYPE html>
+<html lang="en">
 
-        <div class="form-group">
-            <label for="id">ID</label>
-            <input type="text" id="id" name="id" value="<%= data.PERSONAL_ID %>" />
-            <button onclick="findEmployee(event)">Find</button>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="/Information/Specific/Edit?id=<%= data.PERSONAL_ID %>" method="get">
+        <div class="wrapper">
+
+            <div class="form-group">
+                <label for="id">ID</label>
+                <input type="text" id="id" name="id" value="<%= data.PERSONAL_ID %>" />
+                <button onclick="findEmployee(event)">Find</button>
+            </div>
+
+            <div>
+                <p>
+                    Fullname: <%= data.CURRENT_LAST_NAME + ' ' + data.CURRENT_MIDDLE_NAME + ' ' +
+                        data.CURRENT_FIRST_NAME %>
+                </p>
+                <p>
+                    Birth Date: <%= data.BIRTH_DATE ? data.BIRTH_DATE.toLocaleDateString() : '' %>
+                </p>
+                <p>
+                    Gender: <%= data.CURRENT_GENDER %>
+                </p>
+                <p>
+                    Phone: <%= data.CURRENT_PHONE_NUMBER %>
+                </p>
+                <p>
+                    Email: <%= data.CURRENT_PERSONAL_EMAIL %>
+                </p>
+                <p>
+                    Social Security Number: <%= data.SOCIAL_SECURITY_NUMBER %>
+                </p>
+                <p>
+                    Driver's License: <%= data.DRIVERS_LICENSE %>
+                </p>
+                <p>
+                    Address: <%= data.CURRENT_ADDRESS_1 %>, <%= data.CURRENT_CITY %>, <%= data.CURRENT_COUNTRY %>
+                </p>
+                <p>
+                    Zip: <%= data.CURRENT_ZIP %>
+                </p>
+                <p>
+                    Address 2: <%= data.CURRENT_ADDRESS_2 %>, <%= data.CURRENT_COUNTRY %>
+                </p>
+                <p>
+                    Marital Status: <%= data.CURRENT_MARITAL_STATUS %>
+                </p>
+                <p>
+                    Ethnicity: <%= data.ETHNICITY %>
+                </p>
+                <p>
+                    Shareholder: <%= data.SHAREHOLDER_STATUS %>
+                </p>
+                <p>
+                    Benefit Plans ID: <%= data.BENEFIT_PLANS_ID %>
+                </p>
+                <p>
+                    Plan Name: <%= data.PLAN_NAME %>
+                </p>
+                <p>
+                    Deductable: <%= data.DEDUCTABLE %>
+                </p>
+                <p>
+                    Percentage Copay: <%= data.PERCENTAGE_COPAY %>
+                </p>
+                <% if (data.EMPLOYMENT_CODE) { %>
+                    <p>
+                        Employment Code: <%= data.EMPLOYMENT_CODE %>
+                    </p>
+                    <p>
+                        Employment Status: <%= data.EMPLOYMENT_STATUS %>
+                    </p>
+                    <p>
+                        Hire Date For Working: <%= data.HIRE_DATE_FOR_WORKING ?
+                            data.HIRE_DATE_FOR_WORKING.toLocaleDateString() : '' %>
+                    </p>
+                    <p>
+                        Workers Comp Code: <%= data.WORKERS_COMP_CODE %>
+                    </p>
+                    <p>
+                        Termination Date: <%= data.TERMINATION_DATE ? data.TERMINATION_DATE.toLocaleDateString() : '' %>
+                    </p>
+                    <p>
+                        Rehire Date For Working: <%= data.REHIRE_DATE_FOR_WORKING ?
+                            data.REHIRE_DATE_FOR_WORKING.toLocaleDateString() : '' %>
+                    </p>
+                    <p>
+                        Last Review Date: <%= data.LAST_REVIEW_DATE ? data.LAST_REVIEW_DATE.toLocaleDateString() : '' %>
+                    </p>
+                    <p>
+                        Number Days Requirement Of Working Per Month: <%=
+                            data.NUMBER_DAYS_REQUIREMENT_OF_WORKING_PER_MONTH %>
+                    </p>
+                    <p>
+                        Payrate ID: <%= data['idPay Rates'] %>
+                    </p>
+                    <p>
+                        Payrate Name: <%= data['Pay Rate Name'] %>
+                    </p>
+                    <p>
+                        Value: <%= data['Value'] %>
+                    </p>
+                    <p>
+                        Payrate: <%= data['Pay Rate'] %>
+                    </p>
+                    <p>
+                        Paid to date: <%= data['Paid To Date'] %>
+                    </p>
+                    <p>
+                        Pay Type: <%= data['Pay Type'] %>
+                    </p>
+                    <p>
+                        Tax Percentage: <%= data['Tax Percentage'] %>
+                    </p>
+                    <p>
+                        Pay Amount: <%= data['Pay Amount'] %>
+                    </p>
+                    <p>
+                        PT - Level C: <%= data['PT - Level C'] %>
+                    </p>
+                    <% } %>
+            </div>
+
+
         </div>
+        <button type="submit" class="submit">Edit</button>
+    </form>
+    <a href="/Information"><button>Back</button></a>
 
-        <div>
-            <p>
-                Fullname: <%= data.CURRENT_LAST_NAME + ' ' + data.CURRENT_MIDDLE_NAME + ' ' + data.CURRENT_FIRST_NAME %>
-            </p>
-            <p>
-                Birth Date: <%= data.BIRTH_DATE ? data.BIRTH_DATE.toLocaleDateString() : '' %>
-            </p>
-            <p>
-                Gender: <%= data.CURRENT_GENDER %>
-            </p>
-            <p>
-                Phone: <%= data.CURRENT_PHONE_NUMBER %>
-            </p>
-            <p>
-                Email: <%= data.CURRENT_PERSONAL_EMAIL %>
-            </p>
-            <p>
-                Social Security Number: <%= data.SOCIAL_SECURITY_NUMBER %>
-            </p>
-            <p>
-                Driver's License: <%= data.DRIVERS_LICENSE %>
-            </p>
-            <p>
-                Address: <%= data.CURRENT_ADDRESS_1 %>, <%= data.CURRENT_CITY %>, <%= data.CURRENT_COUNTRY %>
-            </p>
-            <p>
-                Zip: <%= data.CURRENT_ZIP %>
-            </p>
-            <p>
-                Address 2: <%= data.CURRENT_ADDRESS_2 %>, <%= data.CURRENT_COUNTRY %>
-            </p> 
-            <p>
-                Marital Status: <%= data.CURRENT_MARITAL_STATUS %>
-            </p>
-            <p>
-                Ethnicity: <%= data.ETHNICITY %>
-            </p>
-            <p>
-                Shareholder: <%= data.SHAREHOLDER_STATUS %>
-            </p>
-            <p>
-                Benefit Plans ID: <%= data.BENEFIT_PLANS_ID %>
-            </p>
-            <p>
-                Plan Name: <%= data.PLAN_NAME %>
-            </p>
-            <p>
-                Deductable: <%= data.DEDUCTABLE %>
-            </p>
-            <p>
-                Percentage Copay: <%= data.PERCENTAGE_COPAY %>
-            </p>
-            <% if (data.EMPLOYMENT_CODE) { %>
-                <p>
-                    Employment Code: <%= data.EMPLOYMENT_CODE %>
-                </p>
-                <p>
-                    Employment Status: <%= data.EMPLOYMENT_STATUS %>
-                </p>
-                <p>
-                    Hire Date For Working: <%= data.HIRE_DATE_FOR_WORKING ? data.HIRE_DATE_FOR_WORKING.toLocaleDateString() : '' %>
-                </p>
-                <p>
-                    Workers Comp Code: <%= data.WORKERS_COMP_CODE %>
-                </p>
-                <p>
-                    Termination Date: <%= data.TERMINATION_DATE ? data.TERMINATION_DATE.toLocaleDateString() : '' %>
-                </p>
-                <p>
-                    Rehire Date For Working: <%= data.REHIRE_DATE_FOR_WORKING ? data.REHIRE_DATE_FOR_WORKING.toLocaleDateString() : '' %>
-                </p>
-                <p>
-                    Last Review Date: <%= data.LAST_REVIEW_DATE ? data.LAST_REVIEW_DATE.toLocaleDateString() : '' %>
-                </p>
-                <p>
-                    Number Days Requirement Of Working Per Month: <%= data.NUMBER_DAYS_REQUIREMENT_OF_WORKING_PER_MONTH %>
-                </p>
-                <p>
-                    Payrate ID: <%= data['idPay Rates'] %>
-                </p>
-                <p>
-                    Payrate Name: <%= data['Pay Rate Name'] %>
-                </p>
-                <p>
-                    Value: <%= data['Value'] %>
-                </p>
-                <p>
-                    Payrate: <%= data['Pay Rate'] %>
-                </p>
-                <p>
-                    Paid to date: <%= data['Paid To Date'] %>
-                </p>
-                <p>
-                    Pay Type: <%= data['Pay Type'] %>
-                </p>
-                <p>
-                    Tax Percentage: <%= data['Tax Percentage'] %>
-                </p>
-                <p>
-                    Pay Amount: <%= data['Pay Amount'] %>
-                </p>
-                <p>
-                    PT - Level C: <%= data['PT - Level C'] %>
-                </p>
-            <% } %>
-        </div>
-        
+    <script>
+        function findEmployee(event) {
+            event.preventDefault();
+            var personalId = document.getElementById('id').value;
+            window.location.href = '/Information/Specific?id=' + encodeURIComponent(personalId);
+        }
+    </script>
 
-    </div>
-    <button type="submit" class="submit">Edit</button>
-</form>
+</body>
 
-<script>
-    function findEmployee(event) {
-        event.preventDefault();
-        var personalId = document.getElementById('id').value;
-        window.location.href = '/Information/Specific?id=' + encodeURIComponent(personalId);
-    }
-</script>
+</html>

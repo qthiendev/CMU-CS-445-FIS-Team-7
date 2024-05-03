@@ -157,7 +157,7 @@
                     <%= data[i].CURRENT_GENDER%>
                   </td>
                   <td>
-                    <%= data[i].BIRTH_DATE.toLocaleDateString()%>
+                    <%= data.BIRTH_DATE ? data.BIRTH_DATE.toLocaleDateString() : ''%>
                   </td>
                   <td>
                     <%= data[i].ADDRESS%>
