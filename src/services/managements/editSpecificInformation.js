@@ -60,61 +60,33 @@ const editSpecificInformation = async (
     idPay_Rates
 ) => {
     try {
-        console.log( PERSONAL_ID,
-            CURRENT_FIRST_NAME,
-            CURRENT_LAST_NAME,
-            CURRENT_MIDDLE_NAME,
-            BIRTH_DATE,
-            SOCIAL_SECURITY_NUMBER,
-            DRIVERS_LICENSE,
-            CURRENT_ADDRESS_1,
-            CURRENT_ADDRESS_2,
-            CURRENT_CITY,
-            CURRENT_COUNTRY,
-            CURRENT_ZIP,
-            CURRENT_GENDER,
-            CURRENT_PHONE_NUMBER,
-            CURRENT_PERSONAL_EMAIL,
-            CURRENT_MARITAL_STATUS,
-            ETHNICITY,
-            SHAREHOLDER_STATUS,
-            BENEFIT_PLANS_ID,
-            EMPLOYMENT_CODE,
-            EMPLOYMENT_STATUS,
-            HIRE_DATE_FOR_WORKING,
-            WORKERS_COMP_CODE,
-            TERMINATION_DATE,
-            REHIRE_DATE_FOR_WORKING,
-            LAST_REVIEW_DATE,
-            NUMBER_DAYS_REQUIREMENT_OF_WORKING_PER_MONTH,
-            idPay_Rates);
         // If you want multiline string , use ``, kinda smart 
         var queryHRDB_PersonalUpdate = `use [HumanResourceDB]
         UPDATE [DBO].[PERSONAL]
-        SET [CURRENT_FIRST_NAME] = ${nullCheck(CURRENT_FIRST_NAME)},
-        [CURRENT_LAST_NAME] = ${nullCheck(CURRENT_LAST_NAME)},
-        [CURRENT_MIDDLE_NAME] = ${nullCheck(CURRENT_MIDDLE_NAME)},
-        [BIRTH_DATE] = ${BIRTH_DATE ? `CONVERT(DATETIME, '${BIRTH_DATE}', 103)` : `NULL`},
-        [SOCIAL_SECURITY_NUMBER] = ${nullCheck(SOCIAL_SECURITY_NUMBER)},
-        [DRIVERS_LICENSE] = ${nullCheck(DRIVERS_LICENSE)},
-        [CURRENT_ADDRESS_1] = ${nullCheck(CURRENT_ADDRESS_1)},
-        [CURRENT_ADDRESS_2] = ${nullCheck(CURRENT_ADDRESS_2)},
-        [CURRENT_CITY] = ${nullCheck(CURRENT_CITY)},
-        [CURRENT_COUNTRY] = ${nullCheck(CURRENT_COUNTRY)},
-        [CURRENT_ZIP] = ${nullCheck(CURRENT_ZIP, 'number')},
-        [CURRENT_GENDER] = ${nullCheck(CURRENT_GENDER)},
-        [CURRENT_PHONE_NUMBER] = ${nullCheck(CURRENT_PHONE_NUMBER)},
-        [CURRENT_PERSONAL_EMAIL] = ${nullCheck(CURRENT_PERSONAL_EMAIL)},
-        [CURRENT_MARITAL_STATUS] = ${nullCheck(CURRENT_MARITAL_STATUS)},
-        [ETHNICITY] = ${nullCheck(ETHNICITY)},
-        [SHAREHOLDER_STATUS] = ${nullCheck(SHAREHOLDER_STATUS, 'number')},
-        [BENEFIT_PLAN_ID] = ${nullCheck(BENEFIT_PLANS_ID, 'number')}
-        WHERE [PERSONAL_ID] = ${PERSONAL_ID};`
+        SET 
+        [CURRENT_FIRST_NAME]        = ${nullCheck(CURRENT_FIRST_NAME)},
+        [CURRENT_LAST_NAME]         = ${nullCheck(CURRENT_LAST_NAME)},
+        [CURRENT_MIDDLE_NAME]       = ${nullCheck(CURRENT_MIDDLE_NAME)},
+        [BIRTH_DATE]                = ${BIRTH_DATE ? `CONVERT(DATETIME, '${BIRTH_DATE}', 103)` : `NULL`},
+        [SOCIAL_SECURITY_NUMBER]    = ${nullCheck(SOCIAL_SECURITY_NUMBER)},
+        [DRIVERS_LICENSE]           = ${nullCheck(DRIVERS_LICENSE)},
+        [CURRENT_ADDRESS_1]         = ${nullCheck(CURRENT_ADDRESS_1)},
+        [CURRENT_ADDRESS_2]         = ${nullCheck(CURRENT_ADDRESS_2)},
+        [CURRENT_CITY]              = ${nullCheck(CURRENT_CITY)},
+        [CURRENT_COUNTRY]           = ${nullCheck(CURRENT_COUNTRY)},
+        [CURRENT_ZIP]               = ${nullCheck(CURRENT_ZIP, 'number')},
+        [CURRENT_GENDER]            = ${nullCheck(CURRENT_GENDER)},
+        [CURRENT_PHONE_NUMBER]      = ${nullCheck(CURRENT_PHONE_NUMBER)},
+        [CURRENT_PERSONAL_EMAIL]    = ${nullCheck(CURRENT_PERSONAL_EMAIL)},
+        [CURRENT_MARITAL_STATUS]    = ${nullCheck(CURRENT_MARITAL_STATUS)},
+        [ETHNICITY]                 = ${nullCheck(ETHNICITY)},
+        [SHAREHOLDER_STATUS]        = ${nullCheck(SHAREHOLDER_STATUS, 'number')},
+        [BENEFIT_PLAN_ID]           = ${nullCheck(BENEFIT_PLANS_ID, 'number')}
+        WHERE [PERSONAL_ID]         = ${PERSONAL_ID};`
 
         queryHRDBSetOnly(queryHRDB_PersonalUpdate);
 
         if (EMPLOYMENT_CODE) {
-
             //Get the Payamount base on idPayrate for updating Payrate
             let Pay_Amount = (await queryPRDB(`SELECT * 
                 FROM mydb.\`pay rates\` 
@@ -126,29 +98,31 @@ const editSpecificInformation = async (
 
             var queryHRDB_EmployeeUpdate = `use [HumanResourceDB]
                 UPDATE [DBO].[EMPLOYMENT]
-                SET [EMPLOYMENT_CODE] = ${nullCheck(EMPLOYMENT_CODE)},
-                [EMPLOYMENT_STATUS] = ${nullCheck(EMPLOYMENT_STATUS)},
-                [HIRE_DATE_FOR_WORKING] = ${HIRE_DATE_FOR_WORKING ? `CONVERT(DATETIME, '${HIRE_DATE_FOR_WORKING}', 103)` : `NULL`},
-                [WORKERS_COMP_CODE] = ${nullCheck(WORKERS_COMP_CODE)},
-                [TERMINATION_DATE] = ${TERMINATION_DATE ? `CONVERT(DATETIME, '${TERMINATION_DATE}', 103)` : `NULL`},
-                [REHIRE_DATE_FOR_WORKING] = ${REHIRE_DATE_FOR_WORKING ? `CONVERT(DATETIME, '${REHIRE_DATE_FOR_WORKING}', 103)` : `NULL`},
-                [LAST_REVIEW_DATE] = ${LAST_REVIEW_DATE ? `CONVERT(DATETIME, '${LAST_REVIEW_DATE}', 103)` : `NULL`},
-                [NUMBER_DAYS_REQUIREMENT_OF_WORKING_PER_MONTH] = ${nullCheck(NUMBER_DAYS_REQUIREMENT_OF_WORKING_PER_MONTH, 'number')}
-                WHERE [PERSONAL_ID] = ${PERSONAL_ID};`
+                SET 
+                [EMPLOYMENT_CODE]                               = ${nullCheck(EMPLOYMENT_CODE)},
+                [EMPLOYMENT_STATUS]                             = ${nullCheck(EMPLOYMENT_STATUS)},
+                [HIRE_DATE_FOR_WORKING]                         = ${HIRE_DATE_FOR_WORKING ? `CONVERT(DATETIME, '${HIRE_DATE_FOR_WORKING}', 103)` : `NULL`},
+                [WORKERS_COMP_CODE]                             = ${nullCheck(WORKERS_COMP_CODE)},
+                [TERMINATION_DATE]                              = ${TERMINATION_DATE ? `CONVERT(DATETIME, '${TERMINATION_DATE}', 103)` : `NULL`},
+                [REHIRE_DATE_FOR_WORKING]                       = ${REHIRE_DATE_FOR_WORKING ? `CONVERT(DATETIME, '${REHIRE_DATE_FOR_WORKING}', 103)` : `NULL`},
+                [LAST_REVIEW_DATE]                              = ${LAST_REVIEW_DATE ? `CONVERT(DATETIME, '${LAST_REVIEW_DATE}', 103)` : `NULL`},
+                [NUMBER_DAYS_REQUIREMENT_OF_WORKING_PER_MONTH]  = ${nullCheck(NUMBER_DAYS_REQUIREMENT_OF_WORKING_PER_MONTH, 'number')}
+                WHERE [PERSONAL_ID]                             = ${PERSONAL_ID};`
 
             var queryPRDB_Update = `UPDATE mydb.\`employee\`
-                SET \`Employee Number\` = ${nullCheck(EMPLOYMENT_CODE)},
-                \`Last Name\` = ${nullCheck(removeDiacritics(CURRENT_LAST_NAME))},
-                \`First Name\` = ${nullCheck(removeDiacritics(CURRENT_FIRST_NAME))},
-                \`SSN\` = ${nullCheck(SOCIAL_SECURITY_NUMBER)},
-                \`Pay Rate\` = '${payRate}',
-                \`Paid To Date\` = 5,
-                \`Paid Last Year\` = 1,
-                \`Pay Rates_idPay Rates\` = ${nullCheck(idPay_Rates, 'number')}
-                WHERE \`Employee Number\` = '${EMPLOYMENT_CODE}';`
+                SET 
+                \`Employee Number\`         = ${nullCheck(EMPLOYMENT_CODE)},
+                \`Last Name\`               = ${nullCheck(removeDiacritics(CURRENT_LAST_NAME))},
+                \`First Name\`              = ${nullCheck(removeDiacritics(CURRENT_FIRST_NAME))},
+                \`SSN\`                     = ${nullCheck(SOCIAL_SECURITY_NUMBER)},
+                \`Pay Rate\`                = '${payRate}',
+                \`Paid To Date\`            = 5,
+                \`Paid Last Year\`          = 1,
+                \`Pay Rates_idPay Rates\`   = ${nullCheck(idPay_Rates, 'number')}
+                WHERE \`Employee Number\`   = '${EMPLOYMENT_CODE}';`
 
             queryHRDBSetOnly(queryHRDB_EmployeeUpdate);
-            queryPRDBSetOnly(queryPRDB_Update);      
+            queryPRDBSetOnly(queryPRDB_Update);
         }
 
         console.log('[System] processEmployee.js | Setted Information [' + PERSONAL_ID + ']: ');

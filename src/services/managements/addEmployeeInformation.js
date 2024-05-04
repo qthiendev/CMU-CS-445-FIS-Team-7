@@ -1,18 +1,14 @@
 const { queryHRDBSetOnly, queryHRDB } = require('../../database/queryHRDB');
 const { queryPRDBSetOnly, queryPRDB } = require('../../database/queryPRDB');
-const { editSpecificInformation } = require('../managements/editSpecificInformation')
 
-async function generateUniqueCode() {
-    let code;
+const generateUniqueCode = async () => {
+    const CODE_LENGTH = 16;
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     const charactersLength = characters.length;
-    let existingCodes; // Declare existingCodes here
+    let code;
+    let existingCodes;
     do {
-        code = '';
-        for (let i = 0; i < 16; i++) {
-            code += characters.charAt(Math.floor(Math.random() * charactersLength));
-        }
-        // Query the database to check if the code already exists
+        code = Array.from({ length: CODE_LENGTH }, () => characters.charAt(Math.floor(Math.random() * charactersLength))).join('');
         existingCodes = await queryHRDB(`SELECT [EMPLOYMENT_CODE] FROM [dbo].[EMPLOYMENT] WHERE [EMPLOYMENT_CODE] = '${code}'`);
     } while (existingCodes.length > 0);
     return code;
@@ -34,125 +30,104 @@ const diacriticsMap = {
     'ý': 'y', 'ỳ': 'y', 'ỷ': 'y', 'ỹ': 'y', 'ỵ': 'y'
 };
 
-const removeDiacritics = (str) => //This method turn Vietnamese text to English-base text
-    str.replace(/[áàảãạăắằẳẵặâấầẩẫậđéèẻẽẹêếềểễệíìỉĩịóòỏõọôốồổỗộơớờởỡợúùủũụưứừửữựýỳỷỹỵ]/g,
-        match => diacriticsMap[match]
-    );
+const removeDiacritics = (str) => str.replace(/[áàảãạăắằẳẵặâấầẩẫậđéèẻẽẹêếềểễệíìỉĩịóòỏõọôốồổỗộơớờởỡợúùủũụưứừửữựýỳỷỹỵ]/g, match => diacriticsMap[match]);
 
-const nullCheck = (value, type = 'string') => {
-    if (value) {
-        return type === 'string' ? `N'${value}'` : `${Number(value)}`;
-    }
-    return `NULL`;
-};
-
-const addEmployeeInformation = async (PERSONAL_ID,
-    CURRENT_FIRST_NAME,
-    CURRENT_LAST_NAME,
-    CURRENT_MIDDLE_NAME,
-    BIRTH_DATE,
-    SOCIAL_SECURITY_NUMBER,
-    DRIVERS_LICENSE,
-    CURRENT_ADDRESS_1,
-    CURRENT_ADDRESS_2,
-    CURRENT_CITY,
-    CURRENT_COUNTRY,
-    CURRENT_ZIP,
-    CURRENT_GENDER,
-    CURRENT_PHONE_NUMBER,
-    CURRENT_PERSONAL_EMAIL,
-    CURRENT_MARITAL_STATUS,
-    ETHNICITY,
-    SHAREHOLDER_STATUS,
-    BENEFIT_PLANS_ID) => {
+const addEmployeeInformation = async (PERSONAL_ID, CURRENT_FIRST_NAME, CURRENT_LAST_NAME, SOCIAL_SECURITY_NUMBER) => {
     try {
         if (!CURRENT_FIRST_NAME && !CURRENT_LAST_NAME && !SOCIAL_SECURITY_NUMBER) {
             console.log('[System] employeesManagementController.js | Cannot Added new EMPLOYEE');
             return;
         }
 
-        var EMPLOYMENT_CODE = await generateUniqueCode();
+        const NUMBER_DAYS_REQUIREMENT_OF_WORKING_PER_MONTH = 22;
+        const PAY_RATE_ID = 1;
+        const EMPLOYMENT_CODE = await generateUniqueCode();
+        const maxIdEPR = (await queryPRDB(`SELECT MAX(idEmployee) as maxId FROM mydb.\`employee\`;`))[0]['maxId'];
+        const Pay_Amount = (await queryPRDB(`SELECT * FROM mydb.\`pay rates\` WHERE \`idPay Rates\` = ${PAY_RATE_ID}`))[0][`Pay Amount`];
 
-        let maxIdE = (await queryPRDB(`SELECT MAX(idEmployee) as maxId FROM mydb.\`employee\`;`))[0]['maxId'];
-        let Pay_Amount = (await queryPRDB(`SELECT * FROM mydb.\`pay rates\` WHERE \`idPay Rates\` = ${1}`))[0][`Pay Amount`];
-        var queryPRDB_Insert = `INSERT INTO mydb.\`employee\`
-                (
-                    \`idEmployee\`,
-                    \`Employee Number\`,
-                    \`Last Name\`,
-                    \`First Name\`,
-                    \`SSN\`,
-                    \`Pay Rate\`,
-                    \`Pay Rates_idPay Rates\`,
-                    \`Vacation Days\`,
-                    \`Paid To Date\`,
-                    \`Paid Last Year\`
-                )
-                VALUES
-                (
-                    ${maxIdE + 1},
-                    '${EMPLOYMENT_CODE}',
-                    '${removeDiacritics(CURRENT_LAST_NAME)}',
-                    '${removeDiacritics(CURRENT_FIRST_NAME)}',
-                    ${SOCIAL_SECURITY_NUMBER},
-                    '${(Pay_Amount ? Number(Pay_Amount) : 0 / NUMBER_DAYS_REQUIREMENT_OF_WORKING_PER_MONTH).toFixed(1)}',
-                    1,
-                    0,
-                    5,
-                    1
-                );`
+        const queryPRDB_Insert = `INSERT INTO mydb.\`employee\`
+            (
+                \`idEmployee\`,
+                \`Employee Number\`,
+                \`Last Name\`,
+                \`First Name\`,
+                \`SSN\`,
+                \`Pay Rate\`,
+                \`Pay Rates_idPay Rates\`,
+                \`Vacation Days\`,
+                \`Paid To Date\`,
+                \`Paid Last Year\`
+            )
+            VALUES
+            (
+                ${maxIdEPR + 1},
+                '${EMPLOYMENT_CODE}',
+                '${removeDiacritics(CURRENT_LAST_NAME)}',
+                '${removeDiacritics(CURRENT_FIRST_NAME)}',
+                ${SOCIAL_SECURITY_NUMBER},
+                '${(Pay_Amount ? Number(Pay_Amount) : 0 / NUMBER_DAYS_REQUIREMENT_OF_WORKING_PER_MONTH).toFixed(1)}',
+                ${PAY_RATE_ID},
+                0,
+                5,
+                1
+            );`
 
         await queryPRDBSetOnly(queryPRDB_Insert);
 
-        if ((await queryPRDB(`SELECT \`Employee Number\` FROM mydb.\`employee\` WHERE \`Employee Number\` = '${EMPLOYMENT_CODE}'`)).length
-            <= 0) {
+        // Ensure that PRDB successful inserted new Employee
+        if ((await queryPRDB(`SELECT \`Employee Number\` 
+            FROM mydb.\`employee\` 
+            WHERE \`Employee Number\` = '${EMPLOYMENT_CODE}'`)).length <= 0) {
             console.log('[System] employeesManagementController.js | Cannot Added new EMPLOYEE');
             return;
         }
+        
+        let maxidEHR = (await queryHRDB(`USE [HumanResourceDB] SELECT MAX([EMPLOYMENT_ID]) as maxID FROM [DBO].[EMPLOYMENT]`))[0]['maxID'];
+        let today = new Date();
+        let dd = String(today.getDate()).padStart(2, '0');
+        let mm = String(today.getMonth() + 1).padStart(2, '0');
+        let yyyy = today.getFullYear();
+        let HIRE_DATE_FOR_WORKING = `${yyyy}-${mm}-${dd}`;
 
-        var EMPLOYMENT_STATUS = `Full time`
+        let queryHRDB_PersonalInsert = `USE [HumanResourceDB]
+            INSERT INTO [DBO].[EMPLOYMENT]
+            (
+                [EMPLOYMENT_ID],
+                [EMPLOYMENT_CODE],
+                [EMPLOYMENT_STATUS],
+                [HIRE_DATE_FOR_WORKING],
+                [WORKERS_COMP_CODE],
+                [TERMINATION_DATE],
+                [REHIRE_DATE_FOR_WORKING],
+                [LAST_REVIEW_DATE],
+                [NUMBER_DAYS_REQUIREMENT_OF_WORKING_PER_MONTH],
+                [PERSONAL_ID]
+            )
+            VALUES
+            (
+                ${maxidEHR + 1}, 
+                '${EMPLOYMENT_CODE}',
+                'Full time', 
+                ${HIRE_DATE_FOR_WORKING ? `CONVERT(DATETIME, '${HIRE_DATE_FOR_WORKING}', 103)` : `NULL`},
+                'JW', 
+                NULL,
+                NULL,
+                ${HIRE_DATE_FOR_WORKING ? `CONVERT(DATETIME, '${HIRE_DATE_FOR_WORKING}', 103)` : `NULL`},
+                ${NUMBER_DAYS_REQUIREMENT_OF_WORKING_PER_MONTH},
+                ${PERSONAL_ID}
+            );`;
 
-        var today = new Date();
-        var dd = String(today.getDate()).padStart(2, '0');
-        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-        var yyyy = today.getFullYear();
-        var HIRE_DATE_FOR_WORKING = `${yyyy}-${mm}-${dd}`;
+        await queryHRDBSetOnly(queryHRDB_PersonalInsert);
 
-        var WORKERS_COMP_CODE = `JW`;
-        var TERMINATION_DATE = null;
-        var REHIRE_DATE_FOR_WORKING = null;
-        var LAST_REVIEW_DATE = HIRE_DATE_FOR_WORKING;
-        var NUMBER_DAYS_REQUIREMENT_OF_WORKING_PER_MONTH = 22;
-        var idPay_Rates = 1;
-
-        await editSpecificInformation(PERSONAL_ID,
-            CURRENT_FIRST_NAME,
-            CURRENT_LAST_NAME,
-            CURRENT_MIDDLE_NAME,
-            BIRTH_DATE,
-            SOCIAL_SECURITY_NUMBER,
-            DRIVERS_LICENSE,
-            CURRENT_ADDRESS_1,
-            CURRENT_ADDRESS_2,
-            CURRENT_CITY,
-            CURRENT_COUNTRY,
-            CURRENT_ZIP,
-            CURRENT_GENDER,
-            CURRENT_PHONE_NUMBER,
-            CURRENT_PERSONAL_EMAIL,
-            CURRENT_MARITAL_STATUS,
-            ETHNICITY,
-            SHAREHOLDER_STATUS,
-            BENEFIT_PLANS_ID,
-            EMPLOYMENT_CODE,
-            EMPLOYMENT_STATUS,
-            HIRE_DATE_FOR_WORKING,
-            WORKERS_COMP_CODE,
-            TERMINATION_DATE,
-            REHIRE_DATE_FOR_WORKING,
-            LAST_REVIEW_DATE,
-            NUMBER_DAYS_REQUIREMENT_OF_WORKING_PER_MONTH,
-            idPay_Rates);
+        // Ensure that HRDB successful inserted new Employee
+        if ((await queryHRDB(`USE [HumanResourceDB] 
+            SELECT [EMPLOYMENT_CODE] 
+            FROM [DBO].[EMPLOYMENT] 
+            WHERE [EMPLOYMENT_CODE] = '${EMPLOYMENT_CODE}'`)).length <= 0) {
+            await queryPRDBSetOnly(`delete from mydb.\`employee\` where \`Employee Number\` = '${EMPLOYMENT_CODE}';`);
+            console.log('[System] employeesManagementController.js | Cannot Added new EMPLOYEE');
+            return;
+        }
 
         console.log('[System] employeesManagementController.js | Added new EMPLOYEE');
     } catch (err) {
