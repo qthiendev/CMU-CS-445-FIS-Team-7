@@ -17,7 +17,10 @@ const diacriticsMap = {
     'ý': 'y', 'ỳ': 'y', 'ỷ': 'y', 'ỹ': 'y', 'ỵ': 'y'
 };
 
-const removeDiacritics = (str) => str.replace(/[áàảãạăắằẳẵặâấầẩẫậđéèẻẽẹêếềểễệíìỉĩịóòỏõọôốồổỗộơớờởỡợúùủũụưứừửữựýỳỷỹỵ]/g, match => diacriticsMap[match]);
+const removeDiacritics = (str) => //This method turn Vietnamese text to English-base text
+    str.replace(/[áàảãạăắằẳẵặâấầẩẫậđéèẻẽẹêếềểễệíìỉĩịóòỏõọôốồổỗộơớờởỡợúùủũụưứừửữựýỳỷỹỵ]/g,
+        match => diacriticsMap[match]
+    );
 
 const nullCheck = (value, type = 'string') => {
     if (value) {
@@ -45,7 +48,7 @@ const editSpecificInformation = async (
     CURRENT_MARITAL_STATUS,
     ETHNICITY,
     SHAREHOLDER_STATUS,
-    BENEFIT_PLAN_ID,
+    BENEFIT_PLANS_ID,
     EMPLOYMENT_CODE,
     EMPLOYMENT_STATUS,
     HIRE_DATE_FOR_WORKING,
@@ -57,13 +60,41 @@ const editSpecificInformation = async (
     idPay_Rates
 ) => {
     try {
+        console.log( PERSONAL_ID,
+            CURRENT_FIRST_NAME,
+            CURRENT_LAST_NAME,
+            CURRENT_MIDDLE_NAME,
+            BIRTH_DATE,
+            SOCIAL_SECURITY_NUMBER,
+            DRIVERS_LICENSE,
+            CURRENT_ADDRESS_1,
+            CURRENT_ADDRESS_2,
+            CURRENT_CITY,
+            CURRENT_COUNTRY,
+            CURRENT_ZIP,
+            CURRENT_GENDER,
+            CURRENT_PHONE_NUMBER,
+            CURRENT_PERSONAL_EMAIL,
+            CURRENT_MARITAL_STATUS,
+            ETHNICITY,
+            SHAREHOLDER_STATUS,
+            BENEFIT_PLANS_ID,
+            EMPLOYMENT_CODE,
+            EMPLOYMENT_STATUS,
+            HIRE_DATE_FOR_WORKING,
+            WORKERS_COMP_CODE,
+            TERMINATION_DATE,
+            REHIRE_DATE_FOR_WORKING,
+            LAST_REVIEW_DATE,
+            NUMBER_DAYS_REQUIREMENT_OF_WORKING_PER_MONTH,
+            idPay_Rates);
         // If you want multiline string , use ``, kinda smart 
         var queryHRDB_PersonalUpdate = `use [HumanResourceDB]
         UPDATE [DBO].[PERSONAL]
         SET [CURRENT_FIRST_NAME] = ${nullCheck(CURRENT_FIRST_NAME)},
         [CURRENT_LAST_NAME] = ${nullCheck(CURRENT_LAST_NAME)},
         [CURRENT_MIDDLE_NAME] = ${nullCheck(CURRENT_MIDDLE_NAME)},
-        [BIRTH_DATE] = ${BIRTH_DATE ? `CONVERT(DATETIME, '${BIRTH_DATE}', 103)` : 'NULL'},
+        [BIRTH_DATE] = ${BIRTH_DATE ? `CONVERT(DATETIME, '${BIRTH_DATE}', 103)` : `NULL`},
         [SOCIAL_SECURITY_NUMBER] = ${nullCheck(SOCIAL_SECURITY_NUMBER)},
         [DRIVERS_LICENSE] = ${nullCheck(DRIVERS_LICENSE)},
         [CURRENT_ADDRESS_1] = ${nullCheck(CURRENT_ADDRESS_1)},
@@ -77,26 +108,31 @@ const editSpecificInformation = async (
         [CURRENT_MARITAL_STATUS] = ${nullCheck(CURRENT_MARITAL_STATUS)},
         [ETHNICITY] = ${nullCheck(ETHNICITY)},
         [SHAREHOLDER_STATUS] = ${nullCheck(SHAREHOLDER_STATUS, 'number')},
-        [BENEFIT_PLAN_ID] = ${nullCheck(BENEFIT_PLAN_ID, 'number')}
+        [BENEFIT_PLAN_ID] = ${nullCheck(BENEFIT_PLANS_ID, 'number')}
         WHERE [PERSONAL_ID] = ${PERSONAL_ID};`
 
         queryHRDBSetOnly(queryHRDB_PersonalUpdate);
 
         if (EMPLOYMENT_CODE) {
-            //Make sure keep the old code for changing Emp code case
-            let OLD_EMPLOYMENT_CODE = (await queryHRDB(`use [HumanResourceDB] SELECT * FROM [DBO].[EMPLOYMENT] WHERE [PERSONAL_ID] = ${Number(PERSONAL_ID)}`))[0]['EMPLOYMENT_CODE'];
-            let Pay_Amount = (await queryPRDB(`SELECT * FROM mydb.\`pay rates\` WHERE \`idPay Rates\` = ${Number(idPay_Rates)}`))[0][`Pay Amount`];
+
+            //Get the Payamount base on idPayrate for updating Payrate
+            let Pay_Amount = (await queryPRDB(`SELECT * 
+                FROM mydb.\`pay rates\` 
+                WHERE \`idPay Rates\` = ${Number(idPay_Rates)}`)
+            )[0][`Pay Amount`];
+
+            //Payrate mean payment per a unit, in this case, it's base on worked day
             let payRate = (Pay_Amount ? Number(Pay_Amount) : 0 / NUMBER_DAYS_REQUIREMENT_OF_WORKING_PER_MONTH).toFixed(1);
 
             var queryHRDB_EmployeeUpdate = `use [HumanResourceDB]
                 UPDATE [DBO].[EMPLOYMENT]
                 SET [EMPLOYMENT_CODE] = ${nullCheck(EMPLOYMENT_CODE)},
                 [EMPLOYMENT_STATUS] = ${nullCheck(EMPLOYMENT_STATUS)},
-                [HIRE_DATE_FOR_WORKING] = ${HIRE_DATE_FOR_WORKING ? `CONVERT(DATETIME, '${HIRE_DATE_FOR_WORKING}', 103)` : 'NULL'},
+                [HIRE_DATE_FOR_WORKING] = ${HIRE_DATE_FOR_WORKING ? `CONVERT(DATETIME, '${HIRE_DATE_FOR_WORKING}', 103)` : `NULL`},
                 [WORKERS_COMP_CODE] = ${nullCheck(WORKERS_COMP_CODE)},
-                [TERMINATION_DATE] = ${TERMINATION_DATE ? `CONVERT(DATETIME, '${TERMINATION_DATE}', 103)` : 'NULL'},
-                [REHIRE_DATE_FOR_WORKING] = ${REHIRE_DATE_FOR_WORKING ? `CONVERT(DATETIME, '${REHIRE_DATE_FOR_WORKING}', 103)` : 'NULL'},
-                [LAST_REVIEW_DATE] = ${LAST_REVIEW_DATE ? `CONVERT(DATETIME, '${LAST_REVIEW_DATE}', 103)` : 'NULL'},
+                [TERMINATION_DATE] = ${TERMINATION_DATE ? `CONVERT(DATETIME, '${TERMINATION_DATE}', 103)` : `NULL`},
+                [REHIRE_DATE_FOR_WORKING] = ${REHIRE_DATE_FOR_WORKING ? `CONVERT(DATETIME, '${REHIRE_DATE_FOR_WORKING}', 103)` : `NULL`},
+                [LAST_REVIEW_DATE] = ${LAST_REVIEW_DATE ? `CONVERT(DATETIME, '${LAST_REVIEW_DATE}', 103)` : `NULL`},
                 [NUMBER_DAYS_REQUIREMENT_OF_WORKING_PER_MONTH] = ${nullCheck(NUMBER_DAYS_REQUIREMENT_OF_WORKING_PER_MONTH, 'number')}
                 WHERE [PERSONAL_ID] = ${PERSONAL_ID};`
 
@@ -109,11 +145,13 @@ const editSpecificInformation = async (
                 \`Paid To Date\` = 5,
                 \`Paid Last Year\` = 1,
                 \`Pay Rates_idPay Rates\` = ${nullCheck(idPay_Rates, 'number')}
-                WHERE \`Employee Number\` = '${OLD_EMPLOYMENT_CODE}';`
+                WHERE \`Employee Number\` = '${EMPLOYMENT_CODE}';`
 
             queryHRDBSetOnly(queryHRDB_EmployeeUpdate);
-            queryPRDBSetOnly(queryPRDB_Update);
+            queryPRDBSetOnly(queryPRDB_Update);      
         }
+
+        console.log('[System] processEmployee.js | Setted Information [' + PERSONAL_ID + ']: ');
     } catch (err) {
         console.log('[System] processEmployee.js | Cannot set Information [' + PERSONAL_ID + ']: ', err);
     }

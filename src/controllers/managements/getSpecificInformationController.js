@@ -2,7 +2,7 @@ const { getInformationByPersonalID } = require('../../services/managements/getSp
 
 const renderSpecificInformationView = async (req, res) => {
     try {
-        let id = req.query.id;
+        let id = req.query.PERSONAL_ID;
         let data = await getInformationByPersonalID(id);
 
         res.render(

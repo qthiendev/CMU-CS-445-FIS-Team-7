@@ -8,12 +8,12 @@
 </head>
 
 <body>
-    <form action="/Information/Specific/Edit?id=<%= data.PERSONAL_ID %>" method="get">
+    <form action="/Information/Specific/Edit?PERSONAL_ID=<%= data.PERSONAL_ID %>" method="get">
         <div class="wrapper">
 
             <div class="form-group">
                 <label for="id">ID</label>
-                <input type="text" id="id" name="id" value="<%= data.PERSONAL_ID %>" />
+                <input type="text" id="id" name="PERSONAL_ID" value="<%= data.PERSONAL_ID %>" />
                 <button onclick="findEmployee(event)">Find</button>
             </div>
 
@@ -138,7 +138,7 @@
         function findEmployee(event) {
             event.preventDefault();
             var personalId = document.getElementById('id').value;
-            window.location.href = '/Information/Specific?id=' + encodeURIComponent(personalId);
+            window.location.href = '/Information/Specific?PERSONAL_ID=' + encodeURIComponent(personalId);
         }
     </script>
 

@@ -28,36 +28,43 @@ const addNewPersonalInformation = async (req, res) => {
 
         console.log(req.query);
 
-        await addPersonalInformation(PERSONAL_ID,
-            CURRENT_FIRST_NAME,
-            CURRENT_LAST_NAME,
-            CURRENT_MIDDLE_NAME,
-            BIRTH_DATE,
-            SOCIAL_SECURITY_NUMBER,
-            DRIVERS_LICENSE,
-            CURRENT_ADDRESS_1,
-            CURRENT_ADDRESS_2,
-            CURRENT_CITY,
-            CURRENT_COUNTRY,
-            CURRENT_ZIP,
-            CURRENT_GENDER,
-            CURRENT_PHONE_NUMBER,
-            CURRENT_PERSONAL_EMAIL,
-            CURRENT_MARITAL_STATUS,
-            ETHNICITY,
-            SHAREHOLDER_STATUS,
-            BENEFIT_PLANS_ID);
+        if (CURRENT_FIRST_NAME 
+            && CURRENT_LAST_NAME
+            && SOCIAL_SECURITY_NUMBER) {
+                await addPersonalInformation(PERSONAL_ID,
+                    CURRENT_FIRST_NAME,
+                    CURRENT_LAST_NAME,
+                    CURRENT_MIDDLE_NAME,
+                    BIRTH_DATE,
+                    SOCIAL_SECURITY_NUMBER,
+                    DRIVERS_LICENSE,
+                    CURRENT_ADDRESS_1,
+                    CURRENT_ADDRESS_2,
+                    CURRENT_CITY,
+                    CURRENT_COUNTRY,
+                    CURRENT_ZIP,
+                    CURRENT_GENDER,
+                    CURRENT_PHONE_NUMBER,
+                    CURRENT_PERSONAL_EMAIL,
+                    CURRENT_MARITAL_STATUS,
+                    ETHNICITY,
+                    SHAREHOLDER_STATUS,
+                    BENEFIT_PLANS_ID);
+        
+                console.log('[System] employeesManagementController.js | Added new PERSONAL:'   );
+                let data = await getInformationByPersonalID(PERSONAL_ID);
 
-        console.log('[System] employeesManagementController.js | Added new PERSONAL:'   );
-        let data = await getInformationByPersonalID(PERSONAL_ID);
-
-        res.render(
-            "manageInformationSpecificPage.ejs",
-            {
-                data,
-                id: PERSONAL_ID
-            }
-        );
+                res.render(
+                    "manageInformationSpecificPage.ejs",
+                    {
+                        data,
+                        id: PERSONAL_ID
+                    }
+                );
+        } else {
+            console.log('[System] employeesManagementController.js | Cannot Added new PERSONAL');
+            res.redirect('/Information');
+        }
     } catch (err) {
         console.log('[System] employeesManagementController.js | Cannot Added new PERSONAL:', err);
     }
@@ -122,9 +129,9 @@ const renderAddPersonalPage = async (req, res) => {
             PERCENTAGE_COPAY: BENEFIT_PLANS_DATA.PERCENTAGE_COPAY,
         });
 
-        console.log('[System] employeesManagementController.js | Rendered manageInformationPage.');
+        console.log('[System] employeesManagementController.js | Rendered manageAddPersonalPage.');
     } catch (err) {
-        console.log('[System] employeesManagementController.js | Cannot render manageInformationPage:', err);
+        console.log('[System] employeesManagementController.js | Cannot render manageAddPersonalPage:', err);
     }
 }
 

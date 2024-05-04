@@ -3,9 +3,8 @@ const { getInformationByPersonalID } = require('../../services/managements/getSp
 
 const editInformation = async (req, res) => {
     try {
-        console.log(req.query)
         const {
-            id,
+            PERSONAL_ID,
             CURRENT_FIRST_NAME,
             CURRENT_LAST_NAME,
             CURRENT_MIDDLE_NAME,
@@ -37,7 +36,7 @@ const editInformation = async (req, res) => {
 
         // Update the employee information
         await editSpecificInformation(
-            id,
+            PERSONAL_ID,
             CURRENT_FIRST_NAME,
             CURRENT_LAST_NAME,
             CURRENT_MIDDLE_NAME,
@@ -68,7 +67,7 @@ const editInformation = async (req, res) => {
         );
 
         // Redirect back to the manageEmployeePage.ejs view
-        res.redirect('/Information/Specific/Edit?id=' + id);
+        res.redirect('/Information/Specific/Edit?PERSONAL_ID=' + PERSONAL_ID);
     } catch (err) {
         console.log('[System] Error at employeesManagementController.js | setEmployeeInformation: ', err);
     }
@@ -76,9 +75,10 @@ const editInformation = async (req, res) => {
 
 const renderInformationSpecificEdit = async (req, res) => {
     try {
-        let id = req.query.id;
+        let id = req.query.PERSONAL_ID;
         let data = await getInformationByPersonalID(id);
-
+        console.log(req.query)
+        console.log(data)
         res.render(
             "manageInformationSpecificEditPage.ejs",
             {

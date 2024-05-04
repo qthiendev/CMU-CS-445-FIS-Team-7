@@ -14,7 +14,7 @@
 
             <div class="form-group">
                 <label for="id">ID</label>
-                <input type="text" id="id" name="id" value="<%= data.PERSONAL_ID %>" />
+                <input type="text" id="id" name="PERSONAL_ID" value="<%= data.PERSONAL_ID %>" />
                 <button onclick="findEmployee(event)">Find</button>
             </div>
 
@@ -116,86 +116,89 @@
             </p>
             <p>Percentage Copay: <%= data.PERCENTAGE_COPAY %>
             </p>
-            <% if (!data.EMPLOYMENT_CODE) {%>
-                <button onclick="benefitPlanCheck(event)">Add Employee</button>
-                <%} %>
+            <p>
+                <% if (!data.EMPLOYMENT_CODE) {%>
+                    <button onclick="addEmloyee(event)">Add employee</button>
+                    <%} %>
+            </p>
+            <p>
+                <% if (data.EMPLOYMENT_CODE) { %>
+                    <div class="form-group">
+                        <label for="">Employment Code</label>
+                        <input type="text" name="EMPLOYMENT_CODE" value="<%= data.EMPLOYMENT_CODE %>" />
+                    </div>
 
-                    <% if (data.EMPLOYMENT_CODE) { %>
-                        <div class="form-group">
-                            <label for="">Employment Code</label>
-                            <input type="text" name="EMPLOYMENT_CODE" value="<%= data.EMPLOYMENT_CODE %>" />
-                        </div>
+                    <div class="form-group">
+                        <label for="">Employment Status</label>
+                        <input type="text" name="EMPLOYMENT_STATUS" value="<%= data.EMPLOYMENT_STATUS %>" />
+                    </div>
 
-                        <div class="form-group">
-                            <label for="">Employment Status</label>
-                            <input type="text" name="EMPLOYMENT_STATUS" value="<%= data.EMPLOYMENT_STATUS %>" />
-                        </div>
+                    <div class="form-group">
+                        <label for="">Hire Date For Working</label>
+                        <input type="text" name="HIRE_DATE_FOR_WORKING"
+                            value="<%= data.HIRE_DATE_FOR_WORKING ? data.HIRE_DATE_FOR_WORKING.toLocaleDateString() : '' %>" />
+                    </div>
 
-                        <div class="form-group">
-                            <label for="">Hire Date For Working</label>
-                            <input type="text" name="HIRE_DATE_FOR_WORKING"
-                                value="<%= data.HIRE_DATE_FOR_WORKING ? data.HIRE_DATE_FOR_WORKING.toLocaleDateString() : '' %>" />
-                        </div>
+                    <div class="form-group">
+                        <label for="">Workers Comp Code</label>
+                        <input type="text" name="WORKERS_COMP_CODE" value="<%= data.WORKERS_COMP_CODE %>" />
+                    </div>
 
-                        <div class="form-group">
-                            <label for="">Workers Comp Code</label>
-                            <input type="text" name="WORKERS_COMP_CODE" value="<%= data.WORKERS_COMP_CODE %>" />
-                        </div>
+                    <div class="form-group">
+                        <label for="">Termination Date</label>
+                        <input type="text" name="TERMINATION_DATE"
+                            value="<%= data.TERMINATION_DATE ? data.TERMINATION_DATE : '' %>" />
+                    </div>
 
-                        <div class="form-group">
-                            <label for="">Termination Date</label>
-                            <input type="text" name="TERMINATION_DATE"
-                                value="<%= data.TERMINATION_DATE ? data.TERMINATION_DATE : '' %>" />
-                        </div>
+                    <div class="form-group">
+                        <label for="">Rehire Date For Working</label>
+                        <input type="text" name="REHIRE_DATE_FOR_WORKING"
+                            value="<%= data.REHIRE_DATE_FOR_WORKING ? data.REHIRE_DATE_FOR_WORKING.toLocaleDateString() : '' %>" />
+                    </div>
 
-                        <div class="form-group">
-                            <label for="">Rehire Date For Working</label>
-                            <input type="text" name="REHIRE_DATE_FOR_WORKING"
-                                value="<%= data.REHIRE_DATE_FOR_WORKING ? data.REHIRE_DATE_FOR_WORKING.toLocaleDateString() : '' %>" />
-                        </div>
+                    <div class="form-group">
+                        <label for="">Last Review Date</label>
+                        <input type="text" name="LAST_REVIEW_DATE"
+                            value="<%= data.LAST_REVIEW_DATE ? data.LAST_REVIEW_DATE.toLocaleDateString() : '' %>" />
+                    </div>
 
-                        <div class="form-group">
-                            <label for="">Last Review Date</label>
-                            <input type="text" name="LAST_REVIEW_DATE"
-                                value="<%= data.LAST_REVIEW_DATE ? data.LAST_REVIEW_DATE.toLocaleDateString() : '' %>" />
-                        </div>
+                    <div class="form-group">
+                        <label for="">Number Days Requirement Of Working Per Month</label>
+                        <input type="text" name="NUMBER_DAYS_REQUIREMENT_OF_WORKING_PER_MONTH"
+                            value="<%= data.NUMBER_DAYS_REQUIREMENT_OF_WORKING_PER_MONTH %>" />
+                    </div>
 
-                        <div class="form-group">
-                            <label for="">Number Days Requirement Of Working Per Month</label>
-                            <input type="text" name="NUMBER_DAYS_REQUIREMENT_OF_WORKING_PER_MONTH"
-                                value="<%= data.NUMBER_DAYS_REQUIREMENT_OF_WORKING_PER_MONTH %>" />
-                        </div>
-
-                        <div class="form-group">
-                            <label for="">Payrate ID</label>
-                            <input type="text" name="idPay_Rates" value="<%= data['idPay Rates'] %>" />
-                            <button onclick="payrateCheck(event)">Check</button>
-                        </div>
-                        <p>
-                            Payrate Name: <%= data['Pay Rate Name'] %>
-                        </p>
-                        <p>
-                            Value: <%= data['Value'] %>
-                        </p>
-                        <p>
-                            Payrate: <%= data['Pay Rate'] %>
-                        </p>
-                        <p>
-                            Paid to date: <%= data['Paid To Date'] %>
-                        </p>
-                        <p>
-                            Pay_Type: <%= data['Pay Type'] %>
-                        </p>
-                        <p>
-                            Tax Percentage: <%= data['Tax Percentage'] %>
-                        </p>
-                        <p name="Pay_Amount">
-                            Pay Amount: <%= data['Pay Amount'] %>
-                        </p>
-                        <p>
-                            PT - Level C: <%= data['PT - Level C'] %>
-                        </p>
-                        <%} %>
+                    <div class="form-group">
+                        <label for="">Payrate ID</label>
+                        <input type="text" name="idPay_Rates" value="<%= data['idPay Rates'] %>" />
+                        <button onclick="payrateCheck(event)">Check</button>
+                    </div>
+                    <p>
+                        Payrate Name: <%= data['Pay Rate Name'] %>
+                    </p>
+                    <p>
+                        Value: <%= data['Value'] %>
+                    </p>
+                    <p>
+                        Payrate: <%= data['Pay Rate'] %>
+                    </p>
+                    <p>
+                        Paid to date: <%= data['Paid To Date'] %>
+                    </p>
+                    <p>
+                        Pay_Type: <%= data['Pay Type'] %>
+                    </p>
+                    <p>
+                        Tax Percentage: <%= data['Tax Percentage'] %>
+                    </p>
+                    <p name="Pay_Amount">
+                        Pay Amount: <%= data['Pay Amount'] %>
+                    </p>
+                    <p>
+                        PT - Level C: <%= data['PT - Level C'] %>
+                    </p>
+                    <%} %>
+            </p>
 
         </div>
         <button type="submit" class="submit">Submit</button>
@@ -209,7 +212,7 @@
     function findEmployee(event) {
         event.preventDefault();
         var personalId = document.getElementById('id').value;
-        window.location.href = '/Information/Specific/Edit?id=' + encodeURIComponent(personalId);
+        window.location.href = '/Information/Specific/Edit?PERSONAL_ID=' + encodeURIComponent(personalId);
     }
 </script>
 
@@ -217,6 +220,20 @@
     function findEmployeeBack(event) {
         event.preventDefault();
         var personalId = document.getElementById('id').value;
-        window.location.href = '/Information/Specific?id=' + encodeURIComponent(personalId);
+        window.location.href = '/Information/Specific?PERSONAL_ID=' + encodeURIComponent(personalId);
+    }
+</script>
+
+<script>
+    function addEmloyee(event) {
+        event.preventDefault();
+        var formElements = document.getElementsByTagName("input");
+        var url = '/AddNewEmployee?';
+        for (var i = 0; i < formElements.length; i++) {
+            var input = formElements[i];
+            url += encodeURIComponent(input.name) + '=' + encodeURIComponent(input.value) + '&';
+        }
+        url = url.slice(0, -1);
+        window.location.href = url;
     }
 </script>
