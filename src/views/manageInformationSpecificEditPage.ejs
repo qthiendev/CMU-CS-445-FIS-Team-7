@@ -125,7 +125,7 @@
                 <% if (data.EMPLOYMENT_CODE) { %>
                     <div class="form-group">
                         <label for="">Employment Code</label>
-                        <input type="text" name="EMPLOYMENT_CODE" value="<%= data.EMPLOYMENT_CODE %>" />
+                        <input type="text" name="EMPLOYMENT_CODE" readonly value="<%= data.EMPLOYMENT_CODE %>" />
                     </div>
 
                     <div class="form-group">
@@ -197,6 +197,7 @@
                     <p>
                         PT - Level C: <%= data['PT - Level C'] %>
                     </p>
+                    <button onclick="deleteEmloyee(event)">Delete employee</button>
                     <%} %>
             </p>
 
@@ -229,6 +230,20 @@
         event.preventDefault();
         var formElements = document.getElementsByTagName("input");
         var url = '/AddNewEmployee?';
+        for (var i = 0; i < formElements.length; i++) {
+            var input = formElements[i];
+            url += encodeURIComponent(input.name) + '=' + encodeURIComponent(input.value) + '&';
+        }
+        url = url.slice(0, -1);
+        window.location.href = url;
+    }
+</script>
+
+<script>
+    function deleteEmloyee(event) {
+        event.preventDefault();
+        var formElements = document.getElementsByTagName("input");
+        var url = '/DeleteEmployee?';
         for (var i = 0; i < formElements.length; i++) {
             var input = formElements[i];
             url += encodeURIComponent(input.name) + '=' + encodeURIComponent(input.value) + '&';

@@ -77,8 +77,7 @@ const renderInformationSpecificEdit = async (req, res) => {
     try {
         let id = req.query.PERSONAL_ID;
         let data = await getInformationByPersonalID(id);
-        console.log(req.query)
-        console.log(data)
+        
         res.render(
             "manageInformationSpecificEditPage.ejs",
             {

@@ -18,7 +18,9 @@ const { renderSpecificInformationView } = require('../controllers/managements/ge
 const { editInformation, renderInformationSpecificEdit } = require('../controllers/managements/editSpecificInformationController.js');
 
 const { addNewPersonalInformation, renderAddPersonalPage } = require('../controllers/managements/addPersonalController.js');
-const { addNewEmployeeInformation } = require('../controllers/managements/addEmployeeController.js')
+const { addNewEmployeeInformation } = require('../controllers/managements/addEmployeeController.js');
+
+const { deleteEmployee } = require('../controllers/managements/deleteEmployeeController.js');
 
 router.get("/", isLoggedInMiddleware, renderHomeView);
 router.get("/Login", renderLoginView);
@@ -40,5 +42,7 @@ router.get('/EditInformation', isLoggedInMiddleware, editInformation);
 router.get('/Information/Add', isLoggedInMiddleware, renderAddPersonalPage);
 router.get('/AddNewPersonal', isLoggedInMiddleware, addNewPersonalInformation);
 router.get('/AddNewEmployee', isLoggedInMiddleware, addNewEmployeeInformation);
+
+router.get('/DeleteEmployee', isLoggedInMiddleware, deleteEmployee);
 
 module.exports = router;

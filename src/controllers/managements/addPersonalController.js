@@ -26,8 +26,6 @@ const addNewPersonalInformation = async (req, res) => {
             BENEFIT_PLANS_ID
         } = req.query;
 
-        console.log(req.query);
-
         if (CURRENT_FIRST_NAME 
             && CURRENT_LAST_NAME
             && SOCIAL_SECURITY_NUMBER) {
@@ -53,7 +51,7 @@ const addNewPersonalInformation = async (req, res) => {
         
                 console.log('[System] employeesManagementController.js | Added new PERSONAL:'   );
                 let data = await getInformationByPersonalID(PERSONAL_ID);
-
+                
                 res.render(
                     "manageInformationSpecificPage.ejs",
                     {
