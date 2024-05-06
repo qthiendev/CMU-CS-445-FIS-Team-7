@@ -21,6 +21,7 @@ const { addNewPersonalInformation, renderAddPersonalPage } = require('../control
 const { addNewEmployeeInformation } = require('../controllers/managements/addEmployeeController.js');
 
 const { deleteEmployee } = require('../controllers/managements/deleteEmployeeController.js');
+const { detelePersonal } = require('../controllers/managements/deletePersonalController.js');
 
 router.get("/", isLoggedInMiddleware, renderHomeView);
 router.get("/Login", renderLoginView);
@@ -44,5 +45,6 @@ router.get('/AddNewPersonal', isLoggedInMiddleware, addNewPersonalInformation);
 router.get('/AddNewEmployee', isLoggedInMiddleware, addNewEmployeeInformation);
 
 router.get('/DeleteEmployee', isLoggedInMiddleware, deleteEmployee);
+router.get('/DetelePersonal', isLoggedInMiddleware, detelePersonal);
 
 module.exports = router;
