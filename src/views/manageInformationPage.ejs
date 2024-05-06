@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard</title>
+  <title>Information</title>
   <link rel="stylesheet" href="/css/reset.css">
   <link rel="stylesheet" href="/css/report.css">
 
@@ -120,8 +120,7 @@
     <main>
       <!-- main-top -->
       <div class="main-top">
-        <h2 class="title">All Employees</h2>
-        <div class="selection"></div>
+        <h2 class="title">Personal Information</h2>
       </div>
       <!-- main bottom -->
       <div class="main-bottom">
@@ -140,7 +139,7 @@
                 <th>Phone</th>
                 <th>Shareholder</th>
                 <th>Status</th>
-                <th></th>
+                <th><button><a href="/Information/Add" class="btn">ADD <i class="fa fa-add"style="font-size:18px;"></i></a></button></button></th>
                 <th></th>
               </tr>
             </thead>
@@ -149,38 +148,38 @@
               <% for(var i=0; i<data.length; i++) {%>
                 <tr>
                   <td>
-                    <%= data[i].ID %>
+                    <%= data[i].PERSONAL_ID %>
                   </td>
                   <td>
-                    <%= data[i].Fullname%>
+                    <%= data[i].FULLNAME%>
                   </td>
                   <td>
-                    <%= data[i].Gender%>
+                    <%= data[i].CURRENT_GENDER%>
                   </td>
                   <td>
-                    <%= data[i].Birthdate.toLocaleDateString()%>
+                    <%= data.BIRTH_DATE ? data.BIRTH_DATE.toLocaleDateString() : ''%>
                   </td>
                   <td>
-                    <%= data[i].Address%>
+                    <%= data[i].ADDRESS%>
                   </td>
                   <td>
-                    <%= data[i].Email%>
+                    <%= data[i].CURRENT_PERSONAL_EMAIL%>
                   </td>
                   <td>
-                    <%= data[i].Phone%>
+                    <%= data[i].CURRENT_PHONE_NUMBER%>
                   </td>
                   <td>
-                    <%= data[i].Shareholder%>
+                    <%= data[i].SHAREHOLDER_STATUS%>
                   </td>
                   <td>
-                    <%= data[i].Status%>
+                    <%= data[i].EMPLOYMENT_STATUS%>
                   </td>
                   <td>
-                    <button><a href="/EmployeeInformation?id=<%= data[i].ID %>" class="btn"><i class="fa fa-bars"
-                          style="font-size:18px;"></i></a></button>
+                    <button><a href="/Information/Specific?PERSONAL_ID=<%= data[i].PERSONAL_ID %>" class="btn"><i class="fa fa-bars"
+                      style="font-size:18px;"></i></a></button>
                   </td>
                   <td>
-                    <button><a href="/DeleteEmployee?id=<%= data[i].ID %>" class="btn"><i class="fa fa-trash"
+                    <button><a href="/DeleteEmployee?PERSONAL_ID=<%= data[i].ID %>" class="btn"><i class="fa fa-trash"
                           style="font-size:18px;"></i></a></button>
                   </td>
                 </tr>
