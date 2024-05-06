@@ -275,6 +275,12 @@ select {
   overflow-y: scroll;
 }
 
+.main-bottom .wrapper-table {
+  margin-top: 50px;
+  max-height: 575px;
+  overflow-y: scroll;
+}
+
 .main-bottom .content-table {
   width: 100%;
   background: #fffffe;
@@ -320,10 +326,15 @@ td {
 #clock {
   font-size: 24px;
   position: absolute;
+<<<<<<< Updated upstream:src/public/css/report.css
   top: 30px;
   right: 48px;
   font-weight: 600;
 }
 .table th {
   background: var(--primary-color);
+=======
+  top: 20px;
+  right: 20px;
+>>>>>>> Stashed changes:src/public/css/homePage.css
 }
