@@ -63,7 +63,7 @@ const getTotalEarningsReport = async (
         return hrItem;
       }
     });
-    console.log(mergedData);
+    
     if (id !== "" && id !== undefined) {
       mergedData = mergedData.filter((record) => record.PERSONAL_ID == id);
     }
