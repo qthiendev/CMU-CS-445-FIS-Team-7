@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const isLoggedInMiddleware = require('../middleware/checkLogin.js');
 
-<<<<<<< Updated upstream
 const { renderLoginView, tryLogin } = require('../controllers/utilities/loginController');
 const { renderHomeView } = require('../controllers/utilities/homeController');
 
@@ -47,16 +46,5 @@ router.get('/AddNewEmployee', isLoggedInMiddleware, addNewEmployeeInformation);
 
 router.get('/DeleteEmployee', isLoggedInMiddleware, deleteEmployee);
 router.get('/DetelePersonal', isLoggedInMiddleware, detelePersonal);
-=======
-const { getReportVD } = require("../controllers/VacationDayReportController");
-const {
-  getReportAB,
-} = require("../controllers/AverageBenefitsReportController");
-const { getReportTE } = require("../controllers/TotalEarningsReportController");
-
-router.get("/VacationDayReport", getReportVD);
-router.get("/AverageBenefitsReport", getReportAB);
-router.get("/TotalEarningsReport", getReportTE);
->>>>>>> Stashed changes
 
 module.exports = router;

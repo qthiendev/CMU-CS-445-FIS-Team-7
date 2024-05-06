@@ -19,11 +19,10 @@ const getInformation = async () => {
 
         const data = await queryHRDB(sqlQueryHR);
 
-        console.log(data);
-
         console.log('[System] processEmployee.js | Got AllInformation.');
 
         return data;
+        
     } catch (err) {
         console.log('[System] processEmployee.js | Cannot get AllInformation: ', err);
     }
