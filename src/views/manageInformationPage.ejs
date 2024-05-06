@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Information</title>
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/report.css"> 
+
+  <style>
+    .main-bottom th,td{
+      width: auto;
+    }
+  </style>
+
+  <!-- Embed font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,600;1,600&family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <!-- Embed icon -->
+  <script defer src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- sidebar -->
+  <div class="background">
+  </div>
+  <aside class="sidebar">
+    <!-- Logo -->
+    <img src="/img/logo.svg" alt="logo" />
+
+    <!-- btn close -->
+    <div class="btn-close" style="cursor: pointer;"><i class='bx bx-x'></i></div>
+
+    <!-- navigation -->
+    <ul class="nav">
+      <li>
+        <a href="/" class="btn">
+          <i class="bx bxs-grid-alt"></i>
+          <span>Dashboard</span>
+        </a>
+      </li>
+
+      <li>
+        <div class="btn btn-list" style="cursor: pointer">
+          <i class="bx bxs-report"></i>
+          <span>Reports</span>
+          <i class="bx bx-chevron-down bx-chevron-down-1"></i>
+        </div>
+      </li>
+
+      <!-- subnav -->
+      <ul class="sub-nav-1">
+        <li>
+          <a href="/VacationDaysReport" class="btn">
+            <span> Taken vacation days</span>
+          </a>
+        </li>
+        <li>
+          <a href="/TotalEarningsReport" class="btn">
+            <span>Total Earnings</span>
+          </a>
+        </li>
+        <li>
+          <a href="/AverageBenefitsReport" class="btn">
+            <span>Average Benefits</span>
+          </a>
+        </li>
+      </ul>
+
+      <li>
+        <div class="btn btn-list-2" style="cursor: pointer">
+          <i class="bx bxs-report "></i>
+          <span>Alert</span>
+          <i class="bx bx-chevron-down bx-chevron-down-2"></i>
+        </div>
+      </li>
+
+      <ul class="sub-nav-2">
+        <li>
+          <a href="/HiringAnniversaryAlert" class="btn">
+            <span>Alert Hiring Anniversary</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="/VacationDaysAlert" class="btn">
+            <span>Alert Vacation Days</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="/BenefitsPlanAlert" class="btn">
+            <span>Alert Benefits Plan</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="/BirthdayAlert" class="btn">
+            <span>Alert Birthday</span>
+          </a>
+        </li>
+
+      </ul>
+
+    </ul>
+  </aside>
+
+  <!-- content -->
+  <div class="content">
+    <!-- btn click -->
+    <div class="btn-action"></div>
+
+    <!-- header -->
+    <header class="header">
+      <div id="clock"></div>
+    </header>
+
+    <!-- main -->
+    <main>
+      <!-- main-top -->
+      <div class="main-top">
+        <h2 class="title">Personal Information</h2>
+      </div>
+      <!-- main bottom -->
+      <div class="main-bottom">
+        <!-- table -->
+
+        <div class="wrapper-table" style="max-height: 853px;">
+          <table class="table content-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Fullname</th>
+                <th>Gender</th>
+                <th>Birthdate</th>
+                <th>Address</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Shareholder</th>
+                <th>Status</th>
+                <th><button><a href="/Information/Add" class="btn">ADD <i class="fa fa-add"style="font-size:18px;"></i></a></button></button></th>
+                <th></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% for(var i=0; i<data.length; i++) {%>
+                <tr>
+                  <td>
+                    <%= data[i].PERSONAL_ID %>
+                  </td>
+                  <td>
+                    <%= data[i].FULLNAME%>
+                  </td>
+                  <td>
+                    <%= data[i].CURRENT_GENDER%>
+                  </td>
+                  <td>
+                    <%= data[i].BIRTH_DATE ? (data[i].BIRTH_DATE).toLocaleDateString() : '' %>
+                  </td>
+                  <td>
+                    <%= data[i].ADDRESS%>
+                  </td>
+                  <td>
+                    <%= data[i].CURRENT_PERSONAL_EMAIL%>
+                  </td>
+                  <td>
+                    <%= data[i].CURRENT_PHONE_NUMBER%>
+                  </td>
+                  <td>
+                    <%= data[i].SHAREHOLDER_STATUS%>
+                  </td>
+                  <td>
+                    <%= data[i].EMPLOYMENT_STATUS%>
+                  </td>
+                  <td>
+                    <button><a href="/Information/Specific?PERSONAL_ID=<%= data[i].PERSONAL_ID %>" class="btn"><i class="fa fa-bars"
+                      style="font-size:18px;"></i></a></button>
+                  </td>
+                  <td>
+                    <button><a href="/DeleteEmployee?PERSONAL_ID=<%= data[i].ID %>" class="btn"><i class="fa fa-trash"
+                          style="font-size:18px;"></i></a></button>
+                  </td>
+                </tr>
+                <% } %>
+            </tbody>
+
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+  </main>
+  </div>
+  <script src="/js/reportScripts.js"></script>
+</body>
+
+</html>

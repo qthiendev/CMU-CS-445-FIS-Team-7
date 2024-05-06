@@ -7,6 +7,7 @@
   <title>Dashboard</title>
   <link rel="stylesheet" href="/css/reset.css">
   <link rel="stylesheet" href="/css/report.css">
+  <link rel="stylesheet" href="/css/homepage.css">
 
   <!-- Embed font -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -14,13 +15,20 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,600;1,600&family=Poppins:wght@400;500;600;700&display=swap"
     rel="stylesheet" />
+  <link 
+    href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Iceland&family=Open+Sans&family=Oswald&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@500&display=swap" 
+    rel="stylesheet" />
+
+    <!-- link for icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <script src="calendar.js" defer></script>
 
   <!-- Embed icon -->
   <script defer src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
 </head>
 
-<body>
+<body >
   <!-- sidebar --> 
   <div class="background">
   </div> 
@@ -102,6 +110,15 @@
 
       </ul>
 
+      <ul class="sub-nav-3">
+        <li>
+          <a href="/Information" class="btn">
+            <span>Information Management</span>
+          </a>
+        </li>
+
+      </ul>
+
     </ul>
   </aside>
 
@@ -110,27 +127,73 @@
     <!-- btn click --> 
     <div class="btn-action"></div>
 
-    <!-- header -->
-    <header class="header">
-      <div id="clock"></div>
-    </header>
+  <main>
 
-    <!-- main -->
-    <main>
-      <!-- main-top -->
-      <div class="main-top">
-        <h2 class="title">Homepage</h2>
-        <div class="selection"></div>
+    <div class="main__content">
+
+      <h2>MY Dashboard</h2>
+      <div class="content__company">
+          <div class="content_intro">
+              <h3>Introduction</h3>
+              <h5>Welcome to our company! We are a multidisciplinary company operating with the goal of bringing maximum value and satisfaction to customers.
+
+                With over 10 years of experience, we have built a solid reputation in our field. We are proud to have a team of talented and passionate experts, always ready to meet all requests and challenges from customers.
+                
+                We are committed to bringing professionalism and honesty to every project we undertake. With dedication and attention to detail, we always ensure that every customer request is fully met and expectations are exceeded.</h5>
+          </div>
+
+          <div class="content_commit">
+              <h3>Commit</h3>
+              <h5>Our company not only focuses on bringing effective business solutions to customers, but also pays special attention to building long-term and trustworthy relationships. We always consider customers as partners and commit to accompanying them on their path to success.
+
+                With the diversity of our service and product portfolio, we are confident that we can meet all of our customers' needs. From website design and development, advertising and marketing, to business consulting and data analysis, we have a team of experienced experts to ensure every project is delivered to the highest quality.
+                
+                Let us help you achieve your business goals. Contact us today to discover the great solutions we can offer. Thank you and congratulations on coming to our company! </h5>
+          </div>
+
       </div>
-      <!-- main bottom -->
-      THIS IS HOME PAGE
+    </div>
 
-      <!-- table -->
-    </main>
-  </div>
+    <div class="main__calendar">
+
+      <div class="wrapper">
+        <header>
+          <p class="current-date"></p>
+          <div class="icons">
+            <span id="prev" class="material-symbols-rounded">chevron_left</span>
+            <span id="next" class="material-symbols-rounded">chevron_right</span>
+          </div>
+        </header>
+        <div class="calendar">
+          <ul class="weeks">
+            <li>Sun</li>
+            <li>Mon</li>
+            <li>Tue</li>
+            <li>Wed</li>
+            <li>Thu</li>
+            <li>Fri</li>
+            <li>Sat</li>
+          </ul>
+          <ul class="days"></ul>
+        </div>
+
+        
+      </div>
+
+
+    </div>
+
   </main>
-  </div>
+  
+  
+  <header class="header">
+    <div id="clock"></div>
+  </header>
+
+  
+  
   <script src="/js/reportScripts.js"></script>
+  <script src="/js/calendar.js"></script>
 </body>
 
 </html>
