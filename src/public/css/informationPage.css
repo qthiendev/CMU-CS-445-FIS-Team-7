@@ -1,3 +1,124 @@
+@import  url(https://fonts.googleapis.com/css?family=Montserrat);
+:root {
+    --color-light: white;
+    --color-dark: #212121;
+    --color-signal: #fab700;
+    
+    --color-background: var(--color-light);
+    --color-text: var(--color-dark);
+    --color-accent: var(--color-signal);
+    
+    --size-bezel: .5rem;
+    --size-radius: 4px;
+    
+    line-height: 1.4;
+    
+    font-family: 'Inter', sans-serif;
+    font-size: calc(.6rem + .4vw);
+    color: var(--color-text);
+    background: var(--color-background);
+    font-weight: 300;
+    padding: 0 calc(var(--size-bezel) * 3);
+  }
+
+form {
+    background-color: #272343;
+    padding: 30px 0;
+    
+}
+
+.content {
+    padding: 0 41px 0 !important;
+}  
+.wrapper {
+    width: 750px;
+    background-color: #FFD5DD;
+    margin: auto;
+    padding: 20px;
+    border-radius: 28px;
+}
+
+
+.top {
+    display: flex;
+    justify-content: space-around;
+}
+
+.info_title {
+    font-family: 'Baloo', sans-serif;
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 13.3px;
+    letter-spacing: 2%;
+    padding-top: 20px;
+    padding-left: 8px;
+    color: #0F123F;
+}
+
+.info_img {
+    width: 70px;
+    height: 55px;
+}
+.info_img img {
+    width: 100%;
+    height: 100%;
+    gap: 0px;
+    border-radius: 60px;
+    object-fit: cover;
+}
+
+.form-group {
+    display: flex;
+}
+
+/* .text-input{
+  
+    position: relative;
+    
+    
+    input[type="text"]{
+      display: inline-block;
+      width: 500px;
+      height: 40px;
+      box-sizing: border-box;
+      outline: none;
+      border: 1px solid lightgray;
+      border-radius: 3px;
+      padding: 10px 10px 10px 100px;
+      transition: all 0.1s ease-out;
+    }
+    
+    input[type="text"] + label{
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      height: 40px;
+      line-height: 40px;
+      color: white;
+      border-radius: 3px 0 0 3px;
+      padding: 0 20px;
+      background: #bae8e8;
+      transform: translateZ(0) translateX(0);
+      transition: all 0.3s ease-in;
+      transition-delay: 0.2s;
+    }
+    
+    input[type="text"]:focus + label{
+      transform: translateY(-120%) translateX(0%);
+      border-radius: 3px;
+      transition: all 0.1s ease-out;
+    }
+    
+    input[type="text"]:focus{
+      padding: 10px;
+      transition: all 0.3s ease-out;
+      transition-delay: 0.2s;
+    }} */
+
+
+  
+
 .headInfo {
     width: 300px; /* Adjust this value as needed */
     text-align: left;
@@ -8,8 +129,9 @@
 
 .detailInfo {
     display: inline-block;
-    max-width: 300px; /* This will limit the width to 300px */
+    /* max-width: 300px;  */
     word-wrap: break-word; /* This will wrap the text inside */
+    
 }
 
 .main-info {
@@ -17,22 +139,100 @@
     width: 600px;
 }
 
+.button_find {
+    margin:unset;
+   margin-left: 8px;
+    padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  background-color: #bae8e8;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.button_find:hover {
+    background-color: #020826;
+  }
+
 .benefit {
     width: fit-content;
+    margin-top: 20px;
     padding-left: 10px;
     width: 600px;
+}
+.title {
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 8px;
+    letter-spacing: 2%;
+    color: #DC1B21;
+    margin-bottom: 20px
+    ;
 }
 
 .employment {
     width: fit-content;
+    margin-top: 20px;
     padding-left: 10px;
     width: 600px;
 }
 
 body {
-    background-color: white;
+    background-color: #716040;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 18px;
     line-height: 40px;
-    background-color: #e7e9eb;
+    
+}
+
+button {
+    --c:  #bae8e8; /* the color*/
+    
+    box-shadow: 0 0 0 .1em inset var(--c); 
+    --_g: linear-gradient(var(--c) 0 0) no-repeat;
+    background: 
+      var(--_g) calc(var(--_p,0%) - 100%) 0%,
+      var(--_g) calc(200% - var(--_p,0%)) 0%,
+      var(--_g) calc(var(--_p,0%) - 100%) 100%,
+      var(--_g) calc(200% - var(--_p,0%)) 100%;
+    background-size: 50.5% calc(var(--_p,0%)/2 + .5%);
+    outline-offset: .1em;
+    transition: background-size .4s, background-position 0s .4s;
+  }
+  button:hover {
+    --_p: 100%;
+    transition: background-position .4s, background-size 0s;
+  }
+  button:active {
+    box-shadow: 0 0 9e9q inset #0009; 
+    background-color: var(--c);
+    color: #fff;
+  }
+  
+  
+  
+
+  button {
+
+    font-family: system-ui, sans-serif;
+    font-size: 2rem;
+    cursor: pointer;
+    margin-top: 20px;
+    font-weight: 500;  
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    color: #fff;
+  }
+
+.button_eb {
+   display: flex;
+   justify-content: center;
+   gap: 20px;
+   padding-bottom: 20px;
 }

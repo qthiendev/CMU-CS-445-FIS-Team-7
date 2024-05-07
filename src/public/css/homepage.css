@@ -26,6 +26,8 @@ main {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+    height: 100%;
+    
 }
 
 h2 {
@@ -37,22 +39,51 @@ h2 {
 }
 
 .main__content {
-    background-image: url('https://i.pinimg.com/736x/3d/9b/c1/3d9bc1270c3cd4005c6b03c8d9c124e1.jpg');
-    width: 50%;
+    /* background-image: url('https://i.pinimg.com/564x/1c/80/85/1c8085905343cab8a33383038c124f53.jpg'); */
+    width: 70%;
     height: 100%;
-    background-color: #8bd3dd;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    
+}
+
+.main__content img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-repeat: no-repeat;
+
+}
+
+.img_content {
+  position: absolute;
+  top: 70px;
+  left: 80px;
+}
+
+h2 {
+  margin-bottom: 70px;
+  color: #fff;
 }
 
 .content__company {
-    position: relative;
+    
     width: 70%;
+    
 }
 
 .content_intro {
-    position: absolute;
-    background-color: #8bd3dd;
+  left: 100px;
+  top: 0;
+
+  /* Top:439px;
+  Left:270px; */
+
+    /* position: absolute; */
+    background-color: #8c7851;
     width: 550px;
-    height: 400px;
+    height: 450px;
     /* margin: 95px 0 0 200px;
     padding-left: 0 20px; */
     /* display: flex;
@@ -61,14 +92,38 @@ h2 {
     align-items: start; */
     text-align: center;
     border-radius: 10px;
+    
 
 }
 
+.content_intro>h3 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.content_intro>h5 {
+  margin-top: 50px;
+  text-align: center;
+  font-size:2rem;
+  font-family:  system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight:400;
+  Line-height: 30px;
+  padding: 0 12px;
+}
+
 .content_commit {
+    top: 370px;
+    left: 98%;
+
+    /* Top: 240px;
+    Left: 853px; */
+   
+
     position: absolute;
-    background-color: #f582ae;
-    width: 553px;
-    height: 450px;
+    background-color: #eaddcf;
+    width: 550px;
+    height: 500px;
     /* margin: 22% 0 0 35%;
     padding-left: 0 20px; */
     /* display: flex;
@@ -77,18 +132,34 @@ h2 {
     align-items: start; */
     text-align: center;
     border-radius: 10px;
-    z-index: 0;
+    
 
 }
 
+.content_commit>h3 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.content_commit>h5 {
+  margin-top: 50px;
+  text-align: center;
+  font-size:2rem;
+  font-family:  system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight:400;
+  Line-height: 30px;
+  padding: 0 12px;
+}
+
 .main__calendar {
-    background-color: #9B59B6;
+    
     width: 30%;
 }
 
 .wrapper{
     position: absolute;
-    width: 450px;
+    width: 550px;
     background: #172c66;
     border-radius: 10px;
     box-shadow: 0 15px 40px rgba(0,0,0,0.12);
@@ -122,7 +193,8 @@ h2 {
     background: #f2f2f2;
   }
   header .current-date{
-    font-size: 1.45rem;
+    color: #f2f2f2;
+    font-size: 2rem;
     font-weight: 500;
   }
   .calendar{

@@ -5,26 +5,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/report.css">
+  
     <link href="/css/informationPage.css" rel="stylesheet" />
+
+    <script src="input.js" defer></script>
+
 </head>
 
 <body>
-    <form action="/Information/Specific/Edit?PERSONAL_ID=<%= data.PERSONAL_ID %>" method="get">
+
+    <!-- sidebar --> 
+ 
+
+
+    <form  action="/Information/Specific/Edit?PERSONAL_ID=<%= data.PERSONAL_ID %>" method="get">
         <div class="wrapper">
+
+            <div class="top">
+                <div class="info_title" >
+                    Information personal
+                </div>
+                <div class="info_img">
+                    <% if (data.CURRENT_GENDER === 'Male') { %>
+                        <img src="https://img.pikbest.com/wp/202345/male-avatar-image-in-the-circle_9588978.jpg!w700wp" alt="Ảnh nam" />
+                    <% } else if (data.CURRENT_GENDER === 'Female') { %>
+                        <img src="https://png.pngtree.com/png-clipart/20230414/original/pngtree-woman-face-in-the-circle-fashion-icon-png-image_9056179.png" alt="Ảnh nữ" />
+                    <% } %>
+                </div>
+            </div>
 
             <div class="main-info">
 
-                <div style="font-size: 24px; ">
-                    Personal
-                </div>
+                
 
                 <hr style="width:600px;text-align:left;margin-left:0">
 
                 <div class="form-group">
                     <div class="headInfo" for="id">ID:</div>
-                    <input class="detailInfo" type="text" id="id" style="width: 60px;" name="PERSONAL_ID"
+                    <!-- <div class="text-input">
+                        <input type="text" id="id" style="width: 60px;" name="PERSONAL_ID"
+                        value="<%= data.PERSONAL_ID %>" placeholder="Try typing id in here!">
+                        <label for="input1">ID</label>
+                      </div> -->
+
+                      <input  type="text" id="id"  name="PERSONAL_ID" placeholder="Try typing id in here!" style="border-radius: 8px;"
                         value="<%= data.PERSONAL_ID %>" />
-                    <button onclick="findEmployee(event)">Find</button>
+
+                    <button class="button_find" onclick="findEmployee(event)">Find</button>
                 </div>
 
                 <div id="fullname">
@@ -90,7 +119,7 @@
                     </div>
                 </div>
 
-                <div id="address1">
+                <div style="width: 700px;" id="address1">
                     <div class="headInfo">
                         Address 1:
                     </div>
@@ -129,11 +158,12 @@
 
             <div class="benefit">
 
-                <div style="font-size: 24px;">
+                <hr style="width:600px;text-align:left;margin-left:0; margin-bottom: 20px;">
+
+                <div class="title" >
                     Benefit
                 </div>
 
-                <hr style="width:600px;text-align:left;margin-left:0">
 
                 <div id="shareholder">
                     <div class="headInfo">
@@ -176,11 +206,11 @@
             <% if (data.EMPLOYMENT_CODE) { %>
                 <div class="employment">
 
-                    <div style="font-size: 24px; ">
+                    <hr style="width:600px;text-align:left;margin-left:0; margin-bottom: 20px;">
+
+                    <div class="title">
                         Employment
                     </div>
-
-                    <hr style="width:600px;text-align:left;margin-left:0">
 
                     <div id="shareholder">
                         <div class="headInfo">
@@ -333,9 +363,14 @@
 
 
         </div>
-        <button type="submit" class="submit">Edit</button>
+
+        <div class="button_eb">
+            <button type="submit" class="submit" >Edit</button>
+            <a href="/Information"><button>Back</button></a>
+        </div>
+
     </form>
-    <a href="/Information"><button>Back</button></a>
+
 
     <script>
         function findEmployee(event) {
