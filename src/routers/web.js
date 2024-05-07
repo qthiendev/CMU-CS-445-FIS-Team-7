@@ -22,7 +22,7 @@ const { addNewEmployeeInformation } = require('../controllers/managements/addEmp
 
 const { deleteEmployee } = require('../controllers/managements/deleteEmployeeController.js');
 const { detelePersonal } = require('../controllers/managements/deletePersonalController.js');
-
+const logout=require('../controllers/utilities/logoutController.js');
 router.get("/", isLoggedInMiddleware, renderHomeView);
 router.get("/Login", renderLoginView);
 router.get("/TryLogin", tryLogin);
@@ -46,5 +46,5 @@ router.get('/AddNewEmployee', isLoggedInMiddleware, addNewEmployeeInformation);
 
 router.get('/DeleteEmployee', isLoggedInMiddleware, deleteEmployee);
 router.get('/DetelePersonal', isLoggedInMiddleware, detelePersonal);
-
+router.get('/logout', logout);
 module.exports = router;
