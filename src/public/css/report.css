@@ -19,6 +19,7 @@ body {
 /* ======= Common ====== */
 a {
   text-decoration: none;
+  color: #000;
 }
 
 /* ======= Sidebar ======*/
@@ -275,12 +276,6 @@ select {
   overflow-y: scroll;
 }
 
-.main-bottom .wrapper-table {
-  margin-top: 50px;
-  max-height: 575px;
-  overflow-y: scroll;
-}
-
 .main-bottom .content-table {
   width: 100%;
   background: #fffffe;
@@ -296,7 +291,7 @@ select {
 .main-bottom th,
 td {
   width: 50px;
-  padding: 24px 0 24px 35px;
+  padding: 24px 0 24px 32px;
   text-align: center;
 }
 
@@ -323,18 +318,29 @@ td {
   font-size: 1.6rem;
   font-weight: 400;
 }
+
+/* ======= Clock ====== */
 #clock {
   font-size: 24px;
   position: absolute;
-<<<<<<< Updated upstream:src/public/css/report.css
   top: 30px;
   right: 48px;
   font-weight: 600;
 }
-.table th {
-  background: var(--primary-color);
-=======
-  top: 20px;
-  right: 20px;
->>>>>>> Stashed changes:src/public/css/homePage.css
+
+/* ======= view and delete btn ======*/
+.main-bottom .group-btn {
+  display: flex;
+  gap: 0 20px;
+  padding-left: 44px;
+}
+
+/* ======= Add btn ====== */
+.main-bottom .btn-add {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: white;
+  padding: 5px 10px;
+  background-color: green;
 }
