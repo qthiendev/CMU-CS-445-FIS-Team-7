@@ -1,0 +1,38 @@
+.headInfo {
+    width: 300px; /* Adjust this value as needed */
+    text-align: left;
+    color: brown;
+    display: inline-block;
+    font-weight: 500;
+}
+
+.detailInfo {
+    display: inline-block;
+    max-width: 300px; /* This will limit the width to 300px */
+    word-wrap: break-word; /* This will wrap the text inside */
+}
+
+.main-info {
+    padding-left: 10px;
+    width: 600px;
+}
+
+.benefit {
+    width: fit-content;
+    padding-left: 10px;
+    width: 600px;
+}
+
+.employment {
+    width: fit-content;
+    padding-left: 10px;
+    width: 600px;
+}
+
+body {
+    background-color: white;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 18px;
+    line-height: 40px;
+    background-color: #e7e9eb;
+}
