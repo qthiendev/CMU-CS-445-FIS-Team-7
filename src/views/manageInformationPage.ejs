@@ -6,7 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Information</title>
   <link rel="stylesheet" href="/css/reset.css">
-  <link rel="stylesheet" href="/css/report.css">
+  <link rel="stylesheet" href="/css/report.css"> 
+
+  <style>
+    .main-bottom th, td{
+      width: auto;
+    }  
+    
+   
+
+   
+  </style>
 
   <!-- Embed font -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -125,8 +135,7 @@
       <!-- main bottom -->
       <div class="main-bottom">
         <!-- table -->
-
-        <div class="wrapper-table">
+        <div class="wrapper-table" style="max-height: 853px;">
           <table class="table content-table">
             <thead>
               <tr>
@@ -139,7 +148,7 @@
                 <th>Phone</th>
                 <th>Shareholder</th>
                 <th>Status</th>
-                <th><button><a href="/Information/Add" class="btn">ADD <i class="fa fa-add"style="font-size:18px;"></i></a></button></button></th>
+                <th style="width: 100px;"><a href="/Information/Add" class="btn-add">Add<i class="fa fa-add" style="font-size:12px;"></i></a></th>
                 <th></th>
               </tr>
             </thead>
@@ -157,7 +166,7 @@
                     <%= data[i].CURRENT_GENDER%>
                   </td>
                   <td>
-                    <%= data.BIRTH_DATE ? data.BIRTH_DATE.toLocaleDateString() : ''%>
+                    <%= data[i].BIRTH_DATE ? (data[i].BIRTH_DATE).toLocaleDateString() : '' %>
                   </td>
                   <td>
                     <%= data[i].ADDRESS%>
@@ -174,14 +183,12 @@
                   <td>
                     <%= data[i].EMPLOYMENT_STATUS%>
                   </td>
-                  <td>
-                    <button><a href="/Information/Specific?PERSONAL_ID=<%= data[i].PERSONAL_ID %>" class="btn"><i class="fa fa-bars"
-                      style="font-size:18px;"></i></a></button>
+                  <td class="group-btn">
+                    <a href="/Information/Specific?PERSONAL_ID=<%= data[i].PERSONAL_ID %>" class="btn"><i class="fa-solid fa-eye" style="font-size:18px; color: #624DE3;"></i></a>
+                     <a href="/DeleteEmployee?PERSONAL_ID=<%= data[i].ID %>" class="btn"><i class="fa fa-trash"
+                        style="font-size:18px; color: red;"></i></a>
                   </td>
-                  <td>
-                    <button><a href="/DeleteEmployee?PERSONAL_ID=<%= data[i].ID %>" class="btn"><i class="fa fa-trash"
-                          style="font-size:18px;"></i></a></button>
-                  </td>
+                  <td></td>
                 </tr>
                 <% } %>
             </tbody>

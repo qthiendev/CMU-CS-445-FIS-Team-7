@@ -5,134 +5,375 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/report.css">
+
+    <link href="/css/informationPage.css" rel="stylesheet" />
+
+    <script src="input.js" defer></script>
+
 </head>
 
 <body>
+
+    <!-- sidebar -->
+
+
+
     <form action="/Information/Specific/Edit?PERSONAL_ID=<%= data.PERSONAL_ID %>" method="get">
         <div class="wrapper">
 
-            <div class="form-group">
-                <label for="id">ID</label>
-                <input type="text" id="id" name="PERSONAL_ID" value="<%= data.PERSONAL_ID %>" />
-                <button onclick="findEmployee(event)">Find</button>
+            <div class="top">
+                <div class="info_title">
+                    Personal Information
+                </div>
+                <div class="info_img">
+                    <% if (data.CURRENT_GENDER==='Male' ) { %>
+                        <img src="https://img.pikbest.com/wp/202345/male-avatar-image-in-the-circle_9588978.jpg!w700wp"
+                            alt="Ảnh nam" />
+                        <% } else if (data.CURRENT_GENDER==='Female' ) { %>
+                            <img src="https://png.pngtree.com/png-clipart/20230414/original/pngtree-woman-face-in-the-circle-fashion-icon-png-image_9056179.png"
+                                alt="Ảnh nữ" />
+                            <% } %>
+                </div>
             </div>
 
-            <div>
-                <p>
-                    Fullname: <%= data.CURRENT_LAST_NAME + ' ' + data.CURRENT_MIDDLE_NAME + ' ' +
-                        data.CURRENT_FIRST_NAME %>
-                </p>
-                <p>
-                    Birth Date: <%= data.BIRTH_DATE ? data.BIRTH_DATE.toLocaleDateString() : '' %>
-                </p>
-                <p>
-                    Gender: <%= data.CURRENT_GENDER %>
-                </p>
-                <p>
-                    Phone: <%= data.CURRENT_PHONE_NUMBER %>
-                </p>
-                <p>
-                    Email: <%= data.CURRENT_PERSONAL_EMAIL %>
-                </p>
-                <p>
-                    Social Security Number: <%= data.SOCIAL_SECURITY_NUMBER %>
-                </p>
-                <p>
-                    Driver's License: <%= data.DRIVERS_LICENSE %>
-                </p>
-                <p>
-                    Address: <%= data.CURRENT_ADDRESS_1 %>, <%= data.CURRENT_CITY %>, <%= data.CURRENT_COUNTRY %>
-                </p>
-                <p>
-                    Zip: <%= data.CURRENT_ZIP %>
-                </p>
-                <p>
-                    Address 2: <%= data.CURRENT_ADDRESS_2 %>, <%= data.CURRENT_COUNTRY %>
-                </p>
-                <p>
-                    Marital Status: <%= data.CURRENT_MARITAL_STATUS %>
-                </p>
-                <p>
-                    Ethnicity: <%= data.ETHNICITY %>
-                </p>
-                <p>
-                    Shareholder: <%= data.SHAREHOLDER_STATUS %>
-                </p>
-                <p>
-                    Benefit Plans ID: <%= data.BENEFIT_PLANS_ID %>
-                </p>
-                <p>
-                    Plan Name: <%= data.PLAN_NAME %>
-                </p>
-                <p>
-                    Deductable: <%= data.DEDUCTABLE %>
-                </p>
-                <p>
-                    Percentage Copay: <%= data.PERCENTAGE_COPAY %>
-                </p>
-                <% if (data.EMPLOYMENT_CODE) { %>
-                    <p>
-                        Employment Code: <%= data.EMPLOYMENT_CODE %>
-                    </p>
-                    <p>
-                        Employment Status: <%= data.EMPLOYMENT_STATUS %>
-                    </p>
-                    <p>
-                        Hire Date For Working: <%= data.HIRE_DATE_FOR_WORKING ?
-                            data.HIRE_DATE_FOR_WORKING.toLocaleDateString() : '' %>
-                    </p>
-                    <p>
-                        Workers Comp Code: <%= data.WORKERS_COMP_CODE %>
-                    </p>
-                    <p>
-                        Termination Date: <%= data.TERMINATION_DATE ? data.TERMINATION_DATE.toLocaleDateString() : '' %>
-                    </p>
-                    <p>
-                        Rehire Date For Working: <%= data.REHIRE_DATE_FOR_WORKING ?
-                            data.REHIRE_DATE_FOR_WORKING.toLocaleDateString() : '' %>
-                    </p>
-                    <p>
-                        Last Review Date: <%= data.LAST_REVIEW_DATE ? data.LAST_REVIEW_DATE.toLocaleDateString() : '' %>
-                    </p>
-                    <p>
-                        Number Days Requirement Of Working Per Month: <%=
-                            data.NUMBER_DAYS_REQUIREMENT_OF_WORKING_PER_MONTH %>
-                    </p>
-                    <p>
-                        Payrate ID: <%= data['idPay Rates'] %>
-                    </p>
-                    <p>
-                        Payrate Name: <%= data['Pay Rate Name'] %>
-                    </p>
-                    <p>
-                        Value: <%= data['Value'] %>
-                    </p>
-                    <p>
-                        Payrate: <%= data['Pay Rate'] %>
-                    </p>
-                    <p>
-                        Paid to date: <%= data['Paid To Date'] %>
-                    </p>
-                    <p>
-                        Pay Type: <%= data['Pay Type'] %>
-                    </p>
-                    <p>
-                        Tax Percentage: <%= data['Tax Percentage'] %>
-                    </p>
-                    <p>
-                        Pay Amount: <%= data['Pay Amount'] %>
-                    </p>
-                    <p>
-                        PT - Level C: <%= data['PT - Level C'] %>
-                    </p>
-                    <% } %>
+            <div class="main-info">
+
+
+
+                <hr style="width:600px;text-align:left;margin-left:0">
+
+                <div class="form-group">
+                    <div class="headInfo" for="id">ID:</div>
+                    <!-- <div class="text-input">
+                        <input type="text" id="id" style="width: 60px;" name="PERSONAL_ID"
+                        value="<%= data.PERSONAL_ID %>" placeholder="Try typing id in here!">
+                        <label for="input1">ID</label>
+                      </div> -->
+
+                    <input type="text" id="id" name="PERSONAL_ID" placeholder="Try typing id in here!"
+                        style="border-radius: 8px;" value="<%= data.PERSONAL_ID %>" />
+
+                    <button class="button_find" onclick="findEmployee(event)">Find</button>
+                </div>
+
+                <div id="fullname">
+                    <div class="headInfo">
+                        Fullname:
+                    </div>
+                    <div class="detailInfo">
+                        <%= data.CURRENT_LAST_NAME + ' ' + data.CURRENT_MIDDLE_NAME + ' ' + data.CURRENT_FIRST_NAME %>
+                    </div>
+                </div>
+
+                <div id="birthDate">
+                    <div class="headInfo">
+                        Birth Date:
+                    </div>
+                    <div class="detailInfo">
+                        <%= data.BIRTH_DATE ? data.BIRTH_DATE.toLocaleDateString() : '' %>
+                    </div>
+                </div>
+
+                <div id="gender">
+                    <div class="headInfo">
+                        Gender:
+                    </div>
+                    <div class="detailInfo">
+                        <%= data.CURRENT_GENDER %>
+                    </div>
+                </div>
+
+                <div id="phone">
+                    <div class="headInfo">
+                        Phone:
+                    </div>
+                    <div class="detailInfo">
+                        <%= data.CURRENT_PHONE_NUMBER %>
+                    </div>
+                </div>
+
+                <div id="email">
+                    <div class="headInfo">
+                        Email:
+                    </div>
+                    <div class="detailInfo">
+                        <%= data.CURRENT_PERSONAL_EMAIL %>
+                    </div>
+                </div>
+
+                <div id="ssn">
+                    <div class="headInfo">
+                        Social Security Number:
+                    </div>
+                    <div class="detailInfo">
+                        <%= data.SOCIAL_SECURITY_NUMBER %>
+                    </div>
+                </div>
+
+                <div id="dl">
+                    <div class="headInfo">
+                        Driver's License:
+                    </div>
+                    <div class="detailInfo">
+                        <%= data.DRIVERS_LICENSE %>
+                    </div>
+                </div>
+
+                <div style="width: 700px;" id="address1">
+                    <div class="headInfo">
+                        Address 1:
+                    </div>
+                    <div class="detailInfo">
+                        <%= data.CURRENT_ADDRESS_1 %>, <%= data.CURRENT_CITY %>, <%= data.CURRENT_COUNTRY %>
+                    </div>
+                </div>
+
+                <div id="address2">
+                    <div class="headInfo">
+                        Address 2:
+                    </div>
+                    <div class="detailInfo">
+                        <%= data.CURRENT_ADDRESS_2 %>, <%= data.CURRENT_COUNTRY %>
+                    </div>
+                </div>
+
+                <div id="marital-status">
+                    <div class="headInfo">
+                        Marital Status:
+                    </div>
+                    <div class="detailInfo">
+                        <%= data.CURRENT_MARITAL_STATUS %>
+                    </div>
+                </div>
+
+                <div id="ethnicity">
+                    <div class="headInfo">
+                        Ethnicity:
+                    </div>
+                    <div class="detailInfo">
+                        <%= data.ETHNICITY %>
+                    </div>
+                </div>
             </div>
+
+            <div class="benefit">
+
+                <hr style="width:600px;text-align:left;margin-left:0; margin-bottom: 20px;">
+
+                <div class="title">
+                    Benefit
+                </div>
+
+
+                <div id="shareholder">
+                    <div class="headInfo">
+                        Shareholder:
+                    </div>
+                    <div class="detailInfo">
+                        <%= data.SHAREHOLDER_STATUS==1 ? 'Yes' : 'No' %>
+                    </div>
+                </div>
+
+                <div id="shareholder">
+                    <div class="headInfo">
+                        Plan Name:
+                    </div>
+                    <div class="detailInfo">
+                        <%= data.PLAN_NAME %>
+                    </div>
+                </div>
+
+                <div id="deductable">
+                    <div class="headInfo">
+                        Deductable:
+                    </div>
+                    <div class="detailInfo">
+                        <%= data.DEDUCTABLE %>
+                    </div>
+                </div>
+
+                <div id="percentage-copay">
+                    <div class="headInfo">
+                        Percentage Copay:
+                    </div>
+                    <div class="detailInfo">
+                        <%= data.PERCENTAGE_COPAY %>
+                    </div>
+                </div>
+
+            </div>
+
+            <% if (data.EMPLOYMENT_CODE) { %>
+                <div class="employment">
+
+                    <hr style="width:600px;text-align:left;margin-left:0; margin-bottom: 20px;">
+
+                    <div class="title">
+                        Employment
+                    </div>
+
+                    <div id="shareholder">
+                        <div class="headInfo">
+                            Employment Code:
+                        </div>
+                        <div class="detailInfo">
+                            <%= data.EMPLOYMENT_CODE %>
+                        </div>
+                    </div>
+
+                    <div id="shareholder">
+                        <div class="headInfo">
+                            Employment Status:
+                        </div>
+                        <div class="detailInfo">
+                            <%= data.EMPLOYMENT_STATUS %>
+                        </div>
+                    </div>
+
+                    <div id="shareholder">
+                        <div class="headInfo">
+                            Hire Date:
+                        </div>
+                        <div class="detailInfo">
+                            <%= data.HIRE_DATE_FOR_WORKING ? data.HIRE_DATE_FOR_WORKING.toLocaleDateString() : '' %>
+                        </div>
+                    </div>
+
+                    <div id="shareholder">
+                        <div class="headInfo">
+                            Workers Comp Code:
+                        </div>
+                        <div class="detailInfo">
+                            <%= data.WORKERS_COMP_CODE %>
+                        </div>
+                    </div>
+
+                    <% if (data.TERMINATION_DATE) {%>
+                        <div id="shareholder">
+                            <div class="headInfo">
+                                Termination Date:
+                            </div>
+                            <div class="detailInfo">
+                                <%= data.TERMINATION_DATE.toLocaleDateString() %>
+                            </div>
+                        </div>
+                        <% } %>
+
+                            <% if (data.REHIRE_DATE_FOR_WORKING) {%>
+                                <div id="shareholder">
+                                    <div class="headInfo">
+                                        Rehire Date:
+                                    </div>
+                                    <div class="detailInfo">
+                                        <%= data.REHIRE_DATE_FOR_WORKING.toLocaleDateString() %>
+                                    </div>
+                                </div>
+                                <% } %>
+                                    <div id="shareholder">
+                                        <div class="headInfo">
+                                            Last Review Date:
+                                        </div>
+                                        <div class="detailInfo">
+                                            <%= data.LAST_REVIEW_DATE ? data.LAST_REVIEW_DATE.toLocaleDateString() : ''
+                                                %>
+                                        </div>
+                                    </div>
+                                    <div id="shareholder">
+                                        <div class="headInfo">
+                                            Working Days Requirement:
+                                        </div>
+                                        <div class="detailInfo">
+                                            <%= data.NUMBER_DAYS_REQUIREMENT_OF_WORKING_PER_MONTH%>
+                                        </div>
+                                    </div>
+                                    <div id="shareholder">
+                                        <div class="headInfo">
+                                            Payrate ID:
+                                        </div>
+                                        <div class="detailInfo">
+                                            <%= data['idPay Rates'] %>
+                                        </div>
+                                    </div>
+                                    <div id="shareholder">
+                                        <div class="headInfo">
+                                            Payrate Name:
+                                        </div>
+                                        <div class="detailInfo">
+                                            <%= data['Pay Rate Name'] %>
+                                        </div>
+                                    </div>
+                                    <div id="shareholder">
+                                        <div class="headInfo">
+                                            Value:
+                                        </div>
+                                        <div class="detailInfo">
+                                            <%= data['Value'] %>
+                                        </div>
+                                    </div>
+                                    <div id="shareholder">
+                                        <div class="headInfo">
+                                            Payrate:
+                                        </div>
+                                        <div class="detailInfo">
+                                            <%= data['Pay Rate'] %>
+                                        </div>
+                                    </div>
+                                    <div id="shareholder">
+                                        <div class="headInfo">
+                                            Paid to date:
+                                        </div>
+                                        <div class="detailInfo">
+                                            <%= data['Paid To Date'] %>
+                                        </div>
+                                    </div>
+                                    <div id="shareholder">
+                                        <div class="headInfo">
+                                            Pay Type:
+                                        </div>
+                                        <div class="detailInfo">
+                                            <%= data['Pay Type'] %>
+                                        </div>
+                                    </div>
+                                    <div id="shareholder">
+                                        <div class="headInfo">
+                                            Tax Percentage:
+                                        </div>
+                                        <div class="detailInfo">
+                                            <%= data['Tax Percentage'] %>
+                                        </div>
+                                    </div>
+                                    <div id="shareholder">
+                                        <div class="headInfo">
+                                            Pay Amount:
+                                        </div>
+                                        <div class="detailInfo">
+                                            <%= data['Tax Percentage'] %>
+                                        </div>
+                                    </div>
+                                    <div id="shareholder">
+                                        <div class="headInfo">
+                                            PT - Level C:
+                                        </div>
+                                        <div class="detailInfo">
+                                            <%= data['PT - Level C'] %>
+                                        </div>
+                                    </div>
+                </div>
+                <% } %>
+        </div>
 
 
         </div>
-        <button type="submit" class="submit">Edit</button>
+
+        <div class="button_eb">
+            <button type="submit" class="submit">Edit</button>
+            <a href="/Information"><button>Back</button></a>
+        </div>
+
     </form>
-    <a href="/Information"><button>Back</button></a>
+
 
     <script>
         function findEmployee(event) {

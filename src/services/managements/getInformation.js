@@ -22,6 +22,7 @@ const getInformation = async () => {
         console.log('[System] processEmployee.js | Got AllInformation.');
 
         return data;
+        
     } catch (err) {
         console.log('[System] processEmployee.js | Cannot get AllInformation: ', err);
     }
