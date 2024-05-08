@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/css/reset.css">
-  <link rel="stylesheet" href="/css/report.css">
-  
+    <link rel="stylesheet" href="/css/report.css">
+
     <link href="/css/informationPage.css" rel="stylesheet" />
 
     <script src="input.js" defer></script>
@@ -16,29 +16,31 @@
 
 <body>
 
-    <!-- sidebar --> 
- 
+    <!-- sidebar -->
 
 
-    <form  action="/Information/Specific/Edit?PERSONAL_ID=<%= data.PERSONAL_ID %>" method="get">
+
+    <form action="/Information/Specific/Edit?PERSONAL_ID=<%= data.PERSONAL_ID %>" method="get">
         <div class="wrapper">
 
             <div class="top">
-                <div class="info_title" >
-                    Information personal
+                <div class="info_title">
+                    Personal Information
                 </div>
                 <div class="info_img">
-                    <% if (data.CURRENT_GENDER === 'Male') { %>
-                        <img src="https://img.pikbest.com/wp/202345/male-avatar-image-in-the-circle_9588978.jpg!w700wp" alt="Ảnh nam" />
-                    <% } else if (data.CURRENT_GENDER === 'Female') { %>
-                        <img src="https://png.pngtree.com/png-clipart/20230414/original/pngtree-woman-face-in-the-circle-fashion-icon-png-image_9056179.png" alt="Ảnh nữ" />
-                    <% } %>
+                    <% if (data.CURRENT_GENDER==='Male' ) { %>
+                        <img src="https://img.pikbest.com/wp/202345/male-avatar-image-in-the-circle_9588978.jpg!w700wp"
+                            alt="Ảnh nam" />
+                        <% } else if (data.CURRENT_GENDER==='Female' ) { %>
+                            <img src="https://png.pngtree.com/png-clipart/20230414/original/pngtree-woman-face-in-the-circle-fashion-icon-png-image_9056179.png"
+                                alt="Ảnh nữ" />
+                            <% } %>
                 </div>
             </div>
 
             <div class="main-info">
 
-                
+
 
                 <hr style="width:600px;text-align:left;margin-left:0">
 
@@ -50,8 +52,8 @@
                         <label for="input1">ID</label>
                       </div> -->
 
-                      <input  type="text" id="id"  name="PERSONAL_ID" placeholder="Try typing id in here!" style="border-radius: 8px;"
-                        value="<%= data.PERSONAL_ID %>" />
+                    <input type="text" id="id" name="PERSONAL_ID" placeholder="Try typing id in here!"
+                        style="border-radius: 8px;" value="<%= data.PERSONAL_ID %>" />
 
                     <button class="button_find" onclick="findEmployee(event)">Find</button>
                 </div>
@@ -160,7 +162,7 @@
 
                 <hr style="width:600px;text-align:left;margin-left:0; margin-bottom: 20px;">
 
-                <div class="title" >
+                <div class="title">
                     Benefit
                 </div>
 
@@ -257,106 +259,107 @@
                                 <%= data.TERMINATION_DATE.toLocaleDateString() %>
                             </div>
                         </div>
-                    <% } %>
-
-                        <% if (data.REHIRE_DATE_FOR_WORKING) {%>
-                            <div id="shareholder">
-                                <div class="headInfo">
-                                    Rehire Date:
-                                </div>
-                                <div class="detailInfo">
-                                    <%= data.REHIRE_DATE_FOR_WORKING.toLocaleDateString() %>
-                                </div>
-                            </div>
                         <% } %>
-                        <div id="shareholder">
-                            <div class="headInfo">
-                                Last Review Date:
-                            </div>
-                            <div class="detailInfo">
-                                <%= data.LAST_REVIEW_DATE ? data.LAST_REVIEW_DATE.toLocaleDateString() : '' %>
-                            </div>
-                        </div>
-                        <div id="shareholder">
-                            <div class="headInfo">
-                                Working Days Requirement:
-                            </div>
-                            <div class="detailInfo">
-                                <%= data.NUMBER_DAYS_REQUIREMENT_OF_WORKING_PER_MONTH%>
-                            </div>
-                        </div>
-                        <div id="shareholder">
-                            <div class="headInfo">
-                                Payrate ID:
-                            </div>
-                            <div class="detailInfo">
-                                <%= data['idPay Rates'] %>
-                            </div>
-                        </div>
-                        <div id="shareholder">
-                            <div class="headInfo">
-                                Payrate Name:
-                            </div>
-                            <div class="detailInfo">
-                                <%= data['Pay Rate Name'] %>
-                            </div>
-                        </div>
-                        <div id="shareholder">
-                            <div class="headInfo">
-                                Value:
-                            </div>
-                            <div class="detailInfo">
-                                <%= data['Value'] %>
-                            </div>
-                        </div>
-                        <div id="shareholder">
-                            <div class="headInfo">
-                                Payrate:
-                            </div>
-                            <div class="detailInfo">
-                                <%= data['Pay Rate'] %>
-                            </div>
-                        </div>
-                        <div id="shareholder">
-                            <div class="headInfo">
-                                Paid to date:
-                            </div>
-                            <div class="detailInfo">
-                                <%= data['Paid To Date'] %>
-                            </div>
-                        </div>
-                        <div id="shareholder">
-                            <div class="headInfo">
-                                Pay Type:
-                            </div>
-                            <div class="detailInfo">
-                                <%= data['Pay Type'] %>
-                            </div>
-                        </div>
-                        <div id="shareholder">
-                            <div class="headInfo">
-                                Tax Percentage:
-                            </div>
-                            <div class="detailInfo">
-                                <%= data['Tax Percentage'] %>
-                            </div>
-                        </div>
-                        <div id="shareholder">
-                            <div class="headInfo">
-                                Pay Amount:
-                            </div>
-                            <div class="detailInfo">
-                                <%= data['Tax Percentage'] %>
-                            </div>
-                        </div>
-                        <div id="shareholder">
-                            <div class="headInfo">
-                                PT - Level C:
-                            </div>
-                            <div class="detailInfo">
-                                <%= data['PT - Level C'] %>
-                            </div>
-                        </div>
+
+                            <% if (data.REHIRE_DATE_FOR_WORKING) {%>
+                                <div id="shareholder">
+                                    <div class="headInfo">
+                                        Rehire Date:
+                                    </div>
+                                    <div class="detailInfo">
+                                        <%= data.REHIRE_DATE_FOR_WORKING.toLocaleDateString() %>
+                                    </div>
+                                </div>
+                                <% } %>
+                                    <div id="shareholder">
+                                        <div class="headInfo">
+                                            Last Review Date:
+                                        </div>
+                                        <div class="detailInfo">
+                                            <%= data.LAST_REVIEW_DATE ? data.LAST_REVIEW_DATE.toLocaleDateString() : ''
+                                                %>
+                                        </div>
+                                    </div>
+                                    <div id="shareholder">
+                                        <div class="headInfo">
+                                            Working Days Requirement:
+                                        </div>
+                                        <div class="detailInfo">
+                                            <%= data.NUMBER_DAYS_REQUIREMENT_OF_WORKING_PER_MONTH%>
+                                        </div>
+                                    </div>
+                                    <div id="shareholder">
+                                        <div class="headInfo">
+                                            Payrate ID:
+                                        </div>
+                                        <div class="detailInfo">
+                                            <%= data['idPay Rates'] %>
+                                        </div>
+                                    </div>
+                                    <div id="shareholder">
+                                        <div class="headInfo">
+                                            Payrate Name:
+                                        </div>
+                                        <div class="detailInfo">
+                                            <%= data['Pay Rate Name'] %>
+                                        </div>
+                                    </div>
+                                    <div id="shareholder">
+                                        <div class="headInfo">
+                                            Value:
+                                        </div>
+                                        <div class="detailInfo">
+                                            <%= data['Value'] %>
+                                        </div>
+                                    </div>
+                                    <div id="shareholder">
+                                        <div class="headInfo">
+                                            Payrate:
+                                        </div>
+                                        <div class="detailInfo">
+                                            <%= data['Pay Rate'] %>
+                                        </div>
+                                    </div>
+                                    <div id="shareholder">
+                                        <div class="headInfo">
+                                            Paid to date:
+                                        </div>
+                                        <div class="detailInfo">
+                                            <%= data['Paid To Date'] %>
+                                        </div>
+                                    </div>
+                                    <div id="shareholder">
+                                        <div class="headInfo">
+                                            Pay Type:
+                                        </div>
+                                        <div class="detailInfo">
+                                            <%= data['Pay Type'] %>
+                                        </div>
+                                    </div>
+                                    <div id="shareholder">
+                                        <div class="headInfo">
+                                            Tax Percentage:
+                                        </div>
+                                        <div class="detailInfo">
+                                            <%= data['Tax Percentage'] %>
+                                        </div>
+                                    </div>
+                                    <div id="shareholder">
+                                        <div class="headInfo">
+                                            Pay Amount:
+                                        </div>
+                                        <div class="detailInfo">
+                                            <%= data['Tax Percentage'] %>
+                                        </div>
+                                    </div>
+                                    <div id="shareholder">
+                                        <div class="headInfo">
+                                            PT - Level C:
+                                        </div>
+                                        <div class="detailInfo">
+                                            <%= data['PT - Level C'] %>
+                                        </div>
+                                    </div>
                 </div>
                 <% } %>
         </div>
@@ -365,7 +368,7 @@
         </div>
 
         <div class="button_eb">
-            <button type="submit" class="submit" >Edit</button>
+            <button type="submit" class="submit">Edit</button>
             <a href="/Information"><button>Back</button></a>
         </div>
 
