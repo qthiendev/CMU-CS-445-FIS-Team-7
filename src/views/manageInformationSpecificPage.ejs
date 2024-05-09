@@ -63,7 +63,8 @@
                         Fullname:
                     </div>
                     <div class="detailInfo">
-                        <%= data.CURRENT_LAST_NAME + ' ' + data.CURRENT_MIDDLE_NAME + ' ' + data.CURRENT_FIRST_NAME %>
+                        <%= data.CURRENT_LAST_NAME + (data.CURRENT_MIDDLE_NAME && data.CURRENT_MIDDLE_NAME !='' ? ' ' +
+                            data.CURRENT_MIDDLE_NAME : '' ) + ' ' + data.CURRENT_FIRST_NAME %>
                     </div>
                 </div>
 
@@ -123,39 +124,41 @@
 
                 <div style="width: 700px;" id="address1">
                     <div class="headInfo">
-                        Address 1:
+                        Address:
                     </div>
                     <div class="detailInfo">
                         <%= data.CURRENT_ADDRESS_1 %>, <%= data.CURRENT_CITY %>, <%= data.CURRENT_COUNTRY %>
                     </div>
                 </div>
 
-                <div id="address2">
-                    <div class="headInfo">
-                        Address 2:
+                <% if (data.CURRENT_ADDRESS_2 && data.CURRENT_ADDRESS_2 !='' ) { %>
+                    <div id="address2">
+                        <div class="headInfo">
+                            Address 2:
+                        </div>
+                        <div class="detailInfo">
+                            <%= data.CURRENT_ADDRESS_2 %>, <%= data.CURRENT_COUNTRY %>
+                        </div>
                     </div>
-                    <div class="detailInfo">
-                        <%= data.CURRENT_ADDRESS_2 %>, <%= data.CURRENT_COUNTRY %>
-                    </div>
-                </div>
+                    <%}%>
 
-                <div id="marital-status">
-                    <div class="headInfo">
-                        Marital Status:
-                    </div>
-                    <div class="detailInfo">
-                        <%= data.CURRENT_MARITAL_STATUS %>
-                    </div>
-                </div>
+                        <div id="marital-status">
+                            <div class="headInfo">
+                                Marital Status:
+                            </div>
+                            <div class="detailInfo">
+                                <%= data.CURRENT_MARITAL_STATUS %>
+                            </div>
+                        </div>
 
-                <div id="ethnicity">
-                    <div class="headInfo">
-                        Ethnicity:
-                    </div>
-                    <div class="detailInfo">
-                        <%= data.ETHNICITY %>
-                    </div>
-                </div>
+                        <div id="ethnicity">
+                            <div class="headInfo">
+                                Ethnicity:
+                            </div>
+                            <div class="detailInfo">
+                                <%= data.ETHNICITY %>
+                            </div>
+                        </div>
             </div>
 
             <div class="benefit">
@@ -366,9 +369,9 @@
 
         <div class="button_eb">
             <button type="submit" class="submit">Edit</button>
-            <button onclick="backInformation(event)">Back</button> 
+            <button onclick="backInformation(event)">Back</button>
         </div>
-        
+
     </form>
 
 
@@ -381,11 +384,11 @@
     </script>
 
     <script>
-    function backInformation(event) {
-        event.preventDefault();
-        window.location.href = '/Information';
-    }
-</script>
+        function backInformation(event) {
+            event.preventDefault();
+            window.location.href = '/Information';
+        }
+    </script>
 
 </body>
 

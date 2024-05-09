@@ -60,6 +60,7 @@ const editSpecificInformation = async (
     idPay_Rates
 ) => {
     try {
+
         // If you want multiline string , use ``, kinda smart 
         var queryHRDB_PersonalUpdate = `use [HumanResourceDB]
         UPDATE [DBO].[PERSONAL]
@@ -126,6 +127,7 @@ const editSpecificInformation = async (
         }
 
         console.log('[System] processEmployee.js | Setted Information [' + PERSONAL_ID + ']: ');
+
     } catch (err) {
         console.log('[System] processEmployee.js | Cannot set Information [' + PERSONAL_ID + ']: ', err);
     }
