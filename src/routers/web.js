@@ -12,6 +12,7 @@ const { renderTotalEarningsReportView } = require('../controllers/reports/totalE
 const { renderBirthdayAlertView } = require('../controllers/alerts/birthdayAlertController');
 const { renderHirringAnniversaryAlertView } = require('../controllers/alerts/hirringAnniversaryAlertController');
 const { renderVacationDaysAlertView } = require('../controllers/alerts/vacationDaysAlertController');
+const { renderBenefitPlansAlertPage } = require('../controllers/alerts/benefitPlansAlertController.js');
 
 const { renderInformationView } = require('../controllers/managements/getInformationController.js');
 const { renderSpecificInformationView } = require('../controllers/managements/getSpecificInformationController.js');
@@ -22,7 +23,8 @@ const { addNewEmployeeInformation } = require('../controllers/managements/addEmp
 
 const { deleteEmployee } = require('../controllers/managements/deleteEmployeeController.js');
 const { detelePersonal } = require('../controllers/managements/deletePersonalController.js');
-const logout=require('../controllers/utilities/logoutController.js');
+const logout  = require('../controllers/utilities/logoutController.js');
+
 router.get("/", isLoggedInMiddleware, renderHomeView);
 router.get("/Login", renderLoginView);
 router.get("/TryLogin", tryLogin);
@@ -34,6 +36,7 @@ router.get('/TotalEarningsReport', isLoggedInMiddleware, renderTotalEarningsRepo
 router.get('/BirthdayAlert', isLoggedInMiddleware, renderBirthdayAlertView);
 router.get('/HiringAnniversaryAlert', isLoggedInMiddleware, renderHirringAnniversaryAlertView);
 router.get('/VacationDaysAlert', isLoggedInMiddleware, renderVacationDaysAlertView);
+router.get('/BenefitsPlanAlert', isLoggedInMiddleware, renderBenefitPlansAlertPage);
 
 router.get('/Information', isLoggedInMiddleware, renderInformationView);
 router.get('/Information/Specific', isLoggedInMiddleware, renderSpecificInformationView);
@@ -47,4 +50,5 @@ router.get('/AddNewEmployee', isLoggedInMiddleware, addNewEmployeeInformation);
 router.get('/DeleteEmployee', isLoggedInMiddleware, deleteEmployee);
 router.get('/DetelePersonal', isLoggedInMiddleware, detelePersonal);
 router.get('/logout', logout);
+
 module.exports = router;

@@ -36,8 +36,11 @@ const getVacationDaysAlert = async (day, month, year) => {
             + ' ORDER BY [EWT].[TOTAL_NUMBER_VACATION_WORKING_DAYS_PER_MONTH] DESC '
         );
 
+        console.log(sqlQueryHR);
+
         var data = await queryHRDB(sqlQueryHR);
 
+        console.log(data)
         console.log('[System] getVacationDaysAlert.js | Got VacationDaysAlert.');
 
         return data;

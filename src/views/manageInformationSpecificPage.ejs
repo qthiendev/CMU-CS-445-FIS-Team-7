@@ -364,14 +364,11 @@
                 <% } %>
         </div>
 
-
-        </div>
-
         <div class="button_eb">
             <button type="submit" class="submit">Edit</button>
-            <a href="/Information"><button>Back</button></a>
+            <button onclick="backInformation(event)">Back</button> 
         </div>
-
+        
     </form>
 
 
@@ -382,6 +379,13 @@
             window.location.href = '/Information/Specific?PERSONAL_ID=' + encodeURIComponent(personalId);
         }
     </script>
+
+    <script>
+    function backInformation(event) {
+        event.preventDefault();
+        window.location.href = '/Information';
+    }
+</script>
 
 </body>
 
