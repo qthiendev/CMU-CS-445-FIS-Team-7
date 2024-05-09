@@ -1,4 +1,5 @@
-
+const Roles=require("../../models/roles");
+const { json } = require("express")
 
 class Index{
     accounts(req,res){
@@ -9,8 +10,12 @@ class Index{
         res.render('permissions.ejs')
     }
 
-    roles(req, res){
-        res.render('roles.ejs')
+    async roles(req, res){
+
+        const roles = await Roles.find({deleted: false})
+
+
+        res.render('roles.ejs', {roles: roles})
 
 }
 }
