@@ -6,7 +6,7 @@ const getLogin = async (id, password) => {
         id = id.replace(/'/g, "''");
         password = password.replace(/'/g, "''");
 
-        sqlQueryMD = ('select ACCOUNT_ID, ACCOUNT_PASSWORD from ACCOUNT where ACCOUNT_ID = \'' + id + '\' and ACCOUNT_PASSWORD = \'' + password + '\'');
+        var sqlQueryMD = ('select [USER_ACCOUNT], [USER_PASSWORD] from [USERS] where [USER_ACCOUNT] = \'' + id + '\' and [USER_PASSWORD] = \'' + password + '\'');
         
         var data = await queryMDDB(sqlQueryMD);
 
