@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/addPersonalPage.css">
     <title>Document</title>
 </head>
 
@@ -108,20 +109,37 @@
                 <button onclick="benefitPlanCheck(event)">Check</button>
             </div>
 
-            <p>
-                Plan Name: <%= PLAN_NAME %>
-            </p>
-            <p>
-                Deductable: <%= DEDUCTABLE %>
-            </p>
-            <p>
-                Percentage Copay: <%= PERCENTAGE_COPAY %>
-            </p>
+            <div>
+                <div class="headInfo">
+                    Plan Name:
+                </div>
+                <div class="detailInfo">
+                    <%= PLAN_NAME %>
+                </div>
+            </div>
 
+            <div>
+                <div class="headInfo">
+                    Deductable:
+                </div>
+                <div class="detailInfo">
+                    <%= DEDUCTABLE %>
+                </div>
+            </div>
+
+            <div>
+                <div class="headInfo">
+                    Percentage Copay:
+                </div>
+                <div class="detailInfo">
+                    <%= PERCENTAGE_COPAY %>
+                </div>
+            </div>
+
+            <button type="submit" class="submit" style="text-decoration: none;color: black;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Submit</button>
+            <button><a href="/Information" style="text-decoration: none;color: black;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Back</a></button>
         </div>
-        <button type="submit" class="submit">Submit</button>
     </form>
-    <a href="/Information"><button>Back</button></a>
 </body>
 
 </html>
