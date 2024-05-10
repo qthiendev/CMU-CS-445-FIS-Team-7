@@ -8,6 +8,7 @@ const db= require("./configs/configDB.js");
 db.connect();
 const methodOverride = require("method-override");
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 
 
 app.use(
@@ -22,6 +23,9 @@ app.use(
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
+
+app.use(cookieParser('KEYMEAT'));
+app.use(session({ cookie: { maxAge: 60000 }}));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
