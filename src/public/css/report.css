@@ -45,6 +45,11 @@ a {
   transform: translateX(-100%);
   transition: 0.3s all;
   z-index: 2;
+  overflow-y: scroll;
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 0;
 }
 
 .sidebar.active {
@@ -90,6 +95,11 @@ a {
 .sidebar .btn .bx-chevron-down-2.rotate {
   transform: rotate(180deg);
 }
+
+.sidebar .btn .bx-chevron-down-3.rotate {
+  transform: rotate(180deg);
+}
+
 .sidebar .btn span {
   margin-left: 15px;
   color: #8bd3dd;
@@ -122,12 +132,23 @@ a {
 
 .sidebar .sub-nav-2 {
   overflow: hidden;
-  height: 255px;
+  height: 224px;
   transition: all 0.3s;
 }
 
 /* add class */
 .sidebar .sub-nav-2.active {
+  height: 0;
+}
+
+.sidebar .sub-nav-3 {
+  overflow: hidden;
+  height: 242px;
+  transition: all 0.3s;
+}
+
+/* add class */
+.sidebar .sub-nav-3.active {
   height: 0;
 }
 

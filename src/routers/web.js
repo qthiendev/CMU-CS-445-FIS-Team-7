@@ -1,54 +1,186 @@
 const express = require("express");
 const router = express.Router();
-const isLoggedInMiddleware = require('../middleware/checkLogin.js');
 
-const { renderLoginView, tryLogin } = require('../controllers/utilities/loginController');
-const { renderHomeView } = require('../controllers/utilities/homeController');
+const authController = require("../controllers/auth/authController.js");
 
-const { renderVacationDaysReportView } = require('../controllers/reports/vacationDayReportController');
-const { renderAverageBenefitsReportView } = require('../controllers/reports/averageBenefitsReportController');
-const { renderTotalEarningsReportView } = require('../controllers/reports/totalEarningsReportController');
+const middlewareAuth = require("../middleware/checkLogin.js");
 
-const { renderBirthdayAlertView } = require('../controllers/alerts/birthdayAlertController');
-const { renderHirringAnniversaryAlertView } = require('../controllers/alerts/hirringAnniversaryAlertController');
-const { renderVacationDaysAlertView } = require('../controllers/alerts/vacationDaysAlertController');
-const { renderBenefitPlansAlertPage } = require('../controllers/alerts/benefitPlansAlertController.js');
+const {
+  renderVacationDaysReportView,
+} = require("../controllers/reports/vacationDayReportController");
+const {
+  renderAverageBenefitsReportView,
+} = require("../controllers/reports/averageBenefitsReportController");
+const {
+  renderTotalEarningsReportView,
+} = require("../controllers/reports/totalEarningsReportController");
 
-const { renderInformationView } = require('../controllers/managements/getInformationController.js');
-const { renderSpecificInformationView } = require('../controllers/managements/getSpecificInformationController.js');
-const { editInformation, renderInformationSpecificEdit } = require('../controllers/managements/editSpecificInformationController.js');
+const {
+  renderBirthdayAlertView,
+} = require("../controllers/alerts/birthdayAlertController");
+const {
+  renderHirringAnniversaryAlertView,
+} = require("../controllers/alerts/hirringAnniversaryAlertController");
+const {
+  renderVacationDaysAlertView,
+} = require("../controllers/alerts/vacationDaysAlertController");
+const {
+  renderBenefitPlansAlertPage,
+} = require("../controllers/alerts/benefitPlansAlertController.js");
 
-const { addNewPersonalInformation, renderAddPersonalPage } = require('../controllers/managements/addPersonalController.js');
-const { addNewEmployeeInformation } = require('../controllers/managements/addEmployeeController.js');
+const {
+  renderInformationView,
+} = require("../controllers/managements/getInformationController.js");
+const {
+  renderSpecificInformationView,
+} = require("../controllers/managements/getSpecificInformationController.js");
+const {
+  editInformation,
+  renderInformationSpecificEdit,
+} = require("../controllers/managements/editSpecificInformationController.js");
 
-const { deleteEmployee } = require('../controllers/managements/deleteEmployeeController.js');
-const { detelePersonal } = require('../controllers/managements/deletePersonalController.js');
-const logout  = require('../controllers/utilities/logoutController.js');
+const {
+  addNewPersonalInformation,
+  renderAddPersonalPage,
+} = require("../controllers/managements/addPersonalController.js");
+const {
+  addNewEmployeeInformation,
+} = require("../controllers/managements/addEmployeeController.js");
 
-router.get("/", isLoggedInMiddleware, renderHomeView);
-router.get("/Login", renderLoginView);
-router.get("/TryLogin", tryLogin);
+const {
+  deleteEmployee,
+} = require("../controllers/managements/deleteEmployeeController.js");
+const {
+  detelePersonal,
+} = require("../controllers/managements/deletePersonalController.js");
 
-router.get('/VacationDaysReport', isLoggedInMiddleware, renderVacationDaysReportView);
-router.get('/AverageBenefitsReport', isLoggedInMiddleware, renderAverageBenefitsReportView);
-router.get('/TotalEarningsReport', isLoggedInMiddleware, renderTotalEarningsReportView);
+const accountController = require("../controllers/account/accounts.js");
 
-router.get('/BirthdayAlert', isLoggedInMiddleware, renderBirthdayAlertView);
-router.get('/HiringAnniversaryAlert', isLoggedInMiddleware, renderHirringAnniversaryAlertView);
-router.get('/VacationDaysAlert', isLoggedInMiddleware, renderVacationDaysAlertView);
-router.get('/BenefitsPlanAlert', isLoggedInMiddleware, renderBenefitPlansAlertPage);
+router.get("/login", authController.login);
+router.post("/login", authController.loginPost);
+router.get("/logout", authController.logout);
 
-router.get('/Information', isLoggedInMiddleware, renderInformationView);
-router.get('/Information/Specific', isLoggedInMiddleware, renderSpecificInformationView);
-router.get('/Information/Specific/Edit', isLoggedInMiddleware, renderInformationSpecificEdit);
-router.get('/EditInformation', isLoggedInMiddleware, editInformation);
+router.get("/HomePage", middlewareAuth.requireAuth, authController.homePage);
 
-router.get('/Information/Add', isLoggedInMiddleware, renderAddPersonalPage);
-router.get('/AddNewPersonal', isLoggedInMiddleware, addNewPersonalInformation);
-router.get('/AddNewEmployee', isLoggedInMiddleware, addNewEmployeeInformation);
+router.get(
+  "/VacationDaysReport",
+  middlewareAuth.requireAuth,
+  renderVacationDaysReportView
+);
+router.get(
+  "/AverageBenefitsReport",
+  middlewareAuth.requireAuth,
+  renderAverageBenefitsReportView
+);
+router.get(
+  "/TotalEarningsReport",
+  middlewareAuth.requireAuth,
+  renderTotalEarningsReportView
+);
 
-router.get('/DeleteEmployee', isLoggedInMiddleware, deleteEmployee);
-router.get('/DetelePersonal', isLoggedInMiddleware, detelePersonal);
-router.get('/logout', logout);
+router.get(
+  "/BirthdayAlert",
+  middlewareAuth.requireAuth,
+  renderBirthdayAlertView
+);
+router.get(
+  "/HiringAnniversaryAlert",
+  middlewareAuth.requireAuth,
+  renderHirringAnniversaryAlertView
+);
+router.get(
+  "/VacationDaysAlert",
+  middlewareAuth.requireAuth,
+  renderVacationDaysAlertView
+);
+
+router.get("/Information", middlewareAuth.requireAuth, renderInformationView);
+router.get(
+  "/Information/Specific",
+  middlewareAuth.requireAuth,
+  renderSpecificInformationView
+);
+router.get(
+  "/Information/Specific/Edit",
+  middlewareAuth.requireAuth,
+  renderInformationSpecificEdit
+);
+router.get("/EditInformation", middlewareAuth.requireAuth, editInformation);
+
+router.get(
+  "/Information/Add",
+  middlewareAuth.requireAuth,
+  renderAddPersonalPage
+);
+router.get(
+  "/AddNewPersonal",
+  middlewareAuth.requireAuth,
+  addNewPersonalInformation
+);
+router.get(
+  "/AddNewEmployee",
+  middlewareAuth.requireAuth,
+  addNewEmployeeInformation
+);
+
+router.get("/DeleteEmployee", middlewareAuth.requireAuth, deleteEmployee);
+router.get("/DetelePersonal", middlewareAuth.requireAuth, detelePersonal);
+
+router.get("/Roles", middlewareAuth.requireAuth, accountController.roles);
+router.get(
+  "/Roles/Edit/:id",
+  middlewareAuth.requireAuth,
+  accountController.edit
+);
+router.patch(
+  "/Roles/Edit/:id",
+  middlewareAuth.requireAuth,
+  accountController.editRoles
+);
+router.get(
+  "/Roles/Create",
+  middlewareAuth.requireAuth,
+  accountController.create
+);
+router.post(
+  "/Roles/Create",
+  middlewareAuth.requireAuth,
+  accountController.createPost
+);
+router.delete("/Roles/Deleted/:id", accountController.deleteRole);
+
+router.get(
+  "/Permissions",
+  middlewareAuth.requireAuth,
+  accountController.permission
+);
+router.patch(
+  "/Permissions",
+  middlewareAuth.requireAuth,
+  accountController.permissionPatch
+);
+
+router.get("/Accounts", middlewareAuth.requireAuth, accountController.accounts);
+router.get(
+  "/Accounts/Create",
+  middlewareAuth.requireAuth,
+  accountController.createAccount
+);
+router.post(
+  "/Accounts/Create",
+  middlewareAuth.requireAuth,
+  accountController.createAccountPost
+);
+router.get(
+  "/Accounts/Edit/:id",
+  middlewareAuth.requireAuth,
+  accountController.editAccount
+);
+router.patch(
+  "/Accounts/Edit/:id",
+  middlewareAuth.requireAuth,
+  accountController.editAccountPost
+);
+router.delete("/Accounts/Deleted/:id", accountController.deleteAccount);
 
 module.exports = router;

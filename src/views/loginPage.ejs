@@ -1,65 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
     <link rel="stylesheet" href="/css/login.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.11.0/toastify.min.js"></script>
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.11.0/toastify.min.css">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.11.0/toastify.min.css"
+    />
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="box">
-        <form action="/TryLogin" id="form-login">
-            <h1>Login</h1>
-            <div class="form-group">
-                <input type="text" name="id" id="username" required />
-                <label for="">ID</label>
-                <span></span>
-            </div>
-            <div class="form-group">
-                <input type="password" name="password" id="password" required />
-                <label for="">Password</label>
-                <span></span>
-                <div class="box-pass">
-                    <ion-icon name="eye"></ion-icon>
-                    <ion-icon name="eye-off"></ion-icon>
-                </div>
-            </div>
-            <input type="submit" id="submit" value="Login" />
-        </form>
-        <div id="notification"></div>
+      <form action="<%= `login` %>" method="POST" id="form-login">
+        <h1>Login</h1>
+        <div class="form-group">
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            required
+          />
+          <label for="email">Email</label>
+          <span></span>
+        </div>
+        <div class="form-group">
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            name="password"
+            required
+          />
+          <label for="password">Password</label>
+          <span></span>
+          <div class="box-pass">
+            <ion-icon name="eye"></ion-icon>
+            <ion-icon name="eye-off"></ion-icon>
+          </div>
+        </div>
+        <!-- <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-block">
+            Đăng nhập
+          </button>
+        </div> -->
+        <input type="submit" class="submit" value="Login" />
+      </form>
+
+      <script
+        type="module"
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+      ></script>
+      <script src="/js/login.js"></script>
     </div>
-
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script src="/js/login.js"></script>
-
-    <script>
-        $(document).ready(function () {
-            var error = "<%= error ? error : '' %>";
-            console.log(error);
-
-            if (error && error !== '') {
-                Toastify({
-                    text: error,
-                    duration: 3000,
-                    backgroundColor: 'linear-gradient(to right, #ff416c, #ff4b2b)',
-                    style: {
-                        fontSize: '18px',
-                        'border-radius': '10px',
-                        fontWeight: 'bold'
-                    }
-                }).showToast();
-            }
-        });
-    </script>
-
-
-</body>
-
+  </body>
 </html>

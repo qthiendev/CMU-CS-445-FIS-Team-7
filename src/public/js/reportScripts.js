@@ -1,10 +1,14 @@
 const btnList = document.querySelector(".btn.btn-list");
-const btnList_2 = document.querySelector(".btn-list-2");
 const subnav = document.querySelector(".sub-nav-1");
-
-const subnav_2 = document.querySelector(".sub-nav-2");
 const arrow = document.querySelector(".bx-chevron-down-1");
+
+const btnList_2 = document.querySelector(".btn-list-2");
+const subnav_2 = document.querySelector(".sub-nav-2");
 const arrow_2 = document.querySelector(".bx-chevron-down-2");
+
+const btnList_3 = document.querySelector(".btn-list-3");
+const subnav_3 = document.querySelector(".sub-nav-3");
+const arrow_3 = document.querySelector(".bx-chevron-down-3");
 
 btnList.addEventListener("click", () => {
   subnav.classList.toggle("active");
@@ -14,6 +18,11 @@ btnList.addEventListener("click", () => {
 btnList_2.addEventListener("click", () => {
   subnav_2.classList.toggle("active");
   arrow_2.classList.toggle("rotate");
+});
+
+btnList_3.addEventListener("click", () => {
+  subnav_3.classList.toggle("active");
+  arrow_3.classList.toggle("rotate");
 });
 
 function createClock() {
