@@ -1,0 +1,98 @@
+.card-wrapper {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+}
+
+.card-wrapper .card-header {
+  padding: 18px 10px;
+  background-color: #33333339;
+}
+
+.card-wrapper .card-body {
+  flex: 1;
+  padding: 20px 25px;
+}
+
+.card-wrapper .row {
+  display: flex;
+}
+
+.card-wrapper .column-1 {
+  width: 66.66666667%;
+}
+
+.card-wrapper .column-2 {
+  width: 33.33333%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.card-wrapper .btn,
+.content-table .btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.card-wrapper .btn-outline-success {
+  padding: 5px 10px;
+  color: #198754;
+  border: 1px solid #198754;
+  border-radius: 5px;
+}
+
+.card-wrapper .btn-outline-success:hover {
+  color: #fff;
+  background-color: #198754;
+  border-color: #198754;
+}
+
+.content-table th,
+.content-table td {
+  padding: 18px 0 18px 32px;
+}
+
+.content-table .btn {
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.content-table tbody td:last-child {
+  width: auto;
+  padding: 18px 0px;
+  display: flex;
+  justify-content: center;
+  gap: 0 15px;
+}
+
+.content-table .btn-warning {
+  color: #000;
+  background-color: #ffc107;
+  border-color: #ffc107;
+}
+
+.content-table .btn-warning:hover {
+  color: #000;
+  background-color: #ffca2c;
+  border-color: #ffc720;
+}
+
+.content-table .btn-danger {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+  border: none;
+}
+
+.content-table .btn-danger:hover {
+  color: #fff;
+  background-color: #bb2d3b;
+  border-color: #b02a37;
+}
