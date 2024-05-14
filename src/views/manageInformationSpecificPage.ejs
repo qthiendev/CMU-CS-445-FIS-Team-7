@@ -17,6 +17,7 @@
 <body>
 
     <!-- sidebar -->
+    <% if(role.permission.includes("Personal_viewDetail")) { %>
 
 
 
@@ -368,7 +369,10 @@
         </div>
 
         <div class="button_eb">
+            <% if(role.permission.includes("Personal_edit")) { %>
             <button type="submit" class="submit">Edit</button>
+            <% } %>
+
             <button onclick="backInformation(event)">Back</button>
         </div>
 
@@ -389,6 +393,8 @@
             window.location.href = '/Information';
         }
     </script>
+    
+    <% } %>
 
 </body>
 

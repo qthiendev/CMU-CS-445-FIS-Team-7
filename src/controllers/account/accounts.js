@@ -78,7 +78,6 @@ class Index{
 
     async deleteAccount(req,res){
         const id= req.params.id
-        console.log(id)
         await Accounts.deleteOne({_id:id})
 
         res.redirect("back")
@@ -151,7 +150,6 @@ class Index{
 
     async deleteRole(req,res){
         const id= req.params.id
-        console.log(id)
         await Roles.deleteOne({_id:id})
 
         res.redirect("back")

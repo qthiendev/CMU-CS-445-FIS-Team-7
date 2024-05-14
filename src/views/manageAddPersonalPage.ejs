@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <% if(role.permission.includes("Personal_add")) { %>
 
     <form action="/AddNewPersonal" method="get">
         <div class="wrapper">
@@ -140,6 +141,8 @@
             <button><a href="/Information" style="text-decoration: none;color: black;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Back</a></button>
         </div>
     </form>
+    <% } %>   
+
 </body>
 
 </html>
