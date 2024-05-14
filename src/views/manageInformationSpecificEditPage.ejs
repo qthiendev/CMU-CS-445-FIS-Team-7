@@ -15,6 +15,7 @@
 </head>
 
 <body>
+    <% if(role.permission.includes("Personal_edit")) { %>
 
     <form action="/EditInformation" method="get">
         <div class="wrapper">
@@ -260,7 +261,9 @@
                         <%= data['PT - Level C'] %>
                     </div>
                 </div>
+                <% if(role.permission.includes("Personal_delete")) { %>
                 <button onclick="deleteEmloyee(event)">Delete employee</button>
+                <% } %>
                 <% } else { %>
                     <button onclick="addEmloyee(event)">Add employee</button>
                     <% } %>
@@ -312,6 +315,9 @@
             window.location.href = url;
         }
     </script>
+    
+    <% } %>
+
 </body>
 
 </html>

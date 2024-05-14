@@ -61,21 +61,29 @@
 
       <!-- subnav 1 -->
       <ul class="sub-nav-1">
+        <% if(role.permission.includes("reportVacation_view")) { %>
         <li>
           <a href="/VacationDaysReport" class="btn">
             <span> Taken vacation days</span>
           </a>
         </li>
+        <% } %>
+
+        <% if(role.permission.includes("reportEarnings_view")) { %>
         <li>
           <a href="/TotalEarningsReport" class="btn">
             <span>Total Earnings</span>
           </a>
         </li>
+        <% } %>
+
+        <% if(role.permission.includes("reportBenefit_view")) { %>
         <li>
           <a href="/AverageBenefitsReport" class="btn">
             <span>Average Benefits</span>
           </a>
         </li>
+        <% } %>
       </ul>
 
       <li>
@@ -88,30 +96,37 @@
 
       <!-- subnav 2 -->
       <ul class="sub-nav-2">
+        <% if(role.permission.includes("alertAnniversary_view")) { %>
         <li>
           <a href="/HiringAnniversaryAlert" class="btn">
             <span>Alert Hiring Anniversary</span>
           </a>
         </li>
+        <% } %>
 
+        <% if(role.permission.includes("alertVacation_view")) { %>
         <li>
           <a href="/VacationDaysAlert" class="btn">
             <span>Alert Vacation Days</span>
           </a>
         </li>
+        <% } %>
 
+        <% if(role.permission.includes("alertBenefit_view")) { %>
         <li>
           <a href="/BenefitsPlanAlert" class="btn">
             <span>Alert Benefits Plan</span>
           </a>
         </li>
+        <% } %>
 
+        <% if(role.permission.includes("alertBirthday_view")) { %>
         <li>
           <a href="/BirthdayAlert" class="btn">
             <span>Alert Birthday</span>
           </a>
         </li>
-
+        <% } %>
       </ul>
 
       <li>
@@ -124,30 +139,37 @@
 
       <!-- subnav 3 -->
       <ul class="sub-nav-3">
+        <% if(role.permission.includes("role_view")) { %>
         <li>
           <a href="/Roles" class="btn">
             <span>Roles</span>
           </a>
         </li>
+        <% } %>
 
+        <% if(role.permission.includes("role_permission")) { %>
         <li>
           <a href="/Permissions" class="btn">
             <span>Permissions</span>
           </a>
         </li>
+        <% } %>
 
+        <% if(role.permission.includes("account_view")) { %>
         <li>
           <a href="/Accounts" class="btn">
             <span>Accounts</span>
           </a>
         </li>
+        <% } %>
 
-     
+        <% if(role.permission.includes("Personal_view")) { %>
         <li>
           <a href="/Information" class="btn">
             <span>Information Management</span>
           </a>
         </li>
+        <% } %>
 
       
     </ul> 
@@ -171,6 +193,7 @@
     </header>
 
     <!-- main -->
+    <% if(role.permission.includes("Personal_view")) { %>
     <main>
       <!-- main-top -->
       <div class="main-top">
@@ -192,7 +215,9 @@
                 <th>Phone</th>
                 <th>Shareholder</th>
                 <th>Status</th>
+                <% if(role.permission.includes("Personal_add")) { %>
                 <th style="width: 100px;"><a href="/Information/Add" class="btn-add">Add<i class="fa fa-add" style="font-size:12px;"></i></a></th>
+                <% } %>   
                 <th></th>
               </tr>
             </thead>
@@ -228,9 +253,14 @@
                     <%= data[i].EMPLOYMENT_STATUS%>
                   </td>
                   <td class="group-btn">
+                    <% if(role.permission.includes("Personal_viewDetail")) { %>
                     <a href="/Information/Specific?PERSONAL_ID=<%= data[i].PERSONAL_ID %>" class="btn"><i class="fa-solid fa-eye" style="font-size:18px; color: #624DE3;"></i></a>
-                     <a href="/DeleteEmployee?PERSONAL_ID=<%= data[i].ID %>" class="btn"><i class="fa fa-trash"
+                    <% } %>   
+                    
+                    <% if(role.permission.includes("Personal_delete")) { %>
+                    <a href="/DeleteEmployee?PERSONAL_ID=<%= data[i].ID %>" class="btn"><i class="fa fa-trash"
                         style="font-size:18px; color: red;"></i></a>
+                    <% } %>   
                   </td>
                   <td></td>
                 </tr>
@@ -241,6 +271,8 @@
         </div>
       </div>
     </main>
+    <% } %>
+
   </div>
 
   <script src="/js/reportScripts.js"></script>
