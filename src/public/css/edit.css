@@ -1,0 +1,76 @@
+html {
+    font-size: 62.5%;
+   }
+   
+   body {
+    background-image: url('https://i.pinimg.com/564x/52/19/b3/5219b32675ad45a6235fad13648b8cd5.jpg') !important;
+    font-family: "Mulish", sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+   }
+
+   main {
+    background-color: #E0D7CD;
+    width: 50rem;
+    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+    
+    border-radius: 2rem;
+    padding: 2rem;
+    
+   }
+
+   h1 {
+    color: #c93a1e;
+    line-height: 25px !important;
+    font-weight: 700 !important;
+    text-align: center;
+    font-size: 3rem !important;
+    padding: 1rem 2rem;
+   }
+
+   form {
+    margin: 3rem 0;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+   }
+
+   .input__container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+   }
+
+   .input__container label { 
+    font-size: 1.6rem;
+    font-weight: 600 !important;
+    line-height: 24px;
+    margin-bottom: 8px; 
+}
+
+.input__container input,
+textarea {
+ padding: 1.5rem 2.5rem;
+ border-radius: 5px;
+ border: 1px solid #555;
+ resize: none;
+}
+
+button {
+    align-self: flex-start;
+    padding: 2rem 3rem !important;
+    border-radius: 12px !important;
+    border: none;
+    background: #A65341;
+    
+    cursor: pointer;
+    margin-left: 38% !important;
+    margin-top: 30px !important;
+    
+    font-size: 15px !important;
+    font-weight: 800px !important;
+   }
