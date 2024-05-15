@@ -155,18 +155,17 @@
         </a>
       </li>
       <% } %>
-
-      <% if(role.permission.includes("Personal_view")) { %>
-      <li>
-        <a href="/Information" class="btn">
-          <span>Information Management</span>
-        </a>
-      </li>
-      <% } %>
-
-    
   </ul> 
 
+  <% if(role.permission.includes("Personal_view")) { %>
+    <li>
+      <a href="/Information" class="btn"> 
+        <i class='bx bxs-user-detail' style="font-size: 22px;"></i>
+        <span>Information Management</span>
+      </a>
+    </li>
+    <% } %>
+    
   <li>
     <a href="/logout"  class="btn">
       <i class='bx bxs-log-out'></i>
@@ -199,6 +198,7 @@
                     <button type="submit" class="btn btn-primary mb-3" id="button-submit">Cập nhật</button>
                 </div>
             
+                <div class="wrapper-table">
                 <table class="table content-table" id="table-permissions">
                     <thead>
                         <tr>
@@ -212,7 +212,7 @@
                         <tr data-name="id">
                             <td></td>
                             <% records.forEach(item => { %>
-                                <td class="text-center d-none"><input type="text" value="<%= item.id %>"></td>
+                                <td class="text-center" style="display: none;"><input type="text" value="<%= item.id %>"></td>
                             <% }); %>
                         </tr>
                         <tr>
@@ -430,9 +430,10 @@
                      
                         <!-- Rest of the permissions -->
                     </tbody>
-                </table>
+                </table> 
+                </div>
             
-                <form id="form-change-permissions" action="<%= `/Permissions?_method=PATCH` %>" method="POST">
+                <form id="form-change-permissions" action="<%= `/Permissions?_method=PATCH` %>" method="POST" style="display: none;">
                     <div class="form-group">
                         <input type="text" class="form-control d-none" name="permissions">
                     </div>

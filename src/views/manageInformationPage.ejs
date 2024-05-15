@@ -162,18 +162,18 @@
           </a>
         </li>
         <% } %>
-
-        <% if(role.permission.includes("Personal_view")) { %>
-        <li>
-          <a href="/Information" class="btn">
-            <span>Information Management</span>
-          </a>
-        </li>
-        <% } %>
-
       
     </ul> 
 
+    <% if(role.permission.includes("Personal_view")) { %>
+      <li>
+        <a href="/Information" class="btn"> 
+          <i class='bx bxs-user-detail' style="font-size: 22px;"></i>
+          <span>Information Management</span>
+        </a>
+      </li>
+      <% } %>
+      
     <li>
       <a href="/logout"  class="btn">
         <i class='bx bxs-log-out'></i>
