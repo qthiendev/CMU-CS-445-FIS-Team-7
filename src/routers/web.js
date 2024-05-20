@@ -59,7 +59,7 @@ const accountController = require("../controllers/account/accounts.js");
 router.get("/login", authController.login);
 router.post("/login", authController.loginPost);
 router.get("/logout", authController.logout);
-
+router.get("/", middlewareAuth.requireAuth, authController.homePage);
 router.get("/HomePage", middlewareAuth.requireAuth, authController.homePage);
 
 router.get("/VacationDaysReport", middlewareAuth.requireAuth, renderVacationDaysReportView);

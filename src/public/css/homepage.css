@@ -49,6 +49,7 @@ h2 {
   height: 100%;
   object-fit: cover;
   background-repeat: no-repeat;
+  border-radius: 15px;
 }
 
 .img_content {
@@ -234,4 +235,13 @@ header .current-date {
 }
 .days li:not(.active):hover::before {
   background: #f2f2f2;
+}
+
+#clock {
+  font-size: 24px;
+  position: absolute;
+  top: 62px;
+  right: 83px;
+  font-weight: 600;
+  color: wheat;
 }

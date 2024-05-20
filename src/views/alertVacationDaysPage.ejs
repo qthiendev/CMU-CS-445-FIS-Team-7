@@ -21,9 +21,9 @@
 </head>
 
 <body>
-  <!-- sidebar --> 
+  <!-- sidebar -->
   <div class="background">
-  </div> 
+  </div>
   <aside class="sidebar">
     <!-- Logo -->
     <img src="/img/logo.svg" alt="logo" />
@@ -32,8 +32,7 @@
      <div class="btn-close" style="cursor: pointer;"><i class='bx bx-x'></i></div>
 
     <!-- navigation -->
-    <ul class="nav"> 
-      <!-- HomePage -->
+    <ul class="nav">
       <li>
         <a href="/HomePage" class="btn">
           <i class="bx bxs-grid-alt"></i>
@@ -51,26 +50,34 @@
 
       <!-- subnav 1 -->
       <ul class="sub-nav-1">
+        <% if(role.permission.includes("reportVacation_view")) { %>
         <li>
           <a href="/VacationDaysReport" class="btn">
             <span> Taken vacation days</span>
           </a>
         </li>
+        <% } %>
+
+        <% if(role.permission.includes("reportEarnings_view")) { %>
         <li>
           <a href="/TotalEarningsReport" class="btn">
             <span>Total Earnings</span>
           </a>
         </li>
+        <% } %>
+
+        <% if(role.permission.includes("reportBenefit_view")) { %>
         <li>
           <a href="/AverageBenefitsReport" class="btn">
             <span>Average Benefits</span>
           </a>
         </li>
+        <% } %>
       </ul>
 
       <li>
         <div class="btn btn-list-2" style="cursor: pointer">
-          <i class="bx bxs-report "></i>
+          <i class='bx bxs-bell'></i>
           <span>Alert</span>
           <i class="bx bx-chevron-down bx-chevron-down-2"></i>
         </div>
@@ -78,34 +85,42 @@
 
       <!-- subnav 2 -->
       <ul class="sub-nav-2">
+        <% if(role.permission.includes("alertAnniversary_view")) { %>
         <li>
           <a href="/HiringAnniversaryAlert" class="btn">
             <span>Alert Hiring Anniversary</span>
           </a>
         </li>
+        <% } %>
 
+        <% if(role.permission.includes("alertVacation_view")) { %>
         <li>
           <a href="/VacationDaysAlert" class="btn">
             <span>Alert Vacation Days</span>
           </a>
         </li>
+        <% } %>
 
+        <% if(role.permission.includes("alertBenefit_view")) { %>
         <li>
           <a href="/BenefitsPlanAlert" class="btn">
             <span>Alert Benefits Plan</span>
           </a>
         </li>
+        <% } %>
 
+        <% if(role.permission.includes("alertBirthday_view")) { %>
         <li>
           <a href="/BirthdayAlert" class="btn">
             <span>Alert Birthday</span>
           </a>
         </li>
+        <% } %>
       </ul>
 
       <li>
         <div class="btn btn-list-3" style="cursor: pointer">
-          <i class="bx bxs-report "></i>
+          <i class='bx bxs-user-account' ></i>
           <span>Account</span>
           <i class="bx bx-chevron-down bx-chevron-down-3"></i>
         </div>
@@ -113,40 +128,49 @@
 
       <!-- subnav 3 -->
       <ul class="sub-nav-3">
+        <% if(role.permission.includes("role_view")) { %>
         <li>
           <a href="/Roles" class="btn">
             <span>Roles</span>
           </a>
         </li>
+        <% } %>
 
+        <% if(role.permission.includes("role_permission")) { %>
         <li>
           <a href="/Permissions" class="btn">
             <span>Permissions</span>
           </a>
         </li>
+        <% } %>
 
+        <% if(role.permission.includes("account_view")) { %>
         <li>
           <a href="/Accounts" class="btn">
             <span>Accounts</span>
           </a>
         </li>
+        <% } %>
 
-     
-        <li>
-          <a href="/Information" class="btn">
-            <span>Information Management</span>
-          </a>
-        </li>
     </ul> 
 
-    <!-- log out -->
+    <% if(role.permission.includes("Personal_view")) { %>
+      <li>
+        <a href="/Information" class="btn"> 
+          <i class='bx bxs-user-detail' style="font-size: 22px;"></i>
+          <span>Information Management</span>
+        </a>
+      </li>
+      <% } %>
+      
     <li>
       <a href="/logout"  class="btn">
-        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        <i class='bx bxs-log-out'></i>
         <span>Log out</span>
       </a>
     </li>
   </aside>
+
 
   <!-- content -->
   <div class="content"> 
@@ -159,6 +183,7 @@
     </header>
 
     <!-- main -->
+    <% if(role.permission.includes("alertVacation_view")) { %>
     <main>
       <!-- main-top -->
       <div class="main-top">
@@ -224,6 +249,7 @@
         </div>
       </div>
     </main>
+    <% } %>
   </div>
 
   <script src="/js/reportScripts.js"></script>

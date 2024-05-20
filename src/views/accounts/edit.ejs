@@ -7,6 +7,7 @@
   <title>Dashboard</title>
   <link rel="stylesheet" href="/css/reset.css">
   <link rel="stylesheet" href="/css/report.css">
+  <link rel="stylesheet" href="/css/edit.css">
 
   <!-- Embed font -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -23,6 +24,7 @@
 
 
 <body>
+    <main>
     <% if (role.permission.includes("account_edit")) { %>
 
    
@@ -30,23 +32,23 @@
             <h1 class="mb-4">Chỉnh sửa tài khoản</h1>
     
             <form action="<%= `${data.id}?_method=PATCH` %>"  method="post" >
-                <div class="form-group">
+                <div class="input__container">
                     <label for="fullName">Họ tên *</label>
                     <input type="text" class="form-control" id="fullName" name="fullName" required value="<%= data.fullName %>">
                 </div>
-                <div class="form-group">
+                <div class="input__container">
                     <label for="email">Email *</label>
                     <input type="email" class="form-control" id="email" name="email" required value="<%= data.email %>">
                 </div>
-                <div class="form-group">
+                <div class="input__container">
                     <label for="password">Mật khẩu</label>
                     <input type="password" class="form-control" id="password" name="password" value="<%= data.password %>">
                 </div>
-                <div class="form-group">
+                <div class="input__container">
                     <label for="phone">Số điện thoại</label>
                     <input type="text" class="form-control" id="phone" name="phone" value="<%= data.phone %>">
                 </div>
-                <div class="form-group">
+                <div class="input__container">
                     <label for="role_id">Phân quyền</label>
                     <select name="role_id" id="role_id" class="form-control">
                         <option disabled>-- Chọn --</option>
@@ -55,11 +57,11 @@
                         <% }); %>
                     </select>
                 </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Cập nhật</button>
-                </div>
+                
+                    <button type="submit" >Cập nhật</button>
+                
             </form>
-    
+        </main>
     
        
     

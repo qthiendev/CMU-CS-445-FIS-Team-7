@@ -7,6 +7,7 @@
   <title>Dashboard</title>
   <link rel="stylesheet" href="/css/reset.css">
   <link rel="stylesheet" href="/css/report.css">
+  <link rel="stylesheet" href="/css/edit.css">
 
   <!-- Embed font -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -25,23 +26,28 @@
 <body>
 
     <% if(role.permission.includes("role_edit")) { %>
+
+        <main>
    
     
-            <h1 class="mb-4">Chỉnh sửa phân quyền</h1>
+            <h1 >Chỉnh sửa phân quyền</h1>
     
-            <form action="<%= `${data.id}?_method=PATCH` %>" method="POST">
-                <div class="form-group">
+            <form id="form" action="<%= `${data.id}?_method=PATCH` %>" method="POST">
+
+                <div class="input__container">
                     <label for="title">Tiêu đề</label>
                     <input type="text" class="form-control" id="title" name="title" required value="<%= data.title %>">
                 </div>
-                <div class="form-group">
+                <div class="input__container">
                     <label for="desc">Mô tả</label>
-                    <input type="text" class="form-control" id="des" name="description" value="<%= data.description %>">
+                    <textarea type="text" class="form-control" id="des" name="description" row="'4" value="<%= data.description %>"></textarea>
                 </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Cập nhật</button>
-                </div>
+                
+                    <button type="submit" >Cập Nhật</button>
+                
             </form>
+
+        </main>
     
 
     

@@ -31,6 +31,8 @@
 </head>
 
 <body >
+
+
   <!-- sidebar --> 
   <div class="background">
   </div> 
@@ -59,105 +61,126 @@
       </li>
 
       <!-- subnav 1 -->
-      <ul class="sub-nav-1">
-        <li>
-          <a href="/VacationDaysReport" class="btn">
-            <span> Taken vacation days</span>
-          </a>
-        </li>
-        <li>
-          <a href="/TotalEarningsReport" class="btn">
-            <span>Total Earnings</span>
-          </a>
-        </li>
-        <li>
-          <a href="/AverageBenefitsReport" class="btn">
-            <span>Average Benefits</span>
-          </a>
-        </li>
-      </ul>
-
+    <ul class="sub-nav-1">
+      <% if(role.permission.includes("reportVacation_view")) { %>
       <li>
-        <div class="btn btn-list-2" style="cursor: pointer">
-          <i class='bx bxs-bell'></i>
-          <span>Alert</span>
-          <i class="bx bx-chevron-down bx-chevron-down-2"></i>
-        </div>
+        <a href="/VacationDaysReport" class="btn">
+          <span> Taken vacation days</span>
+        </a>
       </li>
+      <% } %>
 
-      <!-- subnav 2 -->
-      <ul class="sub-nav-2">
-        <li>
-          <a href="/HiringAnniversaryAlert" class="btn">
-            <span>Alert Hiring Anniversary</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="/VacationDaysAlert" class="btn">
-            <span>Alert Vacation Days</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="/BenefitsPlanAlert" class="btn">
-            <span>Alert Benefits Plan</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="/BirthdayAlert" class="btn">
-            <span>Alert Birthday</span>
-          </a>
-        </li>
-
-      </ul>
-
+      <% if(role.permission.includes("reportEarnings_view")) { %>
       <li>
-        <div class="btn btn-list-3" style="cursor: pointer">
-          <i class='bx bxs-user-account' ></i>
-          <span>Account</span>
-          <i class="bx bx-chevron-down bx-chevron-down-3"></i>
-        </div>
+        <a href="/TotalEarningsReport" class="btn">
+          <span>Total Earnings</span>
+        </a>
       </li>
+      <% } %>
 
-      <!-- subnav 3 -->
-      <ul class="sub-nav-3">
-        <li>
-          <a href="/Roles" class="btn">
-            <span>Roles</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="/Permissions" class="btn">
-            <span>Permissions</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="/Accounts" class="btn">
-            <span>Accounts</span>
-          </a>
-        </li>
-
-     
-        <li>
-          <a href="/Information" class="btn">
-            <span>Information Management</span>
-          </a>
-        </li>
-
-      
-    </ul> 
+      <% if(role.permission.includes("reportBenefit_view")) { %>
+      <li>
+        <a href="/AverageBenefitsReport" class="btn">
+          <span>Average Benefits</span>
+        </a>
+      </li>
+      <% } %>
+    </ul>
 
     <li>
-      <a href="/logout"  class="btn">
-        <i class='bx bxs-log-out'></i>
-        <span>Log out</span>
+      <div class="btn btn-list-2" style="cursor: pointer">
+        <i class='bx bxs-bell'></i>
+        <span>Alert</span>
+        <i class="bx bx-chevron-down bx-chevron-down-2"></i>
+      </div>
+    </li>
+
+    <!-- subnav 2 -->
+    <ul class="sub-nav-2">
+      <% if(role.permission.includes("alertAnniversary_view")) { %>
+      <li>
+        <a href="/HiringAnniversaryAlert" class="btn">
+          <span>Alert Hiring Anniversary</span>
+        </a>
+      </li>
+      <% } %>
+
+      <% if(role.permission.includes("alertVacation_view")) { %>
+      <li>
+        <a href="/VacationDaysAlert" class="btn">
+          <span>Alert Vacation Days</span>
+        </a>
+      </li>
+      <% } %>
+
+      <% if(role.permission.includes("alertBenefit_view")) { %>
+      <li>
+        <a href="/BenefitsPlanAlert" class="btn">
+          <span>Alert Benefits Plan</span>
+        </a>
+      </li>
+      <% } %>
+
+      <% if(role.permission.includes("alertBirthday_view")) { %>
+      <li>
+        <a href="/BirthdayAlert" class="btn">
+          <span>Alert Birthday</span>
+        </a>
+      </li>
+      <% } %>
+    </ul>
+
+    <li>
+      <div class="btn btn-list-3" style="cursor: pointer">
+        <i class='bx bxs-user-account' ></i>
+        <span>Account</span>
+        <i class="bx bx-chevron-down bx-chevron-down-3"></i>
+      </div>
+    </li>
+
+    <!-- subnav 3 -->
+    <ul class="sub-nav-3">
+      <% if(role.permission.includes("role_view")) { %>
+      <li>
+        <a href="/Roles" class="btn">
+          <span>Roles</span>
+        </a>
+      </li>
+      <% } %>
+
+      <% if(role.permission.includes("role_permission")) { %>
+      <li>
+        <a href="/Permissions" class="btn">
+          <span>Permissions</span>
+        </a>
+      </li>
+      <% } %>
+
+      <% if(role.permission.includes("account_view")) { %>
+      <li>
+        <a href="/Accounts" class="btn">
+          <span>Accounts</span>
+        </a>
+      </li>
+      <% } %>
+  </ul> 
+
+  <% if(role.permission.includes("Personal_view")) { %>
+    <li>
+      <a href="/Information" class="btn"> 
+        <i class='bx bxs-user-detail' style="font-size: 22px;"></i>
+        <span>Information Management</span>
       </a>
     </li>
-  </aside>
+    <% } %>
+    
+  <li>
+    <a href="/logout"  class="btn">
+      <i class='bx bxs-log-out'></i>
+      <span>Log out</span>
+    </a>
+  </li>
+</aside>
 
   <!-- content -->
   <div class="content"> 

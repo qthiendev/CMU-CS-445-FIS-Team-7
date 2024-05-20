@@ -120,36 +120,36 @@ a {
 }
 
 .sidebar .sub-nav-1 {
-  height: 165px;
+  max-height: 165px;
   overflow: hidden;
   transition: all 0.3s;
 }
 
 /* add class */
 .sidebar .sub-nav-1.active {
-  height: 0;
+  max-height: 0;
 }
 
 .sidebar .sub-nav-2 {
   overflow: hidden;
-  height: 224px;
+  max-height: 224px;
   transition: all 0.3s;
 }
 
 /* add class */
 .sidebar .sub-nav-2.active {
-  height: 0;
+  max-height: 0;
 }
 
 .sidebar .sub-nav-3 {
   overflow: hidden;
-  height: 242px;
+  max-height: 242px;
   transition: all 0.3s;
 }
 
 /* add class */
 .sidebar .sub-nav-3.active {
-  height: 0;
+  max-height: 0;
 }
 
 /* ======= content ====== */
