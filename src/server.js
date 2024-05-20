@@ -5,7 +5,7 @@ const configViewEngine = require("./configs/viewEngine");
 const webRoutes = require("./routers/web.js");
 const session = require("express-session");
 const db= require("./configs/configDB.js");
-db.connect();
+db.connect(); 
 const methodOverride = require("method-override");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");

@@ -62,44 +62,17 @@ router.get("/logout", authController.logout);
 
 router.get("/HomePage", middlewareAuth.requireAuth, authController.homePage);
 
-router.get(
-  "/VacationDaysReport",
-  middlewareAuth.requireAuth,
-  renderVacationDaysReportView
-);
-router.get(
-  "/AverageBenefitsReport",
-  middlewareAuth.requireAuth,
-  renderAverageBenefitsReportView
-);
-router.get(
-  "/TotalEarningsReport",
-  middlewareAuth.requireAuth,
-  renderTotalEarningsReportView
-);
+router.get("/VacationDaysReport", middlewareAuth.requireAuth, renderVacationDaysReportView);
+router.get("/AverageBenefitsReport", middlewareAuth.requireAuth, renderAverageBenefitsReportView);
+router.get("/TotalEarningsReport", middlewareAuth.requireAuth, renderTotalEarningsReportView);
 
-router.get(
-  "/BirthdayAlert",
-  middlewareAuth.requireAuth,
-  renderBirthdayAlertView
-);
-router.get(
-  "/HiringAnniversaryAlert",
-  middlewareAuth.requireAuth,
-  renderHirringAnniversaryAlertView
-);
-router.get(
-  "/VacationDaysAlert",
-  middlewareAuth.requireAuth,
-  renderVacationDaysAlertView
-);
+router.get("/BirthdayAlert", middlewareAuth.requireAuth, renderBirthdayAlertView);
+router.get("/HiringAnniversaryAlert", middlewareAuth.requireAuth, renderHirringAnniversaryAlertView);
+router.get("/VacationDaysAlert", middlewareAuth.requireAuth, renderVacationDaysAlertView);
+router.get("/BenefitsPlanAlert", middlewareAuth.requireAuth, renderBenefitPlansAlertPage);
 
 router.get("/Information", middlewareAuth.requireAuth, renderInformationView);
-router.get(
-  "/Information/Specific",
-  middlewareAuth.requireAuth,
-  renderSpecificInformationView
-);
+router.get("/Information/Specific", middlewareAuth.requireAuth, renderSpecificInformationView`s`);
 router.get(
   "/Information/Specific/Edit",
   middlewareAuth.requireAuth,
