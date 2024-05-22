@@ -202,7 +202,7 @@
                 <table class="table content-table" id="table-permissions">
                     <thead>
                         <tr>
-                            <th>Tính năng</th>
+                            <th>Function</th>
                             <% records.forEach(item => { %>
                                 <th class="text-center"><%= item.title %></th>
                             <% }); %>
@@ -285,9 +285,6 @@
                             </td>
                         <% }); %>
                       </tr>
-
-
-
                     <tr>
                         <td class="feature-name">Information management</td>
                     </tr>
@@ -338,11 +335,11 @@
                     </tr>
                   
                         <tr>
-                            <td class="feature-name">Nhóm quyền</td>
+                            <td class="feature-name">Roles</td>
                         </tr>
         
                         <tr data-name="role_view">
-                            <td>Xem</td>
+                            <td>View</td>
                             <% records.forEach(function(item) { %>
                                 <td class="text-center">
                                     <input type="checkbox">
@@ -351,7 +348,7 @@
                         </tr>
                         
                         <tr data-name="role_create">
-                            <td>Thêm mới</td>
+                            <td>Add</td>
                             <% records.forEach(function(item) { %>
                                 <td class="text-center">
                                     <input type="checkbox">
@@ -360,7 +357,7 @@
                         </tr>
                         
                         <tr data-name="role_edit">
-                            <td>Chỉnh sửa</td>
+                            <td>Edit</td>
                             <% records.forEach(function(item) { %>
                                 <td class="text-center">
                                     <input type="checkbox">
@@ -369,7 +366,7 @@
                         </tr>
                         
                         <tr data-name="role_delete">
-                            <td>Xóa</td>
+                            <td>Delete</td>
                             <% records.forEach(function(item) { %>
                                 <td class="text-center">
                                     <input type="checkbox">
@@ -378,7 +375,7 @@
                         </tr>
         
                         <tr data-name="role_permission">
-                            <td>Phân quyền</td>
+                            <td>Permissions</td>
                             <% records.forEach(function(item) { %>
                                 <td class="text-center">
                                     <input type="checkbox">
@@ -387,11 +384,11 @@
                         </tr>
         
                         <tr>
-                            <td class="feature-name">Tài khoản</td>
+                            <td class="feature-name">Accounts</td>
                         </tr>
         
                         <tr data-name="account_view">
-                            <td>Xem</td>
+                            <td>View</td>
                             <% records.forEach(function(item) { %>
                                 <td class="text-center">
                                     <input type="checkbox">
@@ -400,7 +397,7 @@
                         </tr>
                         
                         <tr data-name="account_create">
-                            <td>Thêm mới</td>
+                            <td>Add</td>
                             <% records.forEach(function(item) { %>
                                 <td class="text-center">
                                     <input type="checkbox">
@@ -409,7 +406,7 @@
                         </tr>
                         
                         <tr data-name="account_edit">
-                            <td>Chỉnh sửa</td>
+                            <td>Edit</td>
                             <% records.forEach(function(item) { %>
                                 <td class="text-center">
                                     <input type="checkbox">
@@ -418,7 +415,7 @@
                         </tr>
                         
                         <tr data-name="account_delete">
-                            <td>Xóa</td>
+                            <td>Delete</td>
                             <% records.forEach(function(item) { %>
                                 <td class="text-center">
                                     <input type="checkbox">
