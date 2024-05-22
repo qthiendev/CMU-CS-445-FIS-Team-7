@@ -39,7 +39,6 @@ class Index {
     });
 
     if (emailExit) {
-      req.flash("error", `Email ${req.body.email} đã tồn tại`);
       res.redirect("back");
     } else {
       req.body.password = md5(req.body.password);
