@@ -65,7 +65,9 @@ const addNewPersonalInformation = async (req, res) => {
             const queryString = Object.keys(req.query)
                 .map(key => `${key}=${encodeURIComponent(req.query[key])}`)
                 .join('&');
-            res.redirect(`/Information/Add?${queryString}&message=Must fill * fields`);
+            let message = encodeURIComponent('Must fill * fields');
+            res.redirect(`/Information/Add?${queryString}&message=${message}`);
+
         }
     } catch (err) {
         console.log('[System] employeesManagementController.js | Cannot Added new PERSONAL:', err);
