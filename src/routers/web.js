@@ -5,54 +5,26 @@ const authController = require("../controllers/auth/authController.js");
 
 const middlewareAuth = require("../middleware/checkLogin.js");
 
-const {
-  renderVacationDaysReportView,
-} = require("../controllers/reports/vacationDayReportController");
-const {
-  renderAverageBenefitsReportView,
-} = require("../controllers/reports/averageBenefitsReportController");
-const {
-  renderTotalEarningsReportView,
-} = require("../controllers/reports/totalEarningsReportController");
+const { renderVacationDaysReportView } = require("../controllers/reports/vacationDayReportController");
+const { renderAverageBenefitsReportView } = require("../controllers/reports/averageBenefitsReportController");
+const { renderTotalEarningsReportView } = require("../controllers/reports/totalEarningsReportController");
 
-const {
-  renderBirthdayAlertView,
-} = require("../controllers/alerts/birthdayAlertController");
-const {
-  renderHirringAnniversaryAlertView,
-} = require("../controllers/alerts/hirringAnniversaryAlertController");
-const {
-  renderVacationDaysAlertView,
-} = require("../controllers/alerts/vacationDaysAlertController");
-const {
-  renderBenefitPlansAlertPage,
-} = require("../controllers/alerts/benefitPlansAlertController.js");
+const { renderBirthdayAlertView } = require("../controllers/alerts/birthdayAlertController");
+const { renderHirringAnniversaryAlertView } = require("../controllers/alerts/hirringAnniversaryAlertController");
+const { renderVacationDaysAlertView } = require("../controllers/alerts/vacationDaysAlertController");
+const { renderBenefitPlansAlertPage, } = require("../controllers/alerts/benefitPlansAlertController.js");
 
-const {
-  renderInformationView,
-} = require("../controllers/managements/getInformationController.js");
-const {
-  renderSpecificInformationView,
-} = require("../controllers/managements/getSpecificInformationController.js");
-const {
-  editInformation,
-  renderInformationSpecificEdit,
-} = require("../controllers/managements/editSpecificInformationController.js");
+const { renderInformationView } = require("../controllers/managements/getInformationController.js");
+const { renderSpecificInformationView } = require("../controllers/managements/getSpecificInformationController.js");
+const { editInformation, renderInformationSpecificEdit } = require("../controllers/managements/editSpecificInformationController.js");
 
-const {
-  addNewPersonalInformation,
-  renderAddPersonalPage,
-} = require("../controllers/managements/addPersonalController.js");
-const {
-  addNewEmployeeInformation,
-} = require("../controllers/managements/addEmployeeController.js");
+const { addNewPersonalInformation, renderAddPersonalPage } = require("../controllers/managements/addPersonalController.js");
+const { addNewEmployeeInformation } = require("../controllers/managements/addEmployeeController.js");
 
-const {
-  deleteEmployee,
-} = require("../controllers/managements/deleteEmployeeController.js");
-const {
-  detelePersonal,
-} = require("../controllers/managements/deletePersonalController.js");
+const { deleteEmployee } = require("../controllers/managements/deleteEmployeeController.js");
+const { detelePersonal } = require("../controllers/managements/deletePersonalController.js");
+
+const { getNotFound } = require("../services/utilities/getNotFound.js");
 
 const accountController = require("../controllers/account/accounts.js");
 
@@ -100,5 +72,7 @@ router.post("/Accounts/Create", middlewareAuth.requireAuth, accountController.cr
 router.get("/Accounts/Edit/:id", middlewareAuth.requireAuth, accountController.editAccount);
 router.patch("/Accounts/Edit/:id", middlewareAuth.requireAuth, accountController.editAccountPost);
 router.delete("/Accounts/Deleted/:id", accountController.deleteAccount);
+
+router.get("*", getNotFound);
 
 module.exports = router;

@@ -136,6 +136,7 @@ const addEmployeeInformation = async (PERSONAL_ID, CURRENT_FIRST_NAME, CURRENT_L
         console.log('[System] employeesManagementController.js | Added new EMPLOYEE');
     } catch (err) {
         console.log('[System] employeesManagementController.js | Cannot Added new EMPLOYEE:', err);
+        // If there is problem, delete Employee in both db
         await queryPRDB(`DELETE FROM mydb.employee WHERE \`Employee Number\` = '${EMPLOYMENT_CODE}';`);
         await queryHRDB(`DELETE FROM [DBO].[EMPLOYMENT] WHERE [EMPLOYMENT_CODE] = '${EMPLOYMENT_CODE}';`);
     }
