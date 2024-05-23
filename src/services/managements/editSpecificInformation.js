@@ -1,5 +1,6 @@
 const { queryHRDBSetOnly, queryHRDB } = require('../../database/queryHRDB');
 const { queryPRDBSetOnly, queryPRDB } = require('../../database/queryPRDB');
+const { queryMDDBSetOnly, queryMDDB } = require('../../database/queryMDDB');
 
 const diacriticsMap = {
     'á': 'a', 'à': 'a', 'ả': 'a', 'ã': 'a', 'ạ': 'a',
@@ -62,7 +63,12 @@ const editSpecificInformation = async (
     try {
 
         // If you want multiline string , use ``, kinda smart 
-        var queryHRDB_PersonalUpdate = `use [HumanResourceDB]
+        let oldBenefitID = (await queryHRDB(`select [BENEFIT_PLAN_ID] from [DBO].[PERSONAL] where [PERSONAL_ID] = ${PERSONAL_ID};`))[0]['BENEFIT_PLAN_ID'];
+        let lastestChangeID = (await queryMDDB(`select max([CHANGE_ID]) as [MAX_ID] from [DBO].[PLAN_CHANGES];`))[0]['MAX_ID'];
+
+        console.log("data >>>>>>>>>>>>>", oldBenefitID, lastestChangeID);
+
+        let queryHRDB_PersonalUpdate = `use [HumanResourceDB]
         UPDATE [DBO].[PERSONAL]
         SET 
         [CURRENT_FIRST_NAME]        = ${nullCheck(CURRENT_FIRST_NAME)},
@@ -85,7 +91,7 @@ const editSpecificInformation = async (
         [BENEFIT_PLAN_ID]           = ${nullCheck(BENEFIT_PLANS_ID, 'number')}
         WHERE [PERSONAL_ID]         = ${PERSONAL_ID};`
 
-        queryHRDBSetOnly(queryHRDB_PersonalUpdate);
+        await queryHRDBSetOnly(queryHRDB_PersonalUpdate);
 
         if (EMPLOYMENT_CODE) {
             //Get the Payamount base on idPayrate for updating Payrate
@@ -124,6 +130,18 @@ const editSpecificInformation = async (
 
             queryHRDBSetOnly(queryHRDB_EmployeeUpdate);
             queryPRDBSetOnly(queryPRDB_Update);
+        }
+
+        let today = new Date();
+        let dd = String(today.getDate()).padStart(2, '0');
+        let mm = String(today.getMonth() + 1).padStart(2, '0');
+        let yyyy = today.getFullYear();
+        let CHANGE_DATE = `${yyyy}-${mm}-${dd}`;
+
+        if (Number(oldBenefitID) !== Number(BENEFIT_PLANS_ID)) {
+            await queryMDDBSetOnly(`insert into [DBO].[PLAN_CHANGES]
+                values (${Number(lastestChangeID) + 1}, ${PERSONAL_ID}, ${oldBenefitID}, ${BENEFIT_PLANS_ID}, convert(date, '${CHANGE_DATE}'));
+            `);
         }
 
         console.log('[System] processEmployee.js | Setted Information [' + PERSONAL_ID + ']: ');
