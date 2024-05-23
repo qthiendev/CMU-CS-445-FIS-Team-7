@@ -75,7 +75,7 @@ h2 {
   Left:270px; */
 
   /* position: absolute; */
-  background-color: #8c7851;
+  background-color: #79518c;
   width: 550px;
   height: 450px;
   /* margin: 95px 0 0 200px;
@@ -89,6 +89,7 @@ h2 {
 }
 
 .content_intro > h3 {
+  color: #172c66;
   font-size: 2.2rem;
   font-weight: 600;
   margin-top: 10px;
@@ -113,7 +114,7 @@ h2 {
     Left: 853px; */
 
   position: absolute;
-  background-color: #eaddcf;
+  background-color: #cfd4ea;
   width: 550px;
   height: 500px;
   /* margin: 22% 0 0 35%;
