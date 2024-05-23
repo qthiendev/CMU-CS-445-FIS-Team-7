@@ -16,7 +16,6 @@ class Index {
         deleted: false,
         _id: record.role_id,
       });
-
       record.role = role;
     }
     res.render("accounts/accounts.ejs", {
