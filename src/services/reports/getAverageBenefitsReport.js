@@ -1,10 +1,11 @@
 const { queryHRDB } = require('../../database/queryHRDB');
 
-const getAverageBenefitsReport = async (id, fullname, planName, shareholder, totalMonth, totalBenefit) => {
+const getAverageBenefitsReport = async (id, fullname, gender, planName, shareholder, totalMonth, totalBenefit) => {
     try {
         sqlQueryHR = ('USE [HumanResourceDB]\n' +
             'SELECT [P].[PERSONAL_ID] AS [ID],\n' +
             '[P].[CURRENT_LAST_NAME] + \' \' + [P].[CURRENT_MIDDLE_NAME] + \' \' + [P].[CURRENT_FIRST_NAME] AS [FULLNAME],\n' +
+            '[P].[CURRENT_GENDER],\n' +
             '(CASE WHEN [P].[SHAREHOLDER_STATUS] = 1 THEN \'V\' ELSE \'X\' END) AS [SHAREHOLDER_STATUS],\n' +
             '[BP].[PLAN_NAME] AS [PLAN_NAME],\n' +
             'COALESCE(DATEDIFF(MONTH, [E].[HIRE_DATE_FOR_WORKING], COALESCE([E].[TERMINATION_DATE], GETDATE())), 3) AS [TOTAL_MONTH],\n' +
@@ -26,6 +27,11 @@ const getAverageBenefitsReport = async (id, fullname, planName, shareholder, tot
         if (fullname !== '' && fullname !== undefined) {
             data = data.filter(record =>
                 record.FULLNAME == fullname)
+        }
+
+        if (gender !== '' && gender !== undefined) {
+            data = data.filter(record =>
+                record.CURRENT_GENDER == gender)
         }
 
         if (planName !== '' && planName !== undefined) {
