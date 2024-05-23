@@ -5,10 +5,15 @@ const getInformation = async () => {
         const sqlQueryHR = `
             USE [HUMANRESOURCEDB]
             SELECT [P].[PERSONAL_ID],
-                ([P].[CURRENT_LAST_NAME] + ' ' + [P].[CURRENT_MIDDLE_NAME] + ' ' + [P].[CURRENT_FIRST_NAME]) AS [FULLNAME],
+                [P].[CURRENT_LAST_NAME],
+                [P].[CURRENT_MIDDLE_NAME],
+                [P].[CURRENT_FIRST_NAME],
                 [P].[CURRENT_GENDER],
                 [P].[BIRTH_DATE],
-                ([P].[CURRENT_ADDRESS_1] + ' ' + [P].[CURRENT_CITY] + ' ' + [P].[CURRENT_COUNTRY]) AS [ADDRESS],
+                [P].[CURRENT_ADDRESS_1],
+                [P].[CURRENT_ADDRESS_2],
+                [P].[CURRENT_CITY],
+                [P].[CURRENT_COUNTRY],
                 [P].[CURRENT_PERSONAL_EMAIL],
                 [P].[CURRENT_PHONE_NUMBER],
                 (CASE WHEN [P].[SHAREHOLDER_STATUS] = 1 THEN 'X' ELSE '' END) AS [SHAREHOLDER_STATUS],

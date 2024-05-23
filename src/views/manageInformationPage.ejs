@@ -229,7 +229,7 @@
                     <%= data[i].PERSONAL_ID %>
                   </td>
                   <td>
-                    <%= data[i].FULLNAME%>
+                    <%= data[i].CURRENT_LAST_NAME%> <%= data[i].CURRENT_MIDDLE_NAME%> <%= data[i].CURRENT_FIRST_NAME%>
                   </td>
                   <td>
                     <%= data[i].CURRENT_GENDER%>
@@ -238,7 +238,7 @@
                     <%= data[i].BIRTH_DATE ? (data[i].BIRTH_DATE).toLocaleDateString() : '' %>
                   </td>
                   <td>
-                    <%= data[i].ADDRESS%>
+                    <%= data[i].CURRENT_ADDRESS_1%>, <%= data[i].CURRENT_CITY%>, <%= data[i].CURRENT_COUNTRY%>
                   </td>
                   <td>
                     <%= data[i].CURRENT_PERSONAL_EMAIL%>
