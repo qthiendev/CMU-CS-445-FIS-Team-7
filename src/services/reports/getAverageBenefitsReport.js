@@ -29,7 +29,7 @@ const getAverageBenefitsReport = async (id, fullname, planName, totalMonth, tota
 
         if (planName !== '' && planName !== undefined) {
             data = data.filter(record =>
-                record.PLAN_NAME == planName)
+                record.PLAN_NAME.trim() == planName.trim())
         }
 
         if (totalMonth !== '' && totalMonth !== undefined) {
