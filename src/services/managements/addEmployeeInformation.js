@@ -33,6 +33,7 @@ const diacriticsMap = {
 const removeDiacritics = (str) => str.replace(/[áàảãạăắằẳẵặâấầẩẫậđéèẻẽẹêếềểễệíìỉĩịóòỏõọôốồổỗộơớờởỡợúùủũụưứừửữựýỳỷỹỵ]/g, match => diacriticsMap[match]);
 
 const addEmployeeInformation = async (PERSONAL_ID, CURRENT_FIRST_NAME, CURRENT_LAST_NAME, SOCIAL_SECURITY_NUMBER) => {
+    const EMPLOYMENT_CODE = await generateUniqueCode();
     try {
         if (!CURRENT_FIRST_NAME && !CURRENT_LAST_NAME && !SOCIAL_SECURITY_NUMBER) {
             console.log('[System] employeesManagementController.js | Cannot Added new EMPLOYEE');
@@ -41,7 +42,6 @@ const addEmployeeInformation = async (PERSONAL_ID, CURRENT_FIRST_NAME, CURRENT_L
 
         const NUMBER_DAYS_REQUIREMENT_OF_WORKING_PER_MONTH = 22;
         const PAY_RATE_ID = 1;
-        const EMPLOYMENT_CODE = await generateUniqueCode();
         const maxIdEPR = (await queryPRDB(`SELECT MAX(idEmployee) as maxId FROM mydb.\`employee\`;`))[0]['maxId'];
         const Pay_Amount = (await queryPRDB(`SELECT * FROM mydb.\`pay rates\` WHERE \`idPay Rates\` = ${PAY_RATE_ID}`))[0][`Pay Amount`];
 
@@ -89,6 +89,8 @@ const addEmployeeInformation = async (PERSONAL_ID, CURRENT_FIRST_NAME, CURRENT_L
         let yyyy = today.getFullYear();
         let HIRE_DATE_FOR_WORKING = `${yyyy}-${mm}-${dd}`;
 
+        console.log(HIRE_DATE_FOR_WORKING);
+
         let queryHRDB_PersonalInsert = `USE [HumanResourceDB]
             INSERT INTO [DBO].[EMPLOYMENT]
             (
@@ -108,14 +110,16 @@ const addEmployeeInformation = async (PERSONAL_ID, CURRENT_FIRST_NAME, CURRENT_L
                 ${maxidEHR + 1}, 
                 '${EMPLOYMENT_CODE}',
                 'Full time', 
-                ${HIRE_DATE_FOR_WORKING ? `CONVERT(DATETIME, '${HIRE_DATE_FOR_WORKING}', 103)` : `NULL`},
+                ${HIRE_DATE_FOR_WORKING ? `CONVERT(DATETIME, '${HIRE_DATE_FOR_WORKING}')` : `NULL`},
                 'JW', 
                 NULL,
                 NULL,
-                ${HIRE_DATE_FOR_WORKING ? `CONVERT(DATETIME, '${HIRE_DATE_FOR_WORKING}', 103)` : `NULL`},
+                ${HIRE_DATE_FOR_WORKING ? `CONVERT(DATETIME, '${HIRE_DATE_FOR_WORKING}')` : `NULL`},
                 ${NUMBER_DAYS_REQUIREMENT_OF_WORKING_PER_MONTH},
                 ${PERSONAL_ID}
             );`;
+
+        console.log(queryHRDB_PersonalInsert);
 
         await queryHRDBSetOnly(queryHRDB_PersonalInsert);
 
@@ -132,6 +136,9 @@ const addEmployeeInformation = async (PERSONAL_ID, CURRENT_FIRST_NAME, CURRENT_L
         console.log('[System] employeesManagementController.js | Added new EMPLOYEE');
     } catch (err) {
         console.log('[System] employeesManagementController.js | Cannot Added new EMPLOYEE:', err);
+        // If there is problem, delete Employee in both db
+        await queryPRDB(`DELETE FROM mydb.employee WHERE \`Employee Number\` = '${EMPLOYMENT_CODE}';`);
+        await queryHRDB(`DELETE FROM [DBO].[EMPLOYMENT] WHERE [EMPLOYMENT_CODE] = '${EMPLOYMENT_CODE}';`);
     }
 }
 

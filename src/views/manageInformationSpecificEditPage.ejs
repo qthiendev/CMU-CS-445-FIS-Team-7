@@ -21,19 +21,19 @@
         <div class="wrapper">
 
             <div class="form-group">
-                <label for="id" class="headInfo">ID</label>
-                <input type="text" id="id" name="PERSONAL_ID" value="<%= data.PERSONAL_ID %>" />
+                <label for="id" class="headInfo">ID *</label>
+                <input type="text" id="id" name="PERSONAL_ID" value="<%= data.PERSONAL_ID %>" required />
                 <button onclick="findEmployee(event)">Find</button>
             </div>
 
             <div class="form-group">
                 <label for="" class="headInfo">First Name *</label>
-                <input type="text" name="CURRENT_FIRST_NAME" value="<%= data.CURRENT_FIRST_NAME %>" />
+                <input type="text" name="CURRENT_FIRST_NAME" value="<%= data.CURRENT_FIRST_NAME %>" required />
             </div>
 
             <div class="form-group">
                 <label for="" class="headInfo">Last Name *</label>
-                <input type="text" name="CURRENT_LAST_NAME" value="<%= data.CURRENT_LAST_NAME %>" />
+                <input type="text" name="CURRENT_LAST_NAME" value="<%= data.CURRENT_LAST_NAME %>" required />
             </div>
 
             <div class="form-group">
@@ -49,7 +49,7 @@
 
             <div class="form-group">
                 <label for="" class="headInfo">Social Security Number *</label>
-                <input type="text" name="SOCIAL_SECURITY_NUMBER" value="<%= data.SOCIAL_SECURITY_NUMBER %>" />
+                <input type="text" name="SOCIAL_SECURITY_NUMBER" value="<%= data.SOCIAL_SECURITY_NUMBER %>" required />
             </div>
 
             <div class="form-group">
@@ -113,8 +113,8 @@
             </div>
 
             <div class="form-group">
-                <label for="" class="headInfo">Benefit Plans ID</label>
-                <input type="text" name="BENEFIT_PLANS_ID" value="<%= data.BENEFIT_PLANS_ID %>" />
+                <label for="" class="headInfo">Benefit Plans ID *</label>
+                <input type="text" name="BENEFIT_PLANS_ID" value="<%= data.BENEFIT_PLANS_ID %>" required />
                 <button onclick="benefitPlanCheck(event)">Check</button>
             </div>
 
@@ -193,8 +193,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="" class="headInfo">Payrate ID</label>
-                    <input type="text" name="idPay_Rates" value="<%= data['idPay Rates'] %>" />
+                    <label for="" class="headInfo">Payrate ID *</label>
+                    <input type="text" name="idPay_Rates" value="<%= data['idPay Rates'] %>" required />
                     <button onclick="payrateCheck(event)">Check</button>
                 </div>
                 <div id="shareholder">
