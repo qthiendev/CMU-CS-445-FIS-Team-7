@@ -7,8 +7,9 @@ const renderAverageBenefitsReportView = async (req, res) => {
         let planName = req.query.planName;
         let totalMonth = req.query.totalMonth;
         let totalBenefit = req.query.totalBenefit;
+        let shareholder = req.query.shareholder;
 
-        let data = await getAverageBenefitsReport(id, fullname, planName, totalMonth, totalBenefit);
+        let data = await getAverageBenefitsReport(id, fullname, planName, shareholder, totalMonth, totalBenefit);
 
         res.render(
             "reportAverageBenefitsPage.ejs",
@@ -18,7 +19,8 @@ const renderAverageBenefitsReportView = async (req, res) => {
                 fullname, 
                 planName, 
                 totalMonth, 
-                totalBenefit
+                totalBenefit,
+                shareholder
             }
         );
         console.log('[System] averageBenefitsReportController.js | Rendered reportAverageBenefitsPage.');

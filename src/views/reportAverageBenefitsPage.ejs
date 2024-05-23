@@ -207,6 +207,10 @@
               <label for="">Plan</label>
               <input type="text" name="planName" value="<%= planName %>" />
             </div>
+            <div class="form-group" style="transform: translateX(27px);">
+              <label for="">Shareholder</label>
+              <input type="text" name="shareholder" value="<%= shareholder %>" />
+            </div>
             <div class="form-group" style="transform: translateX(48px);">
               <label for="">Total month</label>
               <input type="text" name="totalMonth" value="<%= totalMonth %>" />
@@ -227,6 +231,7 @@
                 <th>ID</th>
                 <th>Fullname</th>
                 <th>Plan</th>
+                <th>Shareholder</th>
                 <th>Total month</th>
                 <th>Total paid</th>
               </tr>
@@ -243,6 +248,9 @@
                   </td>
                   <td>
                     <%= data[i].PLAN_NAME%>
+                  </td>
+                  <td>
+                    <%= data[i].SHAREHOLDER_STATUS%>
                   </td>
                   <td>
                     <%= data[i].TOTAL_MONTH%>
