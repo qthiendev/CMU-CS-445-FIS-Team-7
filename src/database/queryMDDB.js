@@ -17,6 +17,19 @@ const queryMDDB = async (sqlQueryMD) => {
   }
 };
 
+const queryMDDBSetOnly = async (mysqlQueryMD) => {
+  try {
+    const request = connectionMD.request();
+    await request.query(mysqlQueryMD);
+
+    console.log('[System] queryMDDB.js | Queried MDDB Set Only.');
+  } catch (error) {
+    console.error("[SYSTEM] queryMDDB.js | Cannot query MDDB Set Only: ", error);
+    throw error;
+  }
+};
+
 module.exports = {
   queryMDDB,
+  queryMDDBSetOnly,
 };
